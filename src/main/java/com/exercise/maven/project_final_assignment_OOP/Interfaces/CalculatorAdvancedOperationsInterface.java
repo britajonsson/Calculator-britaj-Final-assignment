@@ -10,29 +10,29 @@ public interface CalculatorAdvancedOperationsInterface {
 	public double powerOf(double base, double exponent);
 	/**
 	 * Calculates the cube of (^3) the given number.
-	 * @param number
-	 * @return number ^ 3
+	 * @param base
+	 * @return base ^ 3
 	 */
-	public double cubeOf(double number);
-	/**
-	 * Returns the remainder of the divison between the given values.
-	 * @param divident
-	 * @param divisor
-	 * @return divident % divisor
-	 */
-	public double remainder(double divident, double divisor);
-	/**
-	 * Calculates the square of (^2) the given number.
-	 * @param number
-	 * @return number ^ 2
-	 */
-	public double squareOf(double number);
+	public double cubeOf(double base);
 	/**
 	 * Calculates the power of ten for the given number.
-	 * @param number
-	 * @return 10 ^ number
+	 * @param exponent
+	 * @return 10 ^ exponent
 	 */
-	public double powerOfTen(double number);
+	public double powerOfTen(double exponent);
+	/**
+	 * Returns the remainder of the division between the given integer values.
+	 * @param dividend
+	 * @param divisor
+	 * @return dividend % divisor
+	 */
+	public int remainder(int dividend, int divisor);
+	/**
+	 * Calculates the square of (^2) the given number.
+	 * @param base
+	 * @return base ^ 2
+	 */
+	public double squareOf(double base);
 	/**
 	 * Returns a random value between 0 and 1.
 	 * @return Number between 0 and 1

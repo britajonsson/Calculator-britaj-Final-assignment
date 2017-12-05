@@ -3,30 +3,30 @@ package com.exercise.maven.project_final_assignment_OOP.Interfaces;
 public interface CalculatorBasicOperationsInterface {
 	/**
 	 * 
-	 * @param firstNumber 
-	 * @param secondNumber
+	 * @param firstSummand 
+	 * @param secondSummand
 	 * @return
 	 */
-	public double addition(double firstNumber, double secondNumber);
+	public double addition(double firstSummand, double secondSummand);
 	/**
 	 * 
-	 * @param firstNumber
-	 * @param secondNumber
+	 * @param minuend
+	 * @param subtrahend
 	 * @return
 	 */
-	public double subtraction(double firstNumber, double secondNumber);
+	public double subtraction(double minuend, double subtrahend);
 	/**
 	 * 
-	 * @param firstNumber
-	 * @param secondNumber
+	 * @param firstFactor
+	 * @param secondFactor
 	 * @return
 	 */
-	public double multiplication(double firstNumber, double secondNumber);
+	public double multiplication(double firstFactor, double secondFactor);
 	/**
 	 * 
-	 * @param firstNumber
-	 * @param secondNumber
+	 * @param dividend
+	 * @param divisor
 	 * @return
 	 */
-	public double division(double firstNumber, double secondNumber);
+	public double division(double dividend, double divisor);
 }
