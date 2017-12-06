@@ -8,6 +8,11 @@ import com.exercise.maven.project_final_assignment_OOP.Interfaces.CalculatorAdva
 public class AdvancedCalculator implements CalculatorAdvancedOperationsInterface {
 	
 	public double powerOf(double base, double exponent) {
+		if (exponent == 0) {
+			return 1;
+		} else if (base == 0) {
+			return 0;
+		}
 		double result = base;
 		// Loop as many times as the exponent
 		for (int i = 1; i < exponent; i++) {			// i starts at 1 because base^1 is done in declaration of result
@@ -26,6 +31,9 @@ public class AdvancedCalculator implements CalculatorAdvancedOperationsInterface
 	}
 
 	public double powerOfTen(double exponent) {
+		if (exponent == 0) {
+			return 1;
+		} 
 		double result = 10;							// The base is always 10
 		// Loop as many times as the exponent
 		for (int i = 1; i < exponent; i++) {			// i starts at 1 because 10^1 is done in declaration of result
@@ -41,14 +49,15 @@ public class AdvancedCalculator implements CalculatorAdvancedOperationsInterface
 		 * remainder = dividend - (divisor * intQuotient)
 		 * 
 		 */
-		
+	
 		// Handling of division by zero is handled before calling this method,
 		// so it's not needed to be handled here.
 		
-		int remainder = 0;						// The result of the calculation
-		double quotient = dividend / divisor;	// The result of division of dividend and divisor
-		// How to format the intQuotient?!
-		int intQuotient = FORMAT;				// The quotient formatted to integer (quotient without decimals)
+		int remainder = 0;								// The result of the calculation
+		double quotient = dividend / divisor;			// The result of division of dividend and divisor
+		
+		// intQuotient should become an integer of quotient without it's decimals (rounded down)
+		int intQuotient = (int)Math.floor(quotient);		// The quotient formatted to integer (see previous comment)
 		remainder = dividend - (divisor * intQuotient);
 		
 		return remainder;

@@ -52,7 +52,7 @@ public class BasicOperationsAdditionTest {
 		for (int i = 0; i < 50; i++) {
 			secondSummand = random.nextInt(10)+1;
 			expectedResult = firstSummand + secondSummand;
-			LOG.info("Testing addition method with firstSumman = 0: " + firstSummand + " + " + secondSummand + " = " + expectedResult);
+			LOG.info("Testing addition method with firstSummand = 0: " + firstSummand + " + " + secondSummand + " = " + expectedResult);
 			assertEquals(sc.addition(firstSummand, secondSummand), expectedResult, 0);
 		}
 		
