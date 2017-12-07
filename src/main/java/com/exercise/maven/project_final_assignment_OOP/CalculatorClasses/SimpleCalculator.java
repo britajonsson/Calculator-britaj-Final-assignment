@@ -18,9 +18,11 @@ public class SimpleCalculator implements CalculatorBasicOperationsInterface {
 	}
 
 	public double division(double dividend, double divisor) {
-		// Handling of division by zero is handled before calling this method,
-		// so it's not needed to be handled here.
-		return dividend / divisor * OK?;
+		if (divisor == 0) {
+			System.out.println("You can't divide by zero.");
+			return 999999999;
+		}
+		return dividend / divisor;
 	}
 
 }

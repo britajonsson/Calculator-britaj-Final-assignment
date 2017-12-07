@@ -1,6 +1,5 @@
 package com.exercise.maven.project_final_assignment_OOP.CalculatorClasses;
 
-import java.text.Format;
 import java.util.Random;
 
 import com.exercise.maven.project_final_assignment_OOP.Interfaces.CalculatorAdvancedOperationsInterface;
@@ -49,13 +48,14 @@ public class AdvancedCalculator implements CalculatorAdvancedOperationsInterface
 		 * remainder = dividend - (divisor * intQuotient)
 		 * 
 		 */
-	
-		// Handling of division by zero is handled before calling this method,
-		// so it's not needed to be handled here.
 		
+		// Create try-catch for ArithmeticException "/ by zero" ??
+		if (divisor == 0) {
+			System.out.println("Not possible to calculate remainder with divisor = 0");
+			return 999999999;
+		}
 		int remainder = 0;								// The result of the calculation
 		double quotient = dividend / divisor;			// The result of division of dividend and divisor
-		
 		// intQuotient should become an integer of quotient without it's decimals (rounded down)
 		int intQuotient = (int)Math.floor(quotient);		// The quotient formatted to integer (see previous comment)
 		remainder = dividend - (divisor * intQuotient);

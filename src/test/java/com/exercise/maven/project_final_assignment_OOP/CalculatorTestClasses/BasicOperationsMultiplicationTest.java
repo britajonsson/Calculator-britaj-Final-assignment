@@ -15,9 +15,9 @@ public class BasicOperationsMultiplicationTest {
 	
 	@Test
 	public void testPositiveMultiplication() {
-		int firstFactor = 0;
-		int secondFactor = 0;
-		int expectedResult = 0;
+		double firstFactor = 0;
+		double secondFactor = 0;
+		double expectedResult = 0;
 		
 		for (int i = 0; i < 50; i++) {
 			firstFactor = random.nextInt(10)+1;
@@ -30,9 +30,9 @@ public class BasicOperationsMultiplicationTest {
 	
 	@Test
 	public void testNegativeMultiplication() {
-		int firstFactor = 0;
-		int secondFactor = 0;
-		int expectedResult = 0;
+		double firstFactor = 0;
+		double secondFactor = 0;
+		double expectedResult = 0;
 		
 		for (int i = 0; i < 50; i++) {
 			firstFactor = random.nextInt(10)-10;
@@ -45,9 +45,9 @@ public class BasicOperationsMultiplicationTest {
 	
 	@Test
 	public void testMultiplicationWithFirstFactor0() {
-		int firstFactor = 0;
-		int secondFactor = 0;
-		int expectedResult = 0;
+		double firstFactor = 0;
+		double secondFactor = 0;
+		double expectedResult = 0;
 		
 		for (int i = 0; i < 50; i++) {
 			secondFactor = random.nextInt(10)+1;
@@ -61,9 +61,9 @@ public class BasicOperationsMultiplicationTest {
 	
 	@Test
 	public void testMultiplicationWithSecondFactor0() {
-		int firstFactor = 0;
-		int secondFactor = 0;
-		int expectedResult = 0;
+		double firstFactor = 0;
+		double secondFactor = 0;
+		double expectedResult = 0;
 		
 		for (int i = 0; i < 50; i++) {
 			firstFactor = random.nextInt(10)+1;
