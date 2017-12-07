@@ -9,9 +9,18 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import java.awt.Color;
+import javax.swing.UIManager;
+
+import com.exercise.maven.project_final_assignment_OOP.CalculatorClasses.AdvancedCalculator;
+
+import javax.swing.JToggleButton;
 
 public class CalculatorWindow {
 
+	private AdvancedCalculator ac = new AdvancedCalculator();
 	private JFrame frame = new JFrame();
 	private JButton btnPinpad0 = new JButton("0");
 	private JButton btnPinpad1 = new JButton("1");
@@ -29,8 +38,19 @@ public class CalculatorWindow {
 	private JButton btnMultiplication = new JButton("*");
 	private JButton btnSubtraction = new JButton("-");
 	private JButton btnAddition = new JButton("+");
-	private JButton btnSwitchMode = new JButton("Off");
-
+	private JButton btnPowerOf = new JButton("x^y");
+	private JButton btnSquareOf = new JButton("x^2");
+	private JButton btnCubeof = new JButton("x^3");
+	private JButton btnRemainder = new JButton("mod");
+	private JButton btnPowerOfTen = new JButton("10^x");
+	private JButton btnRandom = new JButton("Rand");
+	private JButton btnClear = new JButton("C");
+	private JButton btnSwitchOn = new JButton();
+	private JButton btnSwitchOff = new JButton();
+	private JLabel lblAdvancedMode = new JLabel("Advanced mode");
+	private JTextField display = new JTextField("0");
+	boolean isBasic = true;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -54,113 +74,161 @@ public class CalculatorWindow {
 		initialize();
 		addComponents();
 		addActionListeners();
+		
+		// Deactivate advanced buttons at start
+		deActivateAdvanceButtons();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		frame.getContentPane().setBackground(new Color(240, 248, 255));
 		frame.setBounds(100, 100, 447, 556);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-				
 
-		
 	}
-	
+
 	private void addComponents() {
-		// Adding the buttons and setting their properties
-		
+		// Setting component placing
 		btnPinpad0.setBounds(82, 271, 29, 29);
-		frame.getContentPane().add(btnPinpad0);
-		
-		
 		btnPinpad1.setBounds(41, 230, 29, 29);
-		frame.getContentPane().add(btnPinpad1);
-		
-		
 		btnPinpad2.setBounds(82, 230, 29, 29);
-		frame.getContentPane().add(btnPinpad2);
-		
-		
 		btnPinpad3.setBounds(123, 230, 29, 29);
-		frame.getContentPane().add(btnPinpad3);
-		
-		
 		btnPinpad4.setBounds(41, 189, 29, 29);
-		frame.getContentPane().add(btnPinpad4);
-		
-		
 		btnPinpad5.setBounds(82, 189, 29, 29);
-		frame.getContentPane().add(btnPinpad5);
-		
-		
 		btnPinpad6.setBounds(123, 189, 29, 29);
-		frame.getContentPane().add(btnPinpad6);
-		
-		
 		btnPinpad7.setBounds(41, 148, 29, 29);
-		frame.getContentPane().add(btnPinpad7);
-		
-		
 		btnPinpad8.setBounds(82, 148, 29, 29);
-		frame.getContentPane().add(btnPinpad8);
-		
-		
 		btnPinpad9.setBounds(123, 148, 29, 29);
-		frame.getContentPane().add(btnPinpad9);
-		
-		
 		btnComma.setBounds(41, 271, 29, 29);
-		frame.getContentPane().add(btnComma);
-		
-		
 		btnEquals.setBounds(123, 271, 29, 29);
-		frame.getContentPane().add(btnEquals);
-		
-		
 		btnDivison.setBounds(164, 230, 29, 29);
-		frame.getContentPane().add(btnDivison);
-		
-		
 		btnMultiplication.setBounds(164, 189, 29, 29);
-		frame.getContentPane().add(btnMultiplication);
-		
-		
 		btnSubtraction.setBounds(164, 148, 29, 29);
-		frame.getContentPane().add(btnSubtraction);
-		
-		
 		btnAddition.setBounds(164, 271, 29, 29);
+		btnPowerOf.setBounds(205, 230, 29, 29);
+		btnSquareOf.setBounds(205, 189, 29, 29);
+		btnCubeof.setBounds(205, 148, 29, 29);
+		btnPowerOfTen.setBounds(246, 230, 29, 29);
+		btnRemainder.setBounds(246, 189, 29, 29);
+		btnRandom.setBounds(246, 148, 29, 29);
+		btnClear.setBounds(41, 107, 29, 29);
+		btnSwitchOn.setBounds(246, 314, 13, 20);
+		btnSwitchOff.setBounds(258, 314, 13, 20);
+		lblAdvancedMode.setBounds(162, 310, 87, 29);
+		
+		// Set font (for those with bigger text)
+		btnPowerOf.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
+		btnSquareOf.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
+		btnCubeof.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
+		btnPowerOfTen.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
+		btnRemainder.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
+		btnRandom.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
+		lblAdvancedMode.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
+		
+		// Adding the components to frame
+		frame.getContentPane().add(btnPinpad0);
+		frame.getContentPane().add(btnPinpad1);
+		frame.getContentPane().add(btnPinpad2);
+		frame.getContentPane().add(btnPinpad3);
+		frame.getContentPane().add(btnPinpad4);
+		frame.getContentPane().add(btnPinpad5);
+		frame.getContentPane().add(btnPinpad6);
+		frame.getContentPane().add(btnPinpad7);
+		frame.getContentPane().add(btnPinpad8);
+		frame.getContentPane().add(btnPinpad9);
+		frame.getContentPane().add(btnComma);
+		frame.getContentPane().add(btnEquals);
+		frame.getContentPane().add(btnDivison);
+		frame.getContentPane().add(btnMultiplication);
+		frame.getContentPane().add(btnSubtraction);
 		frame.getContentPane().add(btnAddition);
-		
-		btnSwitchMode.setBounds(164, 33, 29, 29);
-		frame.getContentPane().add(btnSwitchMode);
-		
-		JLabel lblAdvancedMode = new JLabel("Advanced mode:");
-		lblAdvancedMode.setBounds(41, 38, 114, 16);
+		frame.getContentPane().add(btnPowerOf);
+		frame.getContentPane().add(btnSquareOf);
+		frame.getContentPane().add(btnCubeof);
+		frame.getContentPane().add(btnPowerOfTen);
+		frame.getContentPane().add(btnRemainder);
+		frame.getContentPane().add(btnRandom);
+		frame.getContentPane().add(btnClear);
+		frame.getContentPane().add(btnSwitchOn);
+		frame.getContentPane().add(btnSwitchOff);
 		frame.getContentPane().add(lblAdvancedMode);
+		frame.getContentPane().add(display);
+		
+		// Settings for display field
+		display.setColumns(10);
+		display.setBounds(79, 104, 200, 35);
+		display.setBackground(new Color(245, 255, 250));
+		display.setHorizontalAlignment(SwingConstants.RIGHT);
+		
+		// Switch start at Off
+		btnSwitchOn.setBackground(Color.RED);
+		btnSwitchOn.setOpaque(true);
+		btnSwitchOn.setBorderPainted(false);
+		btnSwitchOff.setOpaque(true);
+		btnSwitchOff.setBorderPainted(false);
+	}
+
+	private void activateAdvanceButtons() {
+		btnPowerOf.setEnabled(true);
+		btnSquareOf.setEnabled(true);
+		btnCubeof.setEnabled(true);
+		btnPowerOfTen.setEnabled(true);
+		btnRemainder.setEnabled(true);
+		btnRandom.setEnabled(true);
 	}
 	
+	private void deActivateAdvanceButtons() {
+		btnPowerOf.setEnabled(false);
+		btnSquareOf.setEnabled(false);
+		btnCubeof.setEnabled(false);
+		btnPowerOfTen.setEnabled(false);
+		btnRemainder.setEnabled(false);
+		btnRandom.setEnabled(false);
+	}
+	
+	private void switchMode() {
+		if (isBasic) {
+			// Activate advanced buttons
+			activateAdvanceButtons();
+			btnSwitchOn.setBackground(new Color(238, 238, 238));
+			btnSwitchOff.setBackground(Color.GREEN);
+			isBasic = false;
+		} else {
+			// Deactivate advanced buttons
+			deActivateAdvanceButtons();
+			btnSwitchOn.setBackground(Color.RED);
+			btnSwitchOff.setBackground(new Color(238, 238, 238));
+			isBasic = true;
+		}
+	}
 	
 	private void addActionListeners() {
 		
-		btnSwitchMode.addActionListener(new ActionListener() {
+		btnSwitchOn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				boolean isBasic = true;
-				  
-				if (isBasic) {
-					// Activate advanced buttons
-					Implement!
-					Set btnSwitchMode to "On"
-					isBasic = false;
-				} else {
-					// Deactivate advanced buttons
-					Implement!
-					Set btnSwitchMode to "Off"
-					isBasic = true;
-				}
-	
+				switchMode();
+			}
+		});
+		
+		btnSwitchOff.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				switchMode();  
+			}
+		});
+		
+		btnRandom.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double randomValue = ac.random0to1();
+				display.setText(Double.toString(randomValue));
+			}
+		});
+		
+		btnClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				display.setText("0");
 			}
 		});
 	}
