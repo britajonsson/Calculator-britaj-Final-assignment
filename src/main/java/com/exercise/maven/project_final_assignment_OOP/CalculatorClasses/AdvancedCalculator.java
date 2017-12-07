@@ -4,7 +4,7 @@ import java.util.Random;
 
 import com.exercise.maven.project_final_assignment_OOP.Interfaces.CalculatorAdvancedOperationsInterface;
 
-public class AdvancedCalculator implements CalculatorAdvancedOperationsInterface {
+public class AdvancedCalculator extends SimpleCalculator implements CalculatorAdvancedOperationsInterface {
 	
 	public double powerOf(double base, double exponent) {
 		if (exponent == 0) {
