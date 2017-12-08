@@ -49,7 +49,15 @@ public class CalculatorWindow {
 	private JButton btnSwitchOff = new JButton();
 	private JLabel lblAdvancedMode = new JLabel("Advanced mode");
 	private JTextField display = new JTextField("0");
-	boolean isBasic = true;
+	
+	// Used to decide if Advanced buttons should be visible or not.
+	private boolean isBasic = true;
+	
+	// Used to decide if a number should be printed when pressing the pinpad. If true = OK to write in display, if false = add to existing number or use in calculation
+	private boolean isFirstAction = true;
+	
+	// Used to know if there's an calculation process going on when pressing the pinpad. If false = OK to write number in display, if trie = use number in ongoing calculation
+	private boolean ongoingCalculation = false;
 	
 	/**
 	 * Launch the application.
@@ -84,7 +92,7 @@ public class CalculatorWindow {
 	 */
 	private void initialize() {
 		frame.getContentPane().setBackground(new Color(240, 248, 255));
-		frame.setBounds(100, 100, 447, 556);
+		frame.setBounds(100, 100, 280, 358);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
@@ -92,32 +100,32 @@ public class CalculatorWindow {
 
 	private void addComponents() {
 		// Setting component placing
-		btnPinpad0.setBounds(82, 271, 29, 29);
-		btnPinpad1.setBounds(41, 230, 29, 29);
-		btnPinpad2.setBounds(82, 230, 29, 29);
-		btnPinpad3.setBounds(123, 230, 29, 29);
-		btnPinpad4.setBounds(41, 189, 29, 29);
-		btnPinpad5.setBounds(82, 189, 29, 29);
-		btnPinpad6.setBounds(123, 189, 29, 29);
-		btnPinpad7.setBounds(41, 148, 29, 29);
-		btnPinpad8.setBounds(82, 148, 29, 29);
-		btnPinpad9.setBounds(123, 148, 29, 29);
-		btnComma.setBounds(41, 271, 29, 29);
-		btnEquals.setBounds(123, 271, 29, 29);
-		btnDivison.setBounds(164, 230, 29, 29);
-		btnMultiplication.setBounds(164, 189, 29, 29);
-		btnSubtraction.setBounds(164, 148, 29, 29);
-		btnAddition.setBounds(164, 271, 29, 29);
-		btnPowerOf.setBounds(205, 230, 29, 29);
-		btnSquareOf.setBounds(205, 189, 29, 29);
-		btnCubeof.setBounds(205, 148, 29, 29);
-		btnPowerOfTen.setBounds(246, 230, 29, 29);
-		btnRemainder.setBounds(246, 189, 29, 29);
-		btnRandom.setBounds(246, 148, 29, 29);
-		btnClear.setBounds(41, 107, 29, 29);
-		btnSwitchOn.setBounds(246, 314, 13, 20);
-		btnSwitchOff.setBounds(258, 314, 13, 20);
-		lblAdvancedMode.setBounds(162, 310, 87, 29);
+		btnPinpad0.setBounds(63, 243, 29, 29);
+		btnPinpad1.setBounds(22, 202, 29, 29);
+		btnPinpad2.setBounds(63, 202, 29, 29);
+		btnPinpad3.setBounds(104, 202, 29, 29);
+		btnPinpad4.setBounds(22, 161, 29, 29);
+		btnPinpad5.setBounds(63, 161, 29, 29);
+		btnPinpad6.setBounds(104, 161, 29, 29);
+		btnPinpad7.setBounds(22, 120, 29, 29);
+		btnPinpad8.setBounds(63, 120, 29, 29);
+		btnPinpad9.setBounds(104, 120, 29, 29);
+		btnComma.setBounds(22, 243, 29, 29);
+		btnEquals.setBounds(104, 243, 29, 29);
+		btnDivison.setBounds(145, 202, 29, 29);
+		btnMultiplication.setBounds(145, 161, 29, 29);
+		btnSubtraction.setBounds(145, 120, 29, 29);
+		btnAddition.setBounds(145, 243, 29, 29);
+		btnPowerOf.setBounds(186, 202, 29, 29);
+		btnSquareOf.setBounds(186, 161, 29, 29);
+		btnCubeof.setBounds(186, 120, 29, 29);
+		btnPowerOfTen.setBounds(227, 202, 29, 29);
+		btnRemainder.setBounds(227, 161, 29, 29);
+		btnRandom.setBounds(227, 120, 29, 29);
+		btnClear.setBounds(22, 79, 29, 29);
+		btnSwitchOn.setBounds(227, 286, 13, 20);
+		btnSwitchOff.setBounds(239, 286, 13, 20);
+		lblAdvancedMode.setBounds(143, 282, 87, 29);
 		
 		// Set font (for those with bigger text)
 		btnPowerOf.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
@@ -159,7 +167,7 @@ public class CalculatorWindow {
 		
 		// Settings for display field
 		display.setColumns(10);
-		display.setBounds(79, 104, 200, 35);
+		display.setBounds(60, 76, 200, 35);
 		display.setBackground(new Color(245, 255, 250));
 		display.setHorizontalAlignment(SwingConstants.RIGHT);
 		
@@ -167,8 +175,10 @@ public class CalculatorWindow {
 		btnSwitchOn.setBackground(Color.RED);
 		btnSwitchOn.setOpaque(true);
 		btnSwitchOn.setBorderPainted(false);
+		btnSwitchOn.setFocusPainted(false);
 		btnSwitchOff.setOpaque(true);
-		btnSwitchOff.setBorderPainted(false);
+		btnSwitchOff.setBorderPainted(true);
+		btnSwitchOff.setFocusPainted(false);
 	}
 
 	private void activateAdvanceButtons() {
@@ -194,13 +204,17 @@ public class CalculatorWindow {
 			// Activate advanced buttons
 			activateAdvanceButtons();
 			btnSwitchOn.setBackground(new Color(238, 238, 238));
+			btnSwitchOn.setBorderPainted(true);
 			btnSwitchOff.setBackground(Color.GREEN);
+			btnSwitchOff.setBorderPainted(false);
 			isBasic = false;
 		} else {
 			// Deactivate advanced buttons
 			deActivateAdvanceButtons();
 			btnSwitchOn.setBackground(Color.RED);
+			btnSwitchOn.setBorderPainted(false);
 			btnSwitchOff.setBackground(new Color(238, 238, 238));
+			btnSwitchOff.setBorderPainted(true);
 			isBasic = true;
 		}
 	}
@@ -223,12 +237,45 @@ public class CalculatorWindow {
 			public void actionPerformed(ActionEvent e) {
 				double randomValue = ac.random0to1();
 				display.setText(Double.toString(randomValue));
+				// Make sure no number is added to this number
+				isFirstAction = true;
 			}
 		});
 		
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				display.setText("0");
+				isFirstAction = true;
+			}
+		});
+		
+		btnPinpad1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (isFirstAction) {
+					display.setText(btnPinpad1.getText());
+					isFirstAction = false;
+				} else if (ongoingCalculation) {
+					display.setText(btnPinpad1.getText());
+				} else if (display.getText().length() >= 20) {
+					// Do nothing, does not fit screen
+				} else {
+					display.setText(display.getText()+btnPinpad1.getText());
+				}
+			}
+		});
+		
+		btnPinpad2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (isFirstAction) {
+					display.setText(btnPinpad2.getText());
+					isFirstAction = false;
+				} else if (ongoingCalculation) {
+					// Keep on doing calculation
+				} else if (display.getText().length() >= 20) {
+					// Do nothing, does not fit screen
+				} else {
+					display.setText(display.getText()+btnPinpad2.getText());
+				}
 			}
 		});
 	}
