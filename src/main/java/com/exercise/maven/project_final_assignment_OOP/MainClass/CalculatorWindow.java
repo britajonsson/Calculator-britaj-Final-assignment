@@ -1,7 +1,5 @@
 package com.exercise.maven.project_final_assignment_OOP.MainClass;
 
-import java.awt.EventQueue;
-import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -13,11 +11,10 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.Color;
-import javax.swing.UIManager;
+
 
 import com.exercise.maven.project_final_assignment_OOP.CalculatorClasses.AdvancedCalculator;
 
-import javax.swing.JToggleButton;
 
 public class CalculatorWindow {
 	
@@ -35,7 +32,7 @@ public class CalculatorWindow {
 	private JButton btnPinpad9 = new JButton("9");
 	private JButton btnComma = new JButton(",");
 	private JButton btnEquals = new JButton("=");
-	private JButton btnDivison = new JButton("/");
+	private JButton btnDivision = new JButton("/");
 	private JButton btnMultiplication = new JButton("*");
 	private JButton btnSubtraction = new JButton("-");
 	private JButton btnAddition = new JButton("+");
@@ -112,7 +109,7 @@ public class CalculatorWindow {
 		btnPinpad9.setBounds(104, 120, 29, 29);
 		btnComma.setBounds(22, 243, 29, 29);
 		btnEquals.setBounds(104, 243, 29, 29);
-		btnDivison.setBounds(145, 120, 29, 29);
+		btnDivision.setBounds(145, 120, 29, 29);
 		btnMultiplication.setBounds(145, 161, 29, 29);
 		btnSubtraction.setBounds(145, 202, 29, 29);
 		btnAddition.setBounds(145, 243, 29, 29);
@@ -149,7 +146,7 @@ public class CalculatorWindow {
 		frame.getContentPane().add(btnPinpad9);
 		frame.getContentPane().add(btnComma);
 		frame.getContentPane().add(btnEquals);
-		frame.getContentPane().add(btnDivison);
+		frame.getContentPane().add(btnDivision);
 		frame.getContentPane().add(btnMultiplication);
 		frame.getContentPane().add(btnSubtraction);
 		frame.getContentPane().add(btnAddition);
@@ -259,6 +256,46 @@ public class CalculatorWindow {
 		chosenOperator = ' ';
 	}
 	
+	private void startMultiplication() {
+		firstNumber = Double.parseDouble(display.getText());
+		ongoingCalculation = true;
+		isFirstAction = true;
+		chosenOperator = btnMultiplication.getText().charAt(0);
+		// Marking that Addition key is active. 
+		// Might implement later on, must be reverted if C is pressed
+		// btnAddition.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+	}
+	
+	private void continueMultiplication() {
+		String result = df.format(ac.multiplication(firstNumber, secondNumber));
+		// Marking that Addition key is no longer active. 
+		// Might implement later on, must be reverted if C is pressed
+		// btnAddition.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		display.setText(result);
+		isFirstAction = true;
+		chosenOperator = ' ';
+	}
+	
+	private void startDivision() {
+		firstNumber = Double.parseDouble(display.getText());
+		ongoingCalculation = true;
+		isFirstAction = true;
+		chosenOperator = btnDivision.getText().charAt(0);
+		// Marking that Addition key is active. 
+		// Might implement later on, must be reverted if C is pressed
+		// btnAddition.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+	}
+	
+	private void continueDivision() {
+		String result = df.format(ac.division(firstNumber, secondNumber));
+		// Marking that Addition key is no longer active. 
+		// Might implement later on, must be reverted if C is pressed
+		// btnAddition.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		display.setText(result);
+		isFirstAction = true;
+		chosenOperator = ' ';
+	}
+	
 	private void startPowerOf() {
 		firstNumber = Double.parseDouble(display.getText());
 		ongoingCalculation = true;
@@ -359,22 +396,12 @@ public class CalculatorWindow {
 					case '-':
 						continueSubtraction();
 						break;
-					/*
 					case '*':
 						continueMultiplication();
 						break;
 					case '/':
 						continueDivision();
 						break;
-			
-					ADD ALL ADVANCED OPERATORS
-					
-					! not needed, handled directly in ActionListener:
-					PowerOfTen
-					SquareOf
-					CubeOf
-			
-					*/
 					case '%':
 						continueRemainder();
 						break;
@@ -384,6 +411,16 @@ public class CalculatorWindow {
 					default:
 						// WHAT TO DO HERE?
 						break;
+					
+					/*
+					Not needed, handled directly in ActionListener:
+					 PowerOfTen
+					 SquareOf
+					 CubeOf
+					 Random
+				 	 Remainder
+					*/
+					
 					}
 				}
 			}
@@ -401,6 +438,35 @@ public class CalculatorWindow {
 			public void actionPerformed(ActionEvent e) {
 				if (!(checkIfFirstAction())) {
 					startSubtraction();
+				}
+			}
+		});
+		
+		btnMultiplication.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!(checkIfFirstAction())) {
+					startMultiplication();
+				}
+			}
+		});
+		
+		btnDivision.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!(checkIfFirstAction())) {
+					startDivision();
+				}
+			}
+		});
+		
+		btnPinpad0.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (isFirstAction) {
+					display.setText(btnPinpad0.getText());
+					isFirstAction = false;
+				} else if (display.getText().length() >= 20) {
+					// Do nothing, does not fit screen
+				} else {		
+					display.setText(display.getText()+btnPinpad0.getText());
 				}
 			}
 		});
@@ -427,6 +493,110 @@ public class CalculatorWindow {
 					// Do nothing, does not fit screen
 				} else {		
 					display.setText(display.getText()+btnPinpad2.getText());
+				}
+			}
+		});
+		
+		btnPinpad3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (isFirstAction) {
+					display.setText(btnPinpad3.getText());
+					isFirstAction = false;
+				} else if (display.getText().length() >= 20) {
+					// Do nothing, does not fit screen
+				} else {		
+					display.setText(display.getText()+btnPinpad3.getText());
+				}
+			}
+		});
+		
+		btnPinpad4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (isFirstAction) {
+					display.setText(btnPinpad4.getText());
+					isFirstAction = false;
+				} else if (display.getText().length() >= 20) {
+					// Do nothing, does not fit screen
+				} else {		
+					display.setText(display.getText()+btnPinpad4.getText());
+				}
+			}
+		});
+		
+		btnPinpad5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (isFirstAction) {
+					display.setText(btnPinpad5.getText());
+					isFirstAction = false;
+				} else if (display.getText().length() >= 20) {
+					// Do nothing, does not fit screen
+				} else {		
+					display.setText(display.getText()+btnPinpad5.getText());
+				}
+			}
+		});
+		
+		btnPinpad6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (isFirstAction) {
+					display.setText(btnPinpad6.getText());
+					isFirstAction = false;
+				} else if (display.getText().length() >= 20) {
+					// Do nothing, does not fit screen
+				} else {		
+					display.setText(display.getText()+btnPinpad6.getText());
+				}
+			}
+		});
+		
+		btnPinpad7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (isFirstAction) {
+					display.setText(btnPinpad7.getText());
+					isFirstAction = false;
+				} else if (display.getText().length() >= 20) {
+					// Do nothing, does not fit screen
+				} else {		
+					display.setText(display.getText()+btnPinpad7.getText());
+				}
+			}
+		});
+		
+		btnPinpad8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (isFirstAction) {
+					display.setText(btnPinpad8.getText());
+					isFirstAction = false;
+				} else if (display.getText().length() >= 20) {
+					// Do nothing, does not fit screen
+				} else {		
+					display.setText(display.getText()+btnPinpad8.getText());
+				}
+			}
+		});
+		
+		btnPinpad9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (isFirstAction) {
+					display.setText(btnPinpad9.getText());
+					isFirstAction = false;
+				} else if (display.getText().length() >= 20) {
+					// Do nothing, does not fit screen
+				} else {		
+					display.setText(display.getText()+btnPinpad9.getText());
+				}
+			}
+		});
+		
+		btnComma.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (isFirstAction) {
+					display.setText(0 + btnComma.getText());
+					isFirstAction = false;
+				} else if (display.getText().length() >= 19) {			// One less then other because there will be a number added after this
+					// Do nothing, does not fit screen
+				} else if (!(display.getText().contains(","))) {		
+					display.setText(display.getText()+btnComma.getText());
 				}
 			}
 		});
