@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JLabel;
@@ -19,7 +20,7 @@ import com.exercise.maven.project_final_assignment_OOP.CalculatorClasses.Advance
 import javax.swing.JToggleButton;
 
 public class CalculatorWindow {
-
+	
 	private AdvancedCalculator ac = new AdvancedCalculator();
 	private JFrame frame = new JFrame();
 	private JButton btnPinpad0 = new JButton("0");
@@ -49,36 +50,34 @@ public class CalculatorWindow {
 	private JButton btnSwitchOff = new JButton();
 	private JLabel lblAdvancedMode = new JLabel("Advanced mode");
 	private JTextField display = new JTextField("0");
+	private DecimalFormat df = new DecimalFormat("0.#################");
 	
 	// Used to decide if Advanced buttons should be visible or not.
 	private boolean isBasic = true;
 	
-	// Used to decide if a number should be printed when pressing the pinpad. If true = OK to write in display, if false = add to existing number or use in calculation
+	// Used to decide if a number should be printed when pressing the pinpad.
+	// If true = OK to write in display, if false = add to existing number or use in calculation
+	// !! Must be set to true after every finished calculation
+	// !! Must be set to false when pressing a button that writes in display
 	private boolean isFirstAction = true;
 	
+	// MIGHT NOT BE NEEDED?!
 	// Used to know if there's an calculation process going on when pressing the pinpad. If false = OK to write number in display, if trie = use number in ongoing calculation
 	private boolean ongoingCalculation = false;
 	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CalculatorWindow window = new CalculatorWindow();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	// Stores the pressed operator button's text, used together with ongoingCalculation = true
+	private char chosenOperator = ' ';
+	
+	// To save value in the display to use for calculations
+	private double firstNumber = 0;
+	private double secondNumber = 0;
+	
+	
 	/**
 	 * Create the application.
 	 */
 	public CalculatorWindow() {
+		frame.setVisible(true);
 		initialize();
 		addComponents();
 		addActionListeners();
@@ -95,6 +94,7 @@ public class CalculatorWindow {
 		frame.setBounds(100, 100, 280, 358);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		System.out.println(isFirstAction);
 
 	}
 
@@ -112,9 +112,9 @@ public class CalculatorWindow {
 		btnPinpad9.setBounds(104, 120, 29, 29);
 		btnComma.setBounds(22, 243, 29, 29);
 		btnEquals.setBounds(104, 243, 29, 29);
-		btnDivison.setBounds(145, 202, 29, 29);
+		btnDivison.setBounds(145, 120, 29, 29);
 		btnMultiplication.setBounds(145, 161, 29, 29);
-		btnSubtraction.setBounds(145, 120, 29, 29);
+		btnSubtraction.setBounds(145, 202, 29, 29);
 		btnAddition.setBounds(145, 243, 29, 29);
 		btnPowerOf.setBounds(186, 202, 29, 29);
 		btnSquareOf.setBounds(186, 161, 29, 29);
@@ -219,6 +219,60 @@ public class CalculatorWindow {
 		}
 	}
 	
+	private void startSubtraction() {
+		firstNumber = Double.parseDouble(display.getText());
+		ongoingCalculation = true;
+		isFirstAction = true;
+		chosenOperator = btnSubtraction.getText().charAt(0);
+		// Marking that Subtraction key is active. 
+		// Might implement later on, must be reverted if C is pressed
+		// btnSubtraction.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+	}
+	
+	private void continueSubtraction() {
+		String result = df.format(ac.subtraction(firstNumber, secondNumber));
+		// Marking that Subtraction key is no longer active. 
+		// Might implement later on, must be reverted if C is pressed
+		// btnSubtraction.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		display.setText(result);
+		isFirstAction = true;
+	}
+	
+	private void startAddition() {
+		System.out.println("startAddition: " + isFirstAction);
+		firstNumber = Double.parseDouble(display.getText());
+		ongoingCalculation = true;
+		isFirstAction = true;
+		chosenOperator = btnAddition.getText().charAt(0);
+		// Marking that Addition key is active. 
+		// Might implement later on, must be reverted if C is pressed
+		// btnAddition.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+	}
+	
+	private void continueAddition() {
+		System.out.println("continueAddition: " + isFirstAction);
+		String result = df.format(ac.addition(firstNumber, secondNumber));
+		// Marking that Addition key is no longer active. 
+		// Might implement later on, must be reverted if C is pressed
+		// btnAddition.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		display.setText(result);
+		isFirstAction = true;
+	}
+	
+	private boolean checkIfFirstAction() {
+		
+		if (display.getText().equals("0")) {
+			isFirstAction = true;
+			System.out.println("checkIfFirstAction = true: " + isFirstAction);
+			return isFirstAction;
+		} else {
+			isFirstAction = false;
+			System.out.println("checkIfFirstAction = false: " + isFirstAction);
+			return isFirstAction;
+		}
+		
+	}
+	
 	private void addActionListeners() {
 		
 		btnSwitchOn.addActionListener(new ActionListener() {
@@ -236,6 +290,7 @@ public class CalculatorWindow {
 		btnRandom.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				double randomValue = ac.random0to1();
+				//display.setText(df.format(randomValue));
 				display.setText(Double.toString(randomValue));
 				// Make sure no number is added to this number
 				isFirstAction = true;
@@ -246,6 +301,55 @@ public class CalculatorWindow {
 			public void actionPerformed(ActionEvent e) {
 				display.setText("0");
 				isFirstAction = true;
+				ongoingCalculation = false;
+			}
+		});
+		
+		btnEquals.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (ongoingCalculation) {
+					secondNumber = Double.parseDouble(display.getText());
+					// Check which operator was chosen and run corresponding method
+					// Would have liked to use String as switch value, but not OK below v1.7
+					switch (chosenOperator) {
+					case '+':
+						continueAddition();
+						break;
+					case '-':
+						continueSubtraction();
+						break;
+					/*
+					case "*":
+						continueMultiplication();
+						break;
+					case "/":
+						continueDivision();
+						break;
+			
+					ADD ALL ADVANCED OPERATORS
+			
+					*/
+					default:
+						// WHAT TO DO HERE?
+						break;
+					}
+				}
+			}
+		});
+		
+		btnAddition.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!(checkIfFirstAction())) {
+					startAddition();
+				}
+			}
+		});
+		
+		btnSubtraction.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!(checkIfFirstAction())) {
+					startSubtraction();
+				}
 			}
 		});
 		
@@ -254,11 +358,9 @@ public class CalculatorWindow {
 				if (isFirstAction) {
 					display.setText(btnPinpad1.getText());
 					isFirstAction = false;
-				} else if (ongoingCalculation) {
-					display.setText(btnPinpad1.getText());
 				} else if (display.getText().length() >= 20) {
 					// Do nothing, does not fit screen
-				} else {
+				} else {		
 					display.setText(display.getText()+btnPinpad1.getText());
 				}
 			}
@@ -269,11 +371,9 @@ public class CalculatorWindow {
 				if (isFirstAction) {
 					display.setText(btnPinpad2.getText());
 					isFirstAction = false;
-				} else if (ongoingCalculation) {
-					// Keep on doing calculation
 				} else if (display.getText().length() >= 20) {
 					// Do nothing, does not fit screen
-				} else {
+				} else {		
 					display.setText(display.getText()+btnPinpad2.getText());
 				}
 			}
