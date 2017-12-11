@@ -41,7 +41,7 @@ public class CalculatorWindow {
 	private JButton btnAddition = new JButton("+");
 	private JButton btnPowerOf = new JButton("x^y");
 	private JButton btnSquareOf = new JButton("x^2");
-	private JButton btnCubeof = new JButton("x^3");
+	private JButton btnCubeOf = new JButton("x^3");
 	private JButton btnRemainder = new JButton("mod");
 	private JButton btnPowerOfTen = new JButton("10^x");
 	private JButton btnRandom = new JButton("Rand");
@@ -66,6 +66,7 @@ public class CalculatorWindow {
 	private boolean ongoingCalculation = false;
 	
 	// Stores the pressed operator button's text, used together with ongoingCalculation = true
+	// !! Should always be reset after every finished calculation
 	private char chosenOperator = ' ';
 	
 	// To save value in the display to use for calculations
@@ -94,7 +95,6 @@ public class CalculatorWindow {
 		frame.setBounds(100, 100, 280, 358);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		System.out.println(isFirstAction);
 
 	}
 
@@ -118,7 +118,7 @@ public class CalculatorWindow {
 		btnAddition.setBounds(145, 243, 29, 29);
 		btnPowerOf.setBounds(186, 202, 29, 29);
 		btnSquareOf.setBounds(186, 161, 29, 29);
-		btnCubeof.setBounds(186, 120, 29, 29);
+		btnCubeOf.setBounds(186, 120, 29, 29);
 		btnPowerOfTen.setBounds(227, 202, 29, 29);
 		btnRemainder.setBounds(227, 161, 29, 29);
 		btnRandom.setBounds(227, 120, 29, 29);
@@ -130,7 +130,7 @@ public class CalculatorWindow {
 		// Set font (for those with bigger text)
 		btnPowerOf.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
 		btnSquareOf.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
-		btnCubeof.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
+		btnCubeOf.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
 		btnPowerOfTen.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
 		btnRemainder.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
 		btnRandom.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
@@ -155,7 +155,7 @@ public class CalculatorWindow {
 		frame.getContentPane().add(btnAddition);
 		frame.getContentPane().add(btnPowerOf);
 		frame.getContentPane().add(btnSquareOf);
-		frame.getContentPane().add(btnCubeof);
+		frame.getContentPane().add(btnCubeOf);
 		frame.getContentPane().add(btnPowerOfTen);
 		frame.getContentPane().add(btnRemainder);
 		frame.getContentPane().add(btnRandom);
@@ -184,7 +184,7 @@ public class CalculatorWindow {
 	private void activateAdvanceButtons() {
 		btnPowerOf.setEnabled(true);
 		btnSquareOf.setEnabled(true);
-		btnCubeof.setEnabled(true);
+		btnCubeOf.setEnabled(true);
 		btnPowerOfTen.setEnabled(true);
 		btnRemainder.setEnabled(true);
 		btnRandom.setEnabled(true);
@@ -193,7 +193,7 @@ public class CalculatorWindow {
 	private void deActivateAdvanceButtons() {
 		btnPowerOf.setEnabled(false);
 		btnSquareOf.setEnabled(false);
-		btnCubeof.setEnabled(false);
+		btnCubeOf.setEnabled(false);
 		btnPowerOfTen.setEnabled(false);
 		btnRemainder.setEnabled(false);
 		btnRandom.setEnabled(false);
@@ -236,10 +236,10 @@ public class CalculatorWindow {
 		// btnSubtraction.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 		display.setText(result);
 		isFirstAction = true;
+		chosenOperator = ' ';
 	}
 	
 	private void startAddition() {
-		System.out.println("startAddition: " + isFirstAction);
 		firstNumber = Double.parseDouble(display.getText());
 		ongoingCalculation = true;
 		isFirstAction = true;
@@ -250,24 +250,65 @@ public class CalculatorWindow {
 	}
 	
 	private void continueAddition() {
-		System.out.println("continueAddition: " + isFirstAction);
 		String result = df.format(ac.addition(firstNumber, secondNumber));
 		// Marking that Addition key is no longer active. 
 		// Might implement later on, must be reverted if C is pressed
 		// btnAddition.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 		display.setText(result);
 		isFirstAction = true;
+		chosenOperator = ' ';
 	}
+	
+	private void startPowerOf() {
+		firstNumber = Double.parseDouble(display.getText());
+		ongoingCalculation = true;
+		isFirstAction = true;
+		chosenOperator = btnPowerOf.getText().charAt(1);				// Button text = "x^y", hence charAt(1);
+		// Marking that Addition key is active. 
+		// Might implement later on, must be reverted if C is pressed
+		// btnAddition.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+	}
+	
+	private void continuePowerOf() {
+		String result = df.format(ac.powerOf(firstNumber, secondNumber));
+		// Marking that Addition key is no longer active. 
+		// Might implement later on, must be reverted if C is pressed
+		// btnAddition.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		display.setText(result);
+		isFirstAction = true;
+		chosenOperator = ' ';
+	}
+	
+	private void startRemainder() {
+		firstNumber = Double.parseDouble(display.getText());
+		ongoingCalculation = true;
+		isFirstAction = true;
+		chosenOperator = '%';
+		// Marking that Addition key is active. 
+		// Might implement later on, must be reverted if C is pressed
+		// btnAddition.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+	}
+	
+	private void continueRemainder() {
+		Integer firstNumberAsInt = (int) firstNumber;
+		Integer secondNumberAsInt = (int) secondNumber;
+		String result = df.format(ac.remainder(firstNumberAsInt, secondNumberAsInt));
+		// Marking that Addition key is no longer active. 
+		// Might implement later on, must be reverted if C is pressed
+		// btnAddition.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		display.setText(result);
+		isFirstAction = true;
+		chosenOperator = ' ';
+	}
+	
 	
 	private boolean checkIfFirstAction() {
 		
 		if (display.getText().equals("0")) {
 			isFirstAction = true;
-			System.out.println("checkIfFirstAction = true: " + isFirstAction);
 			return isFirstAction;
 		} else {
 			isFirstAction = false;
-			System.out.println("checkIfFirstAction = false: " + isFirstAction);
 			return isFirstAction;
 		}
 		
@@ -319,16 +360,27 @@ public class CalculatorWindow {
 						continueSubtraction();
 						break;
 					/*
-					case "*":
+					case '*':
 						continueMultiplication();
 						break;
-					case "/":
+					case '/':
 						continueDivision();
 						break;
 			
 					ADD ALL ADVANCED OPERATORS
+					
+					! not needed, handled directly in ActionListener:
+					PowerOfTen
+					SquareOf
+					CubeOf
 			
 					*/
+					case '%':
+						continueRemainder();
+						break;
+					case '^':
+						continuePowerOf();
+						break;
 					default:
 						// WHAT TO DO HERE?
 						break;
@@ -375,6 +427,46 @@ public class CalculatorWindow {
 					// Do nothing, does not fit screen
 				} else {		
 					display.setText(display.getText()+btnPinpad2.getText());
+				}
+			}
+		});
+		
+		btnPowerOfTen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {	
+				firstNumber = Double.parseDouble(display.getText());
+				String result = df.format(ac.powerOfTen(firstNumber));
+				display.setText(result);
+			}
+		});
+		
+		btnPowerOf.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {	
+				if (!(checkIfFirstAction())) {
+					startPowerOf();
+				}
+			}
+		});
+		
+		btnSquareOf.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				firstNumber = Double.parseDouble(display.getText());
+				String result = df.format(ac.squareOf(firstNumber));
+				display.setText(result);
+			}
+		});
+		
+		btnCubeOf.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				firstNumber = Double.parseDouble(display.getText());
+				String result = df.format(ac.cubeOf(firstNumber));
+				display.setText(result);
+			}
+		});
+		
+		btnRemainder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!(checkIfFirstAction())) {
+					startRemainder();
 				}
 			}
 		});
