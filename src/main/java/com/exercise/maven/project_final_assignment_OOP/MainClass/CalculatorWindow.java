@@ -18,57 +18,62 @@ import com.exercise.maven.project_final_assignment_OOP.CalculatorClasses.Advance
 
 public class CalculatorWindow {
 	
-	private AdvancedCalculator ac = new AdvancedCalculator();
-	private JFrame frame = new JFrame();
-	private JButton btnPinpad0 = new JButton("0");
-	private JButton btnPinpad1 = new JButton("1");
-	private JButton btnPinpad2 = new JButton("2");
-	private JButton btnPinpad3 = new JButton("3");
-	private JButton btnPinpad4 = new JButton("4");
-	private JButton btnPinpad5 = new JButton("5");
-	private JButton btnPinpad6 = new JButton("6");
-	private JButton btnPinpad7 = new JButton("7");
-	private JButton btnPinpad8 = new JButton("8");
-	private JButton btnPinpad9 = new JButton("9");
-	private JButton btnComma = new JButton(",");
-	private JButton btnEquals = new JButton("=");
-	private JButton btnDivision = new JButton("/");
-	private JButton btnMultiplication = new JButton("*");
-	private JButton btnSubtraction = new JButton("-");
-	private JButton btnAddition = new JButton("+");
-	private JButton btnPowerOf = new JButton("x^y");
-	private JButton btnSquareOf = new JButton("x^2");
-	private JButton btnCubeOf = new JButton("x^3");
-	private JButton btnRemainder = new JButton("mod");
-	private JButton btnPowerOfTen = new JButton("10^x");
-	private JButton btnRandom = new JButton("Rand");
-	private JButton btnClear = new JButton("C");
-	private JButton btnSwitchOn = new JButton();
-	private JButton btnSwitchOff = new JButton();
-	private JLabel lblAdvancedMode = new JLabel("Advanced mode");
-	private JTextField display = new JTextField("0");
-	private DecimalFormat df = new DecimalFormat("0.#################");
+	public AdvancedCalculator ac = new AdvancedCalculator();
+	public GuiFunctions guiFunctions = new GuiFunctions();
+	
+	public JFrame frame = new JFrame();
+	public JButton btnPinpad0 = new JButton("0");
+	public JButton btnPinpad1 = new JButton("1");
+	public JButton btnPinpad2 = new JButton("2");
+	public JButton btnPinpad3 = new JButton("3");
+	public JButton btnPinpad4 = new JButton("4");
+	public JButton btnPinpad5 = new JButton("5");
+	public JButton btnPinpad6 = new JButton("6");
+	public JButton btnPinpad7 = new JButton("7");
+	public JButton btnPinpad8 = new JButton("8");
+	public JButton btnPinpad9 = new JButton("9");
+	public JButton btnComma = new JButton(",");
+	public JButton btnEquals = new JButton("=");
+	public JButton btnDivision = new JButton("/");
+	public JButton btnMultiplication = new JButton("*");
+	public JButton btnSubtraction = new JButton("-");
+	public JButton btnAddition = new JButton("+");
+	public JButton btnPowerOf = new JButton("x^y");
+	public JButton btnSquareOf = new JButton("x^2");
+	public JButton btnCubeOf = new JButton("x^3");
+	public JButton btnRemainder = new JButton("mod");
+	public JButton btnPowerOfTen = new JButton("10^x");
+	public JButton btnRandom = new JButton("Rand");
+	public JButton btnClear = new JButton("C");
+	public JButton btnSwitchOn = new JButton();
+	public JButton btnSwitchOff = new JButton();
+	public JLabel lblAdvancedMode = new JLabel("Advanced mode");
+	public JTextField display = new JTextField("0");
+	
+	// Moved to GuiFunctions instead
+	// private DecimalFormat df = new DecimalFormat("0.#################");
+	
 	
 	// Used to decide if Advanced buttons should be visible or not.
-	private boolean isBasic = true;
+	public boolean isBasic = true;
 	
 	// Used to decide if a number should be printed when pressing the pinpad.
 	// If true = OK to write in display, if false = add to existing number or use in calculation
 	// !! Must be set to true after every finished calculation
 	// !! Must be set to false when pressing a button that writes in display
-	private boolean isFirstAction = true;
+	public boolean isFirstAction = true;
 	
 	// MIGHT NOT BE NEEDED?!
 	// Used to know if there's an calculation process going on when pressing the pinpad. If false = OK to write number in display, if trie = use number in ongoing calculation
-	private boolean ongoingCalculation = false;
+	public boolean ongoingCalculation = false;
 	
 	// Stores the pressed operator button's text, used together with ongoingCalculation = true
 	// !! Should always be reset after every finished calculation
-	private char chosenOperator = ' ';
+	public char chosenOperator = ' ';
 	
 	// To save value in the display to use for calculations
-	private double firstNumber = 0;
-	private double secondNumber = 0;
+	public double firstNumber = 0;
+	public double secondNumber = 0;
 	
 	
 	/**
@@ -87,7 +92,7 @@ public class CalculatorWindow {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	public void initialize() {
 		frame.getContentPane().setBackground(new Color(240, 248, 255));
 		frame.setBounds(100, 100, 280, 358);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -95,7 +100,7 @@ public class CalculatorWindow {
 
 	}
 
-	private void addComponents() {
+	public void addComponents() {
 		// Setting component placing
 		btnPinpad0.setBounds(63, 243, 29, 29);
 		btnPinpad1.setBounds(22, 202, 29, 29);
@@ -178,7 +183,7 @@ public class CalculatorWindow {
 		btnSwitchOff.setFocusPainted(false);
 	}
 
-	private void activateAdvanceButtons() {
+	public void activateAdvanceButtons() {
 		btnPowerOf.setEnabled(true);
 		btnSquareOf.setEnabled(true);
 		btnCubeOf.setEnabled(true);
@@ -187,7 +192,7 @@ public class CalculatorWindow {
 		btnRandom.setEnabled(true);
 	}
 	
-	private void deActivateAdvanceButtons() {
+	public void deActivateAdvanceButtons() {
 		btnPowerOf.setEnabled(false);
 		btnSquareOf.setEnabled(false);
 		btnCubeOf.setEnabled(false);
@@ -196,7 +201,9 @@ public class CalculatorWindow {
 		btnRandom.setEnabled(false);
 	}
 	
-	private void switchMode() {
+
+	
+	public void switchMode() {
 		if (isBasic) {
 			// Activate advanced buttons
 			activateAdvanceButtons();
@@ -216,8 +223,8 @@ public class CalculatorWindow {
 		}
 	}
 	
-	private void startSubtraction() {
-		firstNumber = Double.parseDouble(display.getText());
+	public void startSubtraction() {
+		firstNumber = guiFunctions.getDisplayValue();
 		ongoingCalculation = true;
 		isFirstAction = true;
 		chosenOperator = btnSubtraction.getText().charAt(0);
@@ -226,18 +233,18 @@ public class CalculatorWindow {
 		// btnSubtraction.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 	}
 	
-	private void continueSubtraction() {
-		String result = df.format(ac.subtraction(firstNumber, secondNumber));
+	public void continueSubtraction() {
+		double result = ac.subtraction(firstNumber, secondNumber);
 		// Marking that Subtraction key is no longer active. 
 		// Might implement later on, must be reverted if C is pressed
 		// btnSubtraction.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		display.setText(result);
+		guiFunctions.setDisplayValue(result);
 		isFirstAction = true;
 		chosenOperator = ' ';
 	}
 	
-	private void startAddition() {
-		firstNumber = Double.parseDouble(display.getText());
+	public void startAddition() {
+		firstNumber = guiFunctions.getDisplayValue();
 		ongoingCalculation = true;
 		isFirstAction = true;
 		chosenOperator = btnAddition.getText().charAt(0);
@@ -246,18 +253,18 @@ public class CalculatorWindow {
 		// btnAddition.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 	}
 	
-	private void continueAddition() {
-		String result = df.format(ac.addition(firstNumber, secondNumber));
+	public void continueAddition() {
+		double result = ac.addition(firstNumber, secondNumber);
 		// Marking that Addition key is no longer active. 
 		// Might implement later on, must be reverted if C is pressed
 		// btnAddition.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		display.setText(result);
+		guiFunctions.setDisplayValue(result);
 		isFirstAction = true;
 		chosenOperator = ' ';
 	}
 	
-	private void startMultiplication() {
-		firstNumber = Double.parseDouble(display.getText());
+	public void startMultiplication() {
+		firstNumber = guiFunctions.getDisplayValue();
 		ongoingCalculation = true;
 		isFirstAction = true;
 		chosenOperator = btnMultiplication.getText().charAt(0);
@@ -266,18 +273,18 @@ public class CalculatorWindow {
 		// btnAddition.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 	}
 	
-	private void continueMultiplication() {
-		String result = df.format(ac.multiplication(firstNumber, secondNumber));
+	public void continueMultiplication() {
+		double result = ac.multiplication(firstNumber, secondNumber);
 		// Marking that Addition key is no longer active. 
 		// Might implement later on, must be reverted if C is pressed
 		// btnAddition.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		display.setText(result);
+		guiFunctions.setDisplayValue(result);
 		isFirstAction = true;
 		chosenOperator = ' ';
 	}
 	
-	private void startDivision() {
-		firstNumber = Double.parseDouble(display.getText());
+	public void startDivision() {
+		firstNumber = guiFunctions.getDisplayValue();
 		ongoingCalculation = true;
 		isFirstAction = true;
 		chosenOperator = btnDivision.getText().charAt(0);
@@ -286,18 +293,18 @@ public class CalculatorWindow {
 		// btnAddition.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 	}
 	
-	private void continueDivision() {
-		String result = df.format(ac.division(firstNumber, secondNumber));
+	public void continueDivision() {
+		double result = ac.division(firstNumber, secondNumber);
 		// Marking that Addition key is no longer active. 
 		// Might implement later on, must be reverted if C is pressed
 		// btnAddition.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		display.setText(result);
+		guiFunctions.setDisplayValue(result);
 		isFirstAction = true;
 		chosenOperator = ' ';
 	}
 	
-	private void startPowerOf() {
-		firstNumber = Double.parseDouble(display.getText());
+	public void startPowerOf() {
+		firstNumber = guiFunctions.getDisplayValue();
 		ongoingCalculation = true;
 		isFirstAction = true;
 		chosenOperator = btnPowerOf.getText().charAt(1);				// Button text = "x^y", hence charAt(1);
@@ -306,42 +313,42 @@ public class CalculatorWindow {
 		// btnAddition.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 	}
 	
-	private void continuePowerOf() {
-		String result = df.format(ac.powerOf(firstNumber, secondNumber));
+	public void continuePowerOf() {
+		double result = ac.powerOf(firstNumber, secondNumber);
 		// Marking that Addition key is no longer active. 
 		// Might implement later on, must be reverted if C is pressed
 		// btnAddition.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		display.setText(result);
+		guiFunctions.setDisplayValue(result);
 		isFirstAction = true;
 		chosenOperator = ' ';
 	}
 	
-	private void startRemainder() {
-		firstNumber = Double.parseDouble(display.getText());
+	public void startRemainder() {
+		firstNumber = guiFunctions.getDisplayValue();
 		ongoingCalculation = true;
 		isFirstAction = true;
 		chosenOperator = '%';
-		// Marking that Addition key is active. 
+		// Marking that mod key is active. 
 		// Might implement later on, must be reverted if C is pressed
-		// btnAddition.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		// btnRemainder.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 	}
 	
-	private void continueRemainder() {
+	public void continueRemainder() {
 		Integer firstNumberAsInt = (int) firstNumber;
 		Integer secondNumberAsInt = (int) secondNumber;
-		String result = df.format(ac.remainder(firstNumberAsInt, secondNumberAsInt));
-		// Marking that Addition key is no longer active. 
+		double result = ac.remainder(firstNumberAsInt, secondNumberAsInt);
+		// Marking that mod key is no longer active. 
 		// Might implement later on, must be reverted if C is pressed
-		// btnAddition.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		display.setText(result);
+		// btnRemainder.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		guiFunctions.setDisplayValue(result);
 		isFirstAction = true;
 		chosenOperator = ' ';
 	}
 	
 	
-	private boolean checkIfFirstAction() {
+	public boolean checkIfFirstAction() {
 		
-		if (display.getText().equals("0")) {
+		if (guiFunctions.getDisplayValue() == 0) {
 			isFirstAction = true;
 			return isFirstAction;
 		} else {
@@ -351,7 +358,7 @@ public class CalculatorWindow {
 		
 	}
 	
-	private void addActionListeners() {
+	public void addActionListeners() {
 		
 		btnSwitchOn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -369,7 +376,7 @@ public class CalculatorWindow {
 			public void actionPerformed(ActionEvent e) {
 				double randomValue = ac.random0to1();
 				//display.setText(df.format(randomValue));
-				display.setText(Double.toString(randomValue));
+				guiFunctions.setDisplayValue(randomValue);
 				// Make sure no number is added to this number
 				isFirstAction = true;
 			}
@@ -377,7 +384,7 @@ public class CalculatorWindow {
 		
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				display.setText("0");
+				guiFunctions.setDisplayValue(0);
 				isFirstAction = true;
 				ongoingCalculation = false;
 			}
@@ -386,7 +393,7 @@ public class CalculatorWindow {
 		btnEquals.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (ongoingCalculation) {
-					secondNumber = Double.parseDouble(display.getText());
+					secondNumber = guiFunctions.getDisplayValue();
 					// Check which operator was chosen and run corresponding method
 					// Would have liked to use String as switch value, but not OK below v1.7
 					switch (chosenOperator) {
@@ -603,9 +610,9 @@ public class CalculatorWindow {
 		
 		btnPowerOfTen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	
-				firstNumber = Double.parseDouble(display.getText());
-				String result = df.format(ac.powerOfTen(firstNumber));
-				display.setText(result);
+				firstNumber = guiFunctions.getDisplayValue();
+				double result = ac.powerOfTen(firstNumber);
+				guiFunctions.setDisplayValue(result);
 			}
 		});
 		
@@ -619,17 +626,17 @@ public class CalculatorWindow {
 		
 		btnSquareOf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				firstNumber = Double.parseDouble(display.getText());
-				String result = df.format(ac.squareOf(firstNumber));
-				display.setText(result);
+				firstNumber = guiFunctions.getDisplayValue();
+				double result = ac.squareOf(firstNumber);
+				guiFunctions.setDisplayValue(result);
 			}
 		});
 		
 		btnCubeOf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				firstNumber = Double.parseDouble(display.getText());
-				String result = df.format(ac.cubeOf(firstNumber));
-				display.setText(result);
+				firstNumber = guiFunctions.getDisplayValue();
+				double result = ac.cubeOf(firstNumber);
+				guiFunctions.setDisplayValue(result);
 			}
 		});
 		
