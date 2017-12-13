@@ -19,7 +19,7 @@ import com.exercise.maven.project_final_assignment_OOP.CalculatorClasses.Advance
 public class CalculatorWindow {
 	
 	public AdvancedCalculator ac = new AdvancedCalculator();
-	public GuiFunctions guiFunctions = new GuiFunctions();
+	// public GuiFunctions guiFunctions = new GuiFunctions();
 	
 	public JFrame frame = new JFrame();
 	public JButton btnPinpad0 = new JButton("0");
@@ -50,9 +50,8 @@ public class CalculatorWindow {
 	public JLabel lblAdvancedMode = new JLabel("Advanced mode");
 	public JTextField display = new JTextField("0");
 	
-	// Moved to GuiFunctions instead
-	// private DecimalFormat df = new DecimalFormat("0.#################");
 	
+	private DecimalFormat df = new DecimalFormat("0.#################");
 	
 	// Used to decide if Advanced buttons should be visible or not.
 	public boolean isBasic = true;
@@ -224,138 +223,123 @@ public class CalculatorWindow {
 	}
 	
 	public void startSubtraction() {
-		firstNumber = guiFunctions.getDisplayValue();
+		firstNumber = getDisplayValue();
 		ongoingCalculation = true;
 		isFirstAction = true;
 		chosenOperator = btnSubtraction.getText().charAt(0);
-		// Marking that Subtraction key is active. 
-		// Might implement later on, must be reverted if C is pressed
-		// btnSubtraction.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 	}
 	
 	public void continueSubtraction() {
 		double result = ac.subtraction(firstNumber, secondNumber);
-		// Marking that Subtraction key is no longer active. 
-		// Might implement later on, must be reverted if C is pressed
-		// btnSubtraction.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		guiFunctions.setDisplayValue(result);
+		setDisplayValue(result);
 		isFirstAction = true;
 		chosenOperator = ' ';
 	}
 	
 	public void startAddition() {
-		firstNumber = guiFunctions.getDisplayValue();
+		firstNumber = getDisplayValue();
 		ongoingCalculation = true;
 		isFirstAction = true;
 		chosenOperator = btnAddition.getText().charAt(0);
-		// Marking that Addition key is active. 
-		// Might implement later on, must be reverted if C is pressed
-		// btnAddition.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+
 	}
 	
 	public void continueAddition() {
 		double result = ac.addition(firstNumber, secondNumber);
-		// Marking that Addition key is no longer active. 
-		// Might implement later on, must be reverted if C is pressed
-		// btnAddition.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		guiFunctions.setDisplayValue(result);
+		setDisplayValue(result);
 		isFirstAction = true;
 		chosenOperator = ' ';
 	}
 	
 	public void startMultiplication() {
-		firstNumber = guiFunctions.getDisplayValue();
+		firstNumber = getDisplayValue();
 		ongoingCalculation = true;
 		isFirstAction = true;
 		chosenOperator = btnMultiplication.getText().charAt(0);
-		// Marking that Addition key is active. 
-		// Might implement later on, must be reverted if C is pressed
-		// btnAddition.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 	}
 	
 	public void continueMultiplication() {
 		double result = ac.multiplication(firstNumber, secondNumber);
-		// Marking that Addition key is no longer active. 
-		// Might implement later on, must be reverted if C is pressed
-		// btnAddition.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		guiFunctions.setDisplayValue(result);
+		setDisplayValue(result);
 		isFirstAction = true;
 		chosenOperator = ' ';
 	}
 	
 	public void startDivision() {
-		firstNumber = guiFunctions.getDisplayValue();
+		firstNumber = getDisplayValue();
 		ongoingCalculation = true;
 		isFirstAction = true;
 		chosenOperator = btnDivision.getText().charAt(0);
-		// Marking that Addition key is active. 
-		// Might implement later on, must be reverted if C is pressed
-		// btnAddition.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 	}
 	
 	public void continueDivision() {
 		double result = ac.division(firstNumber, secondNumber);
-		// Marking that Addition key is no longer active. 
-		// Might implement later on, must be reverted if C is pressed
-		// btnAddition.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		guiFunctions.setDisplayValue(result);
+		setDisplayValue(result);
 		isFirstAction = true;
 		chosenOperator = ' ';
 	}
 	
 	public void startPowerOf() {
-		firstNumber = guiFunctions.getDisplayValue();
+		firstNumber = getDisplayValue();
 		ongoingCalculation = true;
 		isFirstAction = true;
 		chosenOperator = btnPowerOf.getText().charAt(1);				// Button text = "x^y", hence charAt(1);
-		// Marking that Addition key is active. 
-		// Might implement later on, must be reverted if C is pressed
-		// btnAddition.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 	}
 	
 	public void continuePowerOf() {
 		double result = ac.powerOf(firstNumber, secondNumber);
-		// Marking that Addition key is no longer active. 
-		// Might implement later on, must be reverted if C is pressed
-		// btnAddition.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		guiFunctions.setDisplayValue(result);
+		setDisplayValue(result);
 		isFirstAction = true;
 		chosenOperator = ' ';
 	}
 	
 	public void startRemainder() {
-		firstNumber = guiFunctions.getDisplayValue();
+		firstNumber = getDisplayValue();
 		ongoingCalculation = true;
 		isFirstAction = true;
 		chosenOperator = '%';
-		// Marking that mod key is active. 
-		// Might implement later on, must be reverted if C is pressed
-		// btnRemainder.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 	}
 	
 	public void continueRemainder() {
 		Integer firstNumberAsInt = (int) firstNumber;
 		Integer secondNumberAsInt = (int) secondNumber;
 		double result = ac.remainder(firstNumberAsInt, secondNumberAsInt);
-		// Marking that mod key is no longer active. 
-		// Might implement later on, must be reverted if C is pressed
-		// btnRemainder.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		guiFunctions.setDisplayValue(result);
+		setDisplayValue(result);
 		isFirstAction = true;
 		chosenOperator = ' ';
 	}
 	
+	public double getDisplayValue() {
+		String displayValueAsString = display.getText();
+		displayValueAsString = displayValueAsString.replaceAll(",", ".");
+		double displayValue = Double.parseDouble(displayValueAsString);
+		return displayValue;
+	}
+	
+	public void setDisplayValue(double toBeDisplayed) {
+		display.setText(df.format(toBeDisplayed));
+	}
 	
 	public boolean checkIfFirstAction() {
-		
-		if (guiFunctions.getDisplayValue() == 0) {
+		if (getDisplayValue() == 0) {
 			isFirstAction = true;
 			return isFirstAction;
 		} else {
 			isFirstAction = false;
 			return isFirstAction;
 		}
-		
+	}
+	
+	public void pinpadNumberPressed(String pressedNumber) {
+		System.out.println(isFirstAction);
+		if (isFirstAction) {
+			setDisplayValue(Double.parseDouble(pressedNumber));
+			isFirstAction = false;
+		} else if (display.getText().length() >= 20) {
+			// Do nothing, does not fit screen
+		} else {	
+			display.setText(display.getText()+pressedNumber);
+		}
 	}
 	
 	public void addActionListeners() {
@@ -375,8 +359,7 @@ public class CalculatorWindow {
 		btnRandom.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				double randomValue = ac.random0to1();
-				//display.setText(df.format(randomValue));
-				guiFunctions.setDisplayValue(randomValue);
+				setDisplayValue(randomValue);
 				// Make sure no number is added to this number
 				isFirstAction = true;
 			}
@@ -384,7 +367,7 @@ public class CalculatorWindow {
 		
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				guiFunctions.setDisplayValue(0);
+				setDisplayValue(0);
 				isFirstAction = true;
 				ongoingCalculation = false;
 			}
@@ -392,9 +375,10 @@ public class CalculatorWindow {
 		
 		btnEquals.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (ongoingCalculation) {
-					secondNumber = guiFunctions.getDisplayValue();
+				//if (ongoingCalculation) {
+					secondNumber = getDisplayValue();
 					// Check which operator was chosen and run corresponding method
+					// Non mentioned operators are handled directly in their ActionListener
 					// Would have liked to use String as switch value, but not OK below v1.7
 					switch (chosenOperator) {
 					case '+':
@@ -418,17 +402,7 @@ public class CalculatorWindow {
 					default:
 						// WHAT TO DO HERE?
 						break;
-					
-					/*
-					Not needed, handled directly in ActionListener:
-					 PowerOfTen
-					 SquareOf
-					 CubeOf
-					 Random
-				 	 Remainder
-					*/
-					
-					}
+				//	}
 				}
 			}
 		});
@@ -467,131 +441,61 @@ public class CalculatorWindow {
 		
 		btnPinpad0.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (isFirstAction) {
-					display.setText(btnPinpad0.getText());
-					isFirstAction = false;
-				} else if (display.getText().length() >= 20) {
-					// Do nothing, does not fit screen
-				} else {		
-					display.setText(display.getText()+btnPinpad0.getText());
-				}
+				pinpadNumberPressed(btnPinpad0.getText());
 			}
 		});
 		
 		btnPinpad1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (isFirstAction) {
-					display.setText(btnPinpad1.getText());
-					isFirstAction = false;
-				} else if (display.getText().length() >= 20) {
-					// Do nothing, does not fit screen
-				} else {		
-					display.setText(display.getText()+btnPinpad1.getText());
-				}
+				pinpadNumberPressed(btnPinpad1.getText());
 			}
 		});
 		
 		btnPinpad2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (isFirstAction) {
-					display.setText(btnPinpad2.getText());
-					isFirstAction = false;
-				} else if (display.getText().length() >= 20) {
-					// Do nothing, does not fit screen
-				} else {		
-					display.setText(display.getText()+btnPinpad2.getText());
-				}
+				pinpadNumberPressed(btnPinpad2.getText());
 			}
 		});
 		
 		btnPinpad3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (isFirstAction) {
-					display.setText(btnPinpad3.getText());
-					isFirstAction = false;
-				} else if (display.getText().length() >= 20) {
-					// Do nothing, does not fit screen
-				} else {		
-					display.setText(display.getText()+btnPinpad3.getText());
-				}
+				pinpadNumberPressed(btnPinpad3.getText());
 			}
 		});
 		
 		btnPinpad4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (isFirstAction) {
-					display.setText(btnPinpad4.getText());
-					isFirstAction = false;
-				} else if (display.getText().length() >= 20) {
-					// Do nothing, does not fit screen
-				} else {		
-					display.setText(display.getText()+btnPinpad4.getText());
-				}
+				pinpadNumberPressed(btnPinpad4.getText());
 			}
 		});
 		
 		btnPinpad5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (isFirstAction) {
-					display.setText(btnPinpad5.getText());
-					isFirstAction = false;
-				} else if (display.getText().length() >= 20) {
-					// Do nothing, does not fit screen
-				} else {		
-					display.setText(display.getText()+btnPinpad5.getText());
-				}
+				pinpadNumberPressed(btnPinpad5.getText());
 			}
 		});
 		
 		btnPinpad6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (isFirstAction) {
-					display.setText(btnPinpad6.getText());
-					isFirstAction = false;
-				} else if (display.getText().length() >= 20) {
-					// Do nothing, does not fit screen
-				} else {		
-					display.setText(display.getText()+btnPinpad6.getText());
-				}
+				pinpadNumberPressed(btnPinpad6.getText());
 			}
 		});
 		
 		btnPinpad7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (isFirstAction) {
-					display.setText(btnPinpad7.getText());
-					isFirstAction = false;
-				} else if (display.getText().length() >= 20) {
-					// Do nothing, does not fit screen
-				} else {		
-					display.setText(display.getText()+btnPinpad7.getText());
-				}
+				pinpadNumberPressed(btnPinpad7.getText());
 			}
 		});
 		
 		btnPinpad8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (isFirstAction) {
-					display.setText(btnPinpad8.getText());
-					isFirstAction = false;
-				} else if (display.getText().length() >= 20) {
-					// Do nothing, does not fit screen
-				} else {		
-					display.setText(display.getText()+btnPinpad8.getText());
-				}
+				pinpadNumberPressed(btnPinpad8.getText());
 			}
 		});
 		
 		btnPinpad9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (isFirstAction) {
-					display.setText(btnPinpad9.getText());
-					isFirstAction = false;
-				} else if (display.getText().length() >= 20) {
-					// Do nothing, does not fit screen
-				} else {		
-					display.setText(display.getText()+btnPinpad9.getText());
-				}
+				pinpadNumberPressed(btnPinpad9.getText());
 			}
 		});
 		
@@ -610,9 +514,9 @@ public class CalculatorWindow {
 		
 		btnPowerOfTen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	
-				firstNumber = guiFunctions.getDisplayValue();
+				firstNumber = getDisplayValue();
 				double result = ac.powerOfTen(firstNumber);
-				guiFunctions.setDisplayValue(result);
+				setDisplayValue(result);
 			}
 		});
 		
@@ -626,17 +530,17 @@ public class CalculatorWindow {
 		
 		btnSquareOf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				firstNumber = guiFunctions.getDisplayValue();
+				firstNumber = getDisplayValue();
 				double result = ac.squareOf(firstNumber);
-				guiFunctions.setDisplayValue(result);
+				setDisplayValue(result);
 			}
 		});
 		
 		btnCubeOf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				firstNumber = guiFunctions.getDisplayValue();
+				firstNumber = getDisplayValue();
 				double result = ac.cubeOf(firstNumber);
-				guiFunctions.setDisplayValue(result);
+				setDisplayValue(result);
 			}
 		});
 		
