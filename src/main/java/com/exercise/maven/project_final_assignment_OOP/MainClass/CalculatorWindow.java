@@ -3,6 +3,8 @@ package com.exercise.maven.project_final_assignment_OOP.MainClass;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
+import javax.swing.JDialog;
+
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 import java.awt.event.ActionEvent;
@@ -49,6 +51,7 @@ public class CalculatorWindow {
 	public JButton btnSwitchOff = new JButton();
 	public JLabel lblAdvancedMode = new JLabel("Advanced mode");
 	public JTextField display = new JTextField("0");
+	public JDialog dialog = new JDialog();
 	
 	
 	private DecimalFormat df = new DecimalFormat("0.#################");
@@ -61,11 +64,6 @@ public class CalculatorWindow {
 	// !! Must be set to true after every finished calculation
 	// !! Must be set to false when pressing a button that writes in display
 	public boolean isFirstAction = true;
-	
-	// MIGHT NOT BE NEEDED?!
-	// Used to know if there's an calculation process going on when pressing the pinpad.
-	// If false = OK to write number in display, if true = use number in ongoing calculation
-	public boolean ongoingCalculation = false;
 	
 	// Stores the pressed operator button's text
 	public char chosenOperator = ' ';
@@ -229,7 +227,6 @@ public class CalculatorWindow {
 	
 	public void startSubtraction() {
 		firstNumber = getDisplayValue();
-		ongoingCalculation = true;
 		isFirstAction = true;
 		chosenOperator = btnSubtraction.getText().charAt(0);
 	}
@@ -248,7 +245,6 @@ public class CalculatorWindow {
 	
 	public void startAddition() {
 		firstNumber = getDisplayValue();
-		ongoingCalculation = true;
 		isFirstAction = true;
 		chosenOperator = btnAddition.getText().charAt(0);
 
@@ -269,7 +265,6 @@ public class CalculatorWindow {
 	
 	public void startMultiplication() {
 		firstNumber = getDisplayValue();
-		ongoingCalculation = true;
 		isFirstAction = true;
 		chosenOperator = btnMultiplication.getText().charAt(0);
 	}
@@ -288,7 +283,6 @@ public class CalculatorWindow {
 	
 	public void startDivision() {
 		firstNumber = getDisplayValue();
-		ongoingCalculation = true;
 		isFirstAction = true;
 		chosenOperator = btnDivision.getText().charAt(0);
 	}
@@ -307,7 +301,6 @@ public class CalculatorWindow {
 	
 	public void startPowerOf() {
 		firstNumber = getDisplayValue();
-		ongoingCalculation = true;
 		isFirstAction = true;
 		// Button text = "x^y", hence charAt(1);
 		chosenOperator = btnPowerOf.getText().charAt(1);	 	
@@ -327,30 +320,59 @@ public class CalculatorWindow {
 	
 	public void startRemainder() {
 		firstNumber = getDisplayValue();
-		ongoingCalculation = true;
 		isFirstAction = true;
 		chosenOperator = '%';
 	}
 	
 	public void continueRemainder() {
-		Integer firstNumberAsInt = (int) firstNumber;
-		Integer secondNumberAsInt = (int) secondNumber;
-		double result = ac.remainder(firstNumberAsInt, secondNumberAsInt);
-		setDisplayValue(result);
-		resultCleared = false;
+		System.out.println(firstNumber + " " + secondNumber);
+		if (((firstNumber % 1) > 0) || ((secondNumber % 1) > 0)) {
+			display.setText("Modulus only take integers!");
+		} else {
+			Integer firstNumberAsInt = (int) firstNumber;
+			Integer secondNumberAsInt = (int) secondNumber;
+			System.out.println(firstNumberAsInt + " " + secondNumberAsInt);
+			double result = ac.remainder(firstNumberAsInt, secondNumberAsInt);
+			setDisplayValue(result);
+			resultCleared = false;
+			isFirstAction = true;
+			chosenOperator = ' ';
+		}
+			
+		
+	}
+	
+	public void getCleanState() {
+		firstNumber = 0;
+		secondNumber = 0;
+		result = 0;
+		resultCleared = true;
 		isFirstAction = true;
 		chosenOperator = ' ';
 	}
 	
 	public double getDisplayValue() {
-		String displayValueAsString = display.getText();
-		displayValueAsString = displayValueAsString.replaceAll(",", ".");
-		double displayValue = Double.parseDouble(displayValueAsString);
-		return displayValue;
+		try {
+			String displayValueAsString = display.getText();
+			System.out.println(displayValueAsString);
+			displayValueAsString = displayValueAsString.replaceAll(",", ".");
+			double displayValue = Double.parseDouble(displayValueAsString);
+			return displayValue;
+		} catch (NumberFormatException e) {
+			// TODO: handle exception
+			System.err.println("Non-numeric value in display");
+		}
+		getCleanState();
+		return 0;
 	}
 	
 	public void setDisplayValue(double toBeDisplayed) {
-		display.setText(df.format(toBeDisplayed));
+		try {
+			display.setText(df.format(toBeDisplayed));
+		} catch (NumberFormatException e) {
+			// TODO: handle exception
+			System.err.println("Non-numeric value in display");
+		}
 	}
 	
 	public boolean checkIfFirstAction() {
@@ -374,6 +396,14 @@ public class CalculatorWindow {
 		}
 	}
 	
+	/*
+	public boolean displayHasLetters() {
+		boolean displayHasLetters = false;
+		if (display.getText().
+		return displayHasLetters;
+	}
+	*/
+	
 	public void doCalculation() {
 		// Check which operator was chosen and run corresponding method
 		// Non mentioned operators are handled directly in their ActionListener
@@ -388,10 +418,21 @@ public class CalculatorWindow {
 			continueMultiplication();
 			break;
 		case '/':
-			continueDivision();
+			if (getDisplayValue() == 0) {
+				display.setText("No division by zero!");
+				isFirstAction = false;
+			} else {
+				continueDivision();
+			}
 			break;
 		case '%':
-			continueRemainder();
+			secondNumber = getDisplayValue();
+			if (((firstNumber % 1) > 0) || ((getDisplayValue() % 1) > 0)) {
+				display.setText("Modulus only take integers!");
+				isFirstAction = false;
+			} else {
+				continueRemainder();
+			}
 			break;
 		case '^':
 			continuePowerOf();
@@ -428,12 +469,7 @@ public class CalculatorWindow {
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setDisplayValue(0);
-				firstNumber = 0;
-				secondNumber = 0;
-				result = 0;
-				resultCleared = true;
-				isFirstAction = true;
-				ongoingCalculation = false;
+				getCleanState();
 			}
 		});
 		
@@ -447,9 +483,6 @@ public class CalculatorWindow {
 			public void actionPerformed(ActionEvent e) {
 				if (!(checkIfFirstAction())) {
 					startAddition();
-				} else {
-					chosenOperator = btnAddition.getText().charAt(0);
-					doCalculation();
 				}
 			}
 		});

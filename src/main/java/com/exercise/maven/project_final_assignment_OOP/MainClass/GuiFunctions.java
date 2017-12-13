@@ -29,7 +29,16 @@ public class GuiFunctions extends CalculatorWindow {
 			setDisplayValue(Double.parseDouble(displayValueAsString));
 		}
 	}
-
+	
+			if (chosenOperator == '/' && !(resultCleared)) {
+			result = ac.division(result, secondNumber);
+		} else {
+			secondNumber = getDisplayValue();
+			result = ac.division(firstNumber, secondNumber);
+		}
+		setDisplayValue(result);
+		resultCleared = false;
+		isFirstAction = true;
 
 	
 }
