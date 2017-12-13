@@ -73,6 +73,7 @@ public class CalculatorWindow {
 	// To save value in the display to use for calculations
 	public double firstNumber = 0;
 	public double secondNumber = 0;
+	public double result = 0;
 	
 	
 	/**
@@ -230,10 +231,14 @@ public class CalculatorWindow {
 	}
 	
 	public void continueSubtraction() {
-		double result = ac.subtraction(firstNumber, secondNumber);
+		if (chosenOperator == '-' && result != 0) {
+			result = ac.subtraction(result, secondNumber);
+		} else {
+			secondNumber = getDisplayValue();
+			result = ac.subtraction(firstNumber, secondNumber);
+		}
 		setDisplayValue(result);
 		isFirstAction = true;
-		chosenOperator = ' ';
 	}
 	
 	public void startAddition() {
@@ -245,10 +250,15 @@ public class CalculatorWindow {
 	}
 	
 	public void continueAddition() {
-		double result = ac.addition(firstNumber, secondNumber);
+		if (chosenOperator == '+' && result != 0) {
+			result = ac.addition(result, secondNumber);
+		} else {
+			secondNumber = getDisplayValue();
+			result = ac.addition(firstNumber, secondNumber);
+		}
 		setDisplayValue(result);
 		isFirstAction = true;
-		chosenOperator = ' ';
+
 	}
 	
 	public void startMultiplication() {
@@ -259,10 +269,14 @@ public class CalculatorWindow {
 	}
 	
 	public void continueMultiplication() {
-		double result = ac.multiplication(firstNumber, secondNumber);
+		if (chosenOperator == '*' && result != 0) {
+			result = ac.multiplication(result, secondNumber);
+		} else {
+			secondNumber = getDisplayValue();
+			result = ac.multiplication(firstNumber, secondNumber);
+		}
 		setDisplayValue(result);
 		isFirstAction = true;
-		chosenOperator = ' ';
 	}
 	
 	public void startDivision() {
@@ -273,10 +287,14 @@ public class CalculatorWindow {
 	}
 	
 	public void continueDivision() {
-		double result = ac.division(firstNumber, secondNumber);
+		if (chosenOperator == '/' && result != 0) {
+			result = ac.division(result, secondNumber);
+		} else {
+			secondNumber = getDisplayValue();
+			result = ac.division(firstNumber, secondNumber);
+		}
 		setDisplayValue(result);
 		isFirstAction = true;
-		chosenOperator = ' ';
 	}
 	
 	public void startPowerOf() {
@@ -287,10 +305,14 @@ public class CalculatorWindow {
 	}
 	
 	public void continuePowerOf() {
-		double result = ac.powerOf(firstNumber, secondNumber);
+		if (chosenOperator == '^' && result != 0) {
+			result = ac.powerOf(result, secondNumber);
+		} else {
+			secondNumber = getDisplayValue();
+			result = ac.powerOf(firstNumber, secondNumber);
+		}
 		setDisplayValue(result);
 		isFirstAction = true;
-		chosenOperator = ' ';
 	}
 	
 	public void startRemainder() {
@@ -342,6 +364,40 @@ public class CalculatorWindow {
 		}
 	}
 	
+	public void doCalculation() {
+		//if (ongoingCalculation) {
+		
+		// secondNumber = getDisplayValue();
+		
+		// Check which operator was chosen and run corresponding method
+		// Non mentioned operators are handled directly in their ActionListener
+		// Would have liked to use String as switch value, but not OK below v1.7
+		switch (chosenOperator) {
+		case '+':
+			continueAddition();
+			break;
+		case '-':
+			continueSubtraction();
+			break;
+		case '*':
+			continueMultiplication();
+			break;
+		case '/':
+			continueDivision();
+			break;
+		case '%':
+			continueRemainder();
+			break;
+		case '^':
+			continuePowerOf();
+			break;
+		default:
+			// WHAT TO DO HERE?
+			break;
+	//	}
+	}
+	}
+	
 	public void addActionListeners() {
 		
 		btnSwitchOn.addActionListener(new ActionListener() {
@@ -368,6 +424,9 @@ public class CalculatorWindow {
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setDisplayValue(0);
+				firstNumber = 0;
+				secondNumber = 0;
+				result = 0;
 				isFirstAction = true;
 				ongoingCalculation = false;
 			}
@@ -375,35 +434,7 @@ public class CalculatorWindow {
 		
 		btnEquals.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//if (ongoingCalculation) {
-					secondNumber = getDisplayValue();
-					// Check which operator was chosen and run corresponding method
-					// Non mentioned operators are handled directly in their ActionListener
-					// Would have liked to use String as switch value, but not OK below v1.7
-					switch (chosenOperator) {
-					case '+':
-						continueAddition();
-						break;
-					case '-':
-						continueSubtraction();
-						break;
-					case '*':
-						continueMultiplication();
-						break;
-					case '/':
-						continueDivision();
-						break;
-					case '%':
-						continueRemainder();
-						break;
-					case '^':
-						continuePowerOf();
-						break;
-					default:
-						// WHAT TO DO HERE?
-						break;
-				//	}
-				}
+				doCalculation();
 			}
 		});
 		
@@ -411,6 +442,9 @@ public class CalculatorWindow {
 			public void actionPerformed(ActionEvent e) {
 				if (!(checkIfFirstAction())) {
 					startAddition();
+				} else {
+					chosenOperator = btnAddition.getText().charAt(0);
+					doCalculation();
 				}
 			}
 		});
