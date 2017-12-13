@@ -63,17 +63,20 @@ public class CalculatorWindow {
 	public boolean isFirstAction = true;
 	
 	// MIGHT NOT BE NEEDED?!
-	// Used to know if there's an calculation process going on when pressing the pinpad. If false = OK to write number in display, if trie = use number in ongoing calculation
+	// Used to know if there's an calculation process going on when pressing the pinpad.
+	// If false = OK to write number in display, if true = use number in ongoing calculation
 	public boolean ongoingCalculation = false;
 	
-	// Stores the pressed operator button's text, used together with ongoingCalculation = true
-	// !! Should always be reset after every finished calculation
+	// Stores the pressed operator button's text
 	public char chosenOperator = ' ';
 	
 	// To save value in the display to use for calculations
 	public double firstNumber = 0;
 	public double secondNumber = 0;
 	public double result = 0;
+	// Used in continueAddition(), continueSubtraction() etc. To know if result is cleared or not.
+	// If cleared, it should not be possible to press "=" repetitive and keep on adding/subtracting etc.
+	public boolean resultCleared = true;
 	
 	
 	/**
@@ -172,6 +175,7 @@ public class CalculatorWindow {
 		display.setBounds(60, 76, 200, 35);
 		display.setBackground(new Color(245, 255, 250));
 		display.setHorizontalAlignment(SwingConstants.RIGHT);
+		display.setEditable(false);
 		
 		// Switch start at Off
 		btnSwitchOn.setBackground(Color.RED);
@@ -231,13 +235,14 @@ public class CalculatorWindow {
 	}
 	
 	public void continueSubtraction() {
-		if (chosenOperator == '-' && result != 0) {
+		if (chosenOperator == '-' && !(resultCleared)) {
 			result = ac.subtraction(result, secondNumber);
 		} else {
 			secondNumber = getDisplayValue();
 			result = ac.subtraction(firstNumber, secondNumber);
 		}
 		setDisplayValue(result);
+		resultCleared = false;
 		isFirstAction = true;
 	}
 	
@@ -250,13 +255,14 @@ public class CalculatorWindow {
 	}
 	
 	public void continueAddition() {
-		if (chosenOperator == '+' && result != 0) {
+		if (chosenOperator == '+' && !(resultCleared)) {
 			result = ac.addition(result, secondNumber);
 		} else {
 			secondNumber = getDisplayValue();
 			result = ac.addition(firstNumber, secondNumber);
 		}
 		setDisplayValue(result);
+		resultCleared = false;
 		isFirstAction = true;
 
 	}
@@ -269,13 +275,14 @@ public class CalculatorWindow {
 	}
 	
 	public void continueMultiplication() {
-		if (chosenOperator == '*' && result != 0) {
+		if (chosenOperator == '*' && !(resultCleared)) {
 			result = ac.multiplication(result, secondNumber);
 		} else {
 			secondNumber = getDisplayValue();
 			result = ac.multiplication(firstNumber, secondNumber);
 		}
 		setDisplayValue(result);
+		resultCleared = false;
 		isFirstAction = true;
 	}
 	
@@ -287,13 +294,14 @@ public class CalculatorWindow {
 	}
 	
 	public void continueDivision() {
-		if (chosenOperator == '/' && result != 0) {
+		if (chosenOperator == '/' && !(resultCleared)) {
 			result = ac.division(result, secondNumber);
 		} else {
 			secondNumber = getDisplayValue();
 			result = ac.division(firstNumber, secondNumber);
 		}
 		setDisplayValue(result);
+		resultCleared = false;
 		isFirstAction = true;
 	}
 	
@@ -301,17 +309,19 @@ public class CalculatorWindow {
 		firstNumber = getDisplayValue();
 		ongoingCalculation = true;
 		isFirstAction = true;
-		chosenOperator = btnPowerOf.getText().charAt(1);				// Button text = "x^y", hence charAt(1);
+		// Button text = "x^y", hence charAt(1);
+		chosenOperator = btnPowerOf.getText().charAt(1);	 	
 	}
 	
 	public void continuePowerOf() {
-		if (chosenOperator == '^' && result != 0) {
+		if (chosenOperator == '^' && !(resultCleared)) {
 			result = ac.powerOf(result, secondNumber);
 		} else {
 			secondNumber = getDisplayValue();
 			result = ac.powerOf(firstNumber, secondNumber);
 		}
 		setDisplayValue(result);
+		resultCleared = false;
 		isFirstAction = true;
 	}
 	
@@ -327,6 +337,7 @@ public class CalculatorWindow {
 		Integer secondNumberAsInt = (int) secondNumber;
 		double result = ac.remainder(firstNumberAsInt, secondNumberAsInt);
 		setDisplayValue(result);
+		resultCleared = false;
 		isFirstAction = true;
 		chosenOperator = ' ';
 	}
@@ -353,7 +364,6 @@ public class CalculatorWindow {
 	}
 	
 	public void pinpadNumberPressed(String pressedNumber) {
-		System.out.println(isFirstAction);
 		if (isFirstAction) {
 			setDisplayValue(Double.parseDouble(pressedNumber));
 			isFirstAction = false;
@@ -365,13 +375,8 @@ public class CalculatorWindow {
 	}
 	
 	public void doCalculation() {
-		//if (ongoingCalculation) {
-		
-		// secondNumber = getDisplayValue();
-		
 		// Check which operator was chosen and run corresponding method
 		// Non mentioned operators are handled directly in their ActionListener
-		// Would have liked to use String as switch value, but not OK below v1.7
 		switch (chosenOperator) {
 		case '+':
 			continueAddition();
@@ -392,9 +397,8 @@ public class CalculatorWindow {
 			continuePowerOf();
 			break;
 		default:
-			// WHAT TO DO HERE?
+			// Do nothing
 			break;
-	//	}
 	}
 	}
 	
@@ -416,7 +420,7 @@ public class CalculatorWindow {
 			public void actionPerformed(ActionEvent e) {
 				double randomValue = ac.random0to1();
 				setDisplayValue(randomValue);
-				// Make sure no number is added to this number
+				// Set to make sure no number is added to this number
 				isFirstAction = true;
 			}
 		});
@@ -427,6 +431,7 @@ public class CalculatorWindow {
 				firstNumber = 0;
 				secondNumber = 0;
 				result = 0;
+				resultCleared = true;
 				isFirstAction = true;
 				ongoingCalculation = false;
 			}
@@ -538,7 +543,8 @@ public class CalculatorWindow {
 				if (isFirstAction) {
 					display.setText(0 + btnComma.getText());
 					isFirstAction = false;
-				} else if (display.getText().length() >= 19) {			// One less then other because there will be a number added after this
+				} else if (display.getText().length() >= 19) {			
+					// length >= 19 (instead of 20) because there will be a number added after ","
 					// Do nothing, does not fit screen
 				} else if (!(display.getText().contains(","))) {		
 					display.setText(display.getText()+btnComma.getText());
@@ -551,6 +557,7 @@ public class CalculatorWindow {
 				firstNumber = getDisplayValue();
 				double result = ac.powerOfTen(firstNumber);
 				setDisplayValue(result);
+				isFirstAction = true;
 			}
 		});
 		
@@ -567,6 +574,7 @@ public class CalculatorWindow {
 				firstNumber = getDisplayValue();
 				double result = ac.squareOf(firstNumber);
 				setDisplayValue(result);
+				isFirstAction = true;
 			}
 		});
 		
@@ -575,6 +583,7 @@ public class CalculatorWindow {
 				firstNumber = getDisplayValue();
 				double result = ac.cubeOf(firstNumber);
 				setDisplayValue(result);
+				isFirstAction = true;
 			}
 		});
 		
