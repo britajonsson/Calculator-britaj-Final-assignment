@@ -32,7 +32,7 @@ public class AdvancedOperationsPowerOfTenTest {
 		double expectedResult = 0;
 		
 		for (int i = 0; i < 50; i++) {
-			exponent = random.nextInt(10)-11;
+			exponent = random.nextInt(3)-3;
 			expectedResult = Math.pow(10, exponent);
 			LOG.info("Testing power of ten method with negatives: 10^" + exponent + " = " + expectedResult);
 			assertEquals(ac.powerOfTen(exponent), expectedResult, 0);

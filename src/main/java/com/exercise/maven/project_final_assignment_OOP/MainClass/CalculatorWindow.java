@@ -15,6 +15,16 @@ import java.awt.Color;
 
 import com.exercise.maven.project_final_assignment_OOP.CalculatorClasses.AdvancedCalculator;
 
+/***
+ * CalculatorWindow
+ * 
+ * @author Brita Jonsson
+ * @version 1.0
+ * 
+ * This class was intended to be separated into one GUI class
+ * and one class for methods and functions to the calculator.
+ * This will be fixed in a later version, promise!
+ */
 public class CalculatorWindow {
 
 	public AdvancedCalculator ac = new AdvancedCalculator();

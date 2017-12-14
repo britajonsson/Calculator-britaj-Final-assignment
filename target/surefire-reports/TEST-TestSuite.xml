@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestSuite" time="0.555" tests="34" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib"/>
+    <property name="java.vm.version" value="25.144-b01"/>
+    <property name="gopherProxySet" value="false"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="/Users/Brita/eclipse-workspace/project-final-assignment-OOP"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=":"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="SE"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/Users/Brita/eclipse-workspace/project-final-assignment-OOP"/>
+    <property name="java.runtime.version" value="1.8.0_144-b01"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/endorsed"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="java.io.tmpdir" value="/var/folders/vt/hmbj_pzd61550r4nqzlq39lh0000gn/T/"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="classworlds.conf" value="/usr/local/apache-maven-3.5.2/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/Brita/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="maven.conf" value="/usr/local/apache-maven-3.5.2/conf"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.11.6"/>
+    <property name="library.jansi.path" value="/usr/local/apache-maven-3.5.2/lib/jansi-native"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="user.home" value="/Users/Brita"/>
+    <property name="user.timezone" value="Europe/Stockholm"/>
+    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="user.name" value="Brita"/>
+    <property name="java.class.path" value="/usr/local/apache-maven-3.5.2/boot/plexus-classworlds-2.5.2.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean install -U"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="sv"/>
+    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_144"/>
+    <property name="java.ext.dirs" value="/Users/Brita/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java"/>
+    <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="/usr/local/apache-maven-3.5.2"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="sun.cpu.isalist" value=""/>
+  </properties>
+  <testcase name="testNegativeDivision on testNegativeDivision(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsDivisionTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsDivisionTest" time="0.057"/>
+  <testcase name="testDivisionWithDividend0 on testDivisionWithDividend0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsDivisionTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsDivisionTest" time="0.041"/>
+  <testcase name="testPositiveDivision on testPositiveDivision(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsDivisionTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsDivisionTest" time="0.036"/>
+  <testcase name="testDivisionWithDivisor0 on testDivisionWithDivisor0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsDivisionTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsDivisionTest" time="0.006"/>
+  <testcase name="testNegativeSquareOf on testNegativeSquareOf(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsSquareOfTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsSquareOfTest" time="0.027"/>
+  <testcase name="testSquareOfWithBase0 on testSquareOfWithBase0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsSquareOfTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsSquareOfTest" time="0"/>
+  <testcase name="testPositiveSquareOf on testPositiveSquareOf(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsSquareOfTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsSquareOfTest" time="0.04"/>
+  <testcase name="testNegativeCubeOf on testNegativeCubeOf(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsCubeOfTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsCubeOfTest" time="0.02"/>
+  <testcase name="testPositiveCubeOf on testPositiveCubeOf(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsCubeOfTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsCubeOfTest" time="0.036"/>
+  <testcase name="testCubeOfWithBase0 on testCubeOfWithBase0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsCubeOfTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsCubeOfTest" time="0"/>
+  <testcase name="testRandom0to1 on testRandom0to1(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsRandomTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsRandomTest" time="0.028"/>
+  <testcase name="testMultiplicationWithFirstFactor0 on testMultiplicationWithFirstFactor0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsMultiplicationTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsMultiplicationTest" time="0.018"/>
+  <testcase name="testPositiveMultiplication on testPositiveMultiplication(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsMultiplicationTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsMultiplicationTest" time="0.014"/>
+  <testcase name="testMultiplicationWithSecondFactor0 on testMultiplicationWithSecondFactor0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsMultiplicationTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsMultiplicationTest" time="0.009"/>
+  <testcase name="testNegativeMultiplication on testNegativeMultiplication(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsMultiplicationTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsMultiplicationTest" time="0.009"/>
+  <testcase name="testNegativePowerOfTen on testNegativePowerOfTen(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTenTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTenTest" time="0.021"/>
+  <testcase name="testPositivePowerOfTen on testPositivePowerOfTen(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTenTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTenTest" time="0.008"/>
+  <testcase name="testPowerOfTenWithExponent0 on testPowerOfTenWithExponent0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTenTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTenTest" time="0"/>
+  <testcase name="testAdditionWithSecondSummand0 on testAdditionWithSecondSummand0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsAdditionTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsAdditionTest" time="0.019"/>
+  <testcase name="testNegativeAddition on testNegativeAddition(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsAdditionTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsAdditionTest" time="0.011"/>
+  <testcase name="testPositiveAddition on testPositiveAddition(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsAdditionTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsAdditionTest" time="0.009"/>
+  <testcase name="testAdditionWithFirstSummand0 on testAdditionWithFirstSummand0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsAdditionTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsAdditionTest" time="0.019"/>
+  <testcase name="testNegativeRemainder on testNegativeRemainder(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsRemainderTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsRemainderTest" time="0.011"/>
+  <testcase name="testRemainderWithDividend0 on testRemainderWithDividend0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsRemainderTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsRemainderTest" time="0.009"/>
+  <testcase name="testRemainderWithDivisor0 on testRemainderWithDivisor0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsRemainderTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsRemainderTest" time="0"/>
+  <testcase name="testPositiveRemainder on testPositiveRemainder(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsRemainderTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsRemainderTest" time="0.029"/>
+  <testcase name="testSubtractionWithMinuend0 on testSubtractionWithMinuend0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsSubtractionTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsSubtractionTest" time="0.008"/>
+  <testcase name="testNegativeSubtraction on testNegativeSubtraction(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsSubtractionTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsSubtractionTest" time="0.004"/>
+  <testcase name="testPositiveSubtraction on testPositiveSubtraction(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsSubtractionTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsSubtractionTest" time="0.008"/>
+  <testcase name="testSubtractionWithSubtrahend0 on testSubtractionWithSubtrahend0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsSubtractionTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsSubtractionTest" time="0.01"/>
+  <testcase name="testPositivePowerOf on testPositivePowerOf(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTest" time="0.009"/>
+  <testcase name="testNegativePowerOf on testNegativePowerOf(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTest" time="0.007"/>
+  <testcase name="testPowerOfWithBase0 on testPowerOfWithBase0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTest" time="0.014"/>
+  <testcase name="testPowerOfWithExponent0 on testPowerOfWithExponent0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTest)" classname="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTest" time="0.018"/>
+</testsuite>

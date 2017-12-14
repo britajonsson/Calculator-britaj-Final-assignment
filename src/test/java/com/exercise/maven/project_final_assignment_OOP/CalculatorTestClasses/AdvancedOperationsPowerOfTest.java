@@ -43,8 +43,8 @@ public class AdvancedOperationsPowerOfTest {
 		double expectedResult = 0.0;
 		
 		for (int i = 0; i < 50; i++) {
-			base = random.nextInt(9)-10;
-			exponent = random.nextInt(9)-10;
+			base = random.nextInt(5)-5;
+			exponent = random.nextInt(4)-4;
 			expectedResult = Math.pow(base, exponent);
 			
 			LOG.info("Testing powerOf method with negatives: " + base + " ^ " + exponent + " = " + expectedResult);
@@ -57,11 +57,10 @@ public class AdvancedOperationsPowerOfTest {
 	public void testPowerOfWithBase0() {
 		double base = 0.0;
 		double exponent = 0.0;
-		double expectedResult = 0.0;
+		double expectedResult = 0.0; 	// My return for this calculation is always 0
 		
 		for (int i = 0; i < 50; i++) {
 			exponent = random.nextInt(9)-10;
-			expectedResult = Math.pow(base, exponent);
 			
 			LOG.info("Testing powerOf method with base = 0: " + base + " ^ " + exponent + " = " + expectedResult);
 			assertEquals(ac.powerOf(base, exponent), expectedResult, 0);

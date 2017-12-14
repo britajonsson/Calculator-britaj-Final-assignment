@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SimpleCalculator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project-final-assignment-OOP</a> &gt; <a href="index.source.html" class="el_package">com.exercise.maven.project_final_assignment_OOP.CalculatorClasses</a> &gt; <span class="el_source">SimpleCalculator.java</span></div><h1>SimpleCalculator.java</h1><pre class="source lang-java linenums">package com.exercise.maven.project_final_assignment_OOP.CalculatorClasses;
+
+import com.exercise.maven.project_final_assignment_OOP.Interfaces.CalculatorBasicOperationsInterface;
+/**
+ * SimpleCalculator
+ * 
+ * @author Brita Jonsson
+ * @version 1.0
+ */
+<span class="fc" id="L10">public class SimpleCalculator implements CalculatorBasicOperationsInterface {</span>
+	
+	/**
+	 * Calculates the addition of the given summands.
+	 * @param firstSummand 
+	 * @param secondSummand
+	 * @return firstSummand + secondSummand
+	 */
+	public double addition(double firstSummand, double secondSummand) {
+<span class="fc" id="L19">		return firstSummand + secondSummand;</span>
+	}
+
+	/**
+	 * Calculates the subtraction the given minuend and subtrahend.
+	 * @param minuend
+	 * @param subtrahend
+	 * @return minuend - subtrahend
+	 */
+	public double subtraction(double minuend, double subtrahend) {
+<span class="fc" id="L29">		return minuend - subtrahend;</span>
+	}
+
+	/**
+	 * Calculates the multiplication the given factors.
+	 * @param firstFactor
+	 * @param secondFactor
+	 * @return firstFactor * secondFactor
+	 */
+	public double multiplication(double firstFactor, double secondFactor) {
+<span class="fc" id="L39">		return firstFactor * secondFactor;</span>
+	}
+
+	/**
+	 * Calculates the division of the given dividend and divisor.
+	 * If the divisor is 0, a message is printed and the result is 999999999.
+	 * 
+	 * @param dividend
+	 * @param divisor
+	 * @return dividend / divisor
+	 */
+	public double division(double dividend, double divisor) {
+<span class="fc bfc" id="L51" title="All 2 branches covered.">		if (divisor == 0) {</span>
+<span class="fc" id="L52">			System.out.println(&quot;You can't divide by zero.&quot;);</span>
+<span class="fc" id="L53">			return 999999999;</span>
+		}
+<span class="fc" id="L55">		return dividend / divisor;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

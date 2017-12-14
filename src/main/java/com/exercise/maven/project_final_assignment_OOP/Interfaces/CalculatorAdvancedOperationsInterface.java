@@ -1,5 +1,12 @@
 package com.exercise.maven.project_final_assignment_OOP.Interfaces;
 
+/**
+ * CalculatorAdvancedOperationsInterface
+ * 
+ * @author Brita Jonsson
+ * @version 1.0
+ *
+ */
 public interface CalculatorAdvancedOperationsInterface {
 	/**
 	 * Calculates the power of the given base and exponent, in that order.
