@@ -6,6 +6,8 @@ import javax.swing.JDialog;
 
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Random;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JLabel;
@@ -26,220 +28,359 @@ import com.exercise.maven.project_final_assignment_OOP.CalculatorClasses.Advance
  * This will be fixed in a later version, promise!
  */
 public class CalculatorWindow {
+<span class="nc" id="L31">	Random random = new Random();</span>
+<span class="nc" id="L32">	public AdvancedCalculator ac = new AdvancedCalculator();</span>
+<span class="nc" id="L33">	public JFrame frame = new JFrame();</span>
+<span class="nc" id="L34">	public JButton btnPinpad0 = new JButton(&quot;0&quot;);</span>
+<span class="nc" id="L35">	public JButton btnPinpad1 = new JButton(&quot;1&quot;);</span>
+<span class="nc" id="L36">	public JButton btnPinpad2 = new JButton(&quot;2&quot;);</span>
+<span class="nc" id="L37">	public JButton btnPinpad3 = new JButton(&quot;3&quot;);</span>
+<span class="nc" id="L38">	public JButton btnPinpad4 = new JButton(&quot;4&quot;);</span>
+<span class="nc" id="L39">	public JButton btnPinpad5 = new JButton(&quot;5&quot;);</span>
+<span class="nc" id="L40">	public JButton btnPinpad6 = new JButton(&quot;6&quot;);</span>
+<span class="nc" id="L41">	public JButton btnPinpad7 = new JButton(&quot;7&quot;);</span>
+<span class="nc" id="L42">	public JButton btnPinpad8 = new JButton(&quot;8&quot;);</span>
+<span class="nc" id="L43">	public JButton btnPinpad9 = new JButton(&quot;9&quot;);</span>
+<span class="nc" id="L44">	public JButton btnComma = new JButton(&quot;,&quot;);</span>
+<span class="nc" id="L45">	public JButton btnEquals = new JButton(&quot;=&quot;);</span>
+<span class="nc" id="L46">	public JButton btnDivision = new JButton(&quot;/&quot;);</span>
+<span class="nc" id="L47">	public JButton btnMultiplication = new JButton(&quot;*&quot;);</span>
+<span class="nc" id="L48">	public JButton btnSubtraction = new JButton(&quot;-&quot;);</span>
+<span class="nc" id="L49">	public JButton btnAddition = new JButton(&quot;+&quot;);</span>
+<span class="nc" id="L50">	public JButton btnPowerOf = new JButton(&quot;x^y&quot;);</span>
+<span class="nc" id="L51">	public JButton btnSquareOf = new JButton(&quot;x^2&quot;);</span>
+<span class="nc" id="L52">	public JButton btnCubeOf = new JButton(&quot;x^3&quot;);</span>
+<span class="nc" id="L53">	public JButton btnRemainder = new JButton(&quot;mod&quot;);</span>
+<span class="nc" id="L54">	public JButton btnPowerOfTen = new JButton(&quot;10^x&quot;);</span>
+<span class="nc" id="L55">	public JButton btnRandom = new JButton(&quot;Rand&quot;);</span>
+<span class="nc" id="L56">	public JButton btnClear = new JButton(&quot;C&quot;);</span>
+<span class="nc" id="L57">	public JButton btnSwitchOn = new JButton();</span>
+<span class="nc" id="L58">	public JButton btnSwitchOff = new JButton();</span>
+<span class="nc" id="L59">	public JLabel lblAdvancedMode = new JLabel(&quot;Advanced mode&quot;);</span>
+<span class="nc" id="L60">	public JTextField display = new JTextField(&quot;0&quot;);</span>
+<span class="nc" id="L61">	public JDialog dialog = new JDialog();</span>
+<span class="nc" id="L62">	public JButton btnSuperModeOn = new JButton();</span>
+<span class="nc" id="L63">	public JButton btnSuperModeOff = new JButton();</span>
+<span class="nc" id="L64">	public JLabel lblSuperMode = new JLabel(&quot;Super advanced mode&quot;);</span>
+<span class="nc" id="L65">	public JButton btnChaos = new JButton(&quot;Chaos&quot;);</span>
 
-<span class="nc" id="L30">	public AdvancedCalculator ac = new AdvancedCalculator();</span>
-<span class="nc" id="L31">	public JFrame frame = new JFrame();</span>
-<span class="nc" id="L32">	public JButton btnPinpad0 = new JButton(&quot;0&quot;);</span>
-<span class="nc" id="L33">	public JButton btnPinpad1 = new JButton(&quot;1&quot;);</span>
-<span class="nc" id="L34">	public JButton btnPinpad2 = new JButton(&quot;2&quot;);</span>
-<span class="nc" id="L35">	public JButton btnPinpad3 = new JButton(&quot;3&quot;);</span>
-<span class="nc" id="L36">	public JButton btnPinpad4 = new JButton(&quot;4&quot;);</span>
-<span class="nc" id="L37">	public JButton btnPinpad5 = new JButton(&quot;5&quot;);</span>
-<span class="nc" id="L38">	public JButton btnPinpad6 = new JButton(&quot;6&quot;);</span>
-<span class="nc" id="L39">	public JButton btnPinpad7 = new JButton(&quot;7&quot;);</span>
-<span class="nc" id="L40">	public JButton btnPinpad8 = new JButton(&quot;8&quot;);</span>
-<span class="nc" id="L41">	public JButton btnPinpad9 = new JButton(&quot;9&quot;);</span>
-<span class="nc" id="L42">	public JButton btnComma = new JButton(&quot;,&quot;);</span>
-<span class="nc" id="L43">	public JButton btnEquals = new JButton(&quot;=&quot;);</span>
-<span class="nc" id="L44">	public JButton btnDivision = new JButton(&quot;/&quot;);</span>
-<span class="nc" id="L45">	public JButton btnMultiplication = new JButton(&quot;*&quot;);</span>
-<span class="nc" id="L46">	public JButton btnSubtraction = new JButton(&quot;-&quot;);</span>
-<span class="nc" id="L47">	public JButton btnAddition = new JButton(&quot;+&quot;);</span>
-<span class="nc" id="L48">	public JButton btnPowerOf = new JButton(&quot;x^y&quot;);</span>
-<span class="nc" id="L49">	public JButton btnSquareOf = new JButton(&quot;x^2&quot;);</span>
-<span class="nc" id="L50">	public JButton btnCubeOf = new JButton(&quot;x^3&quot;);</span>
-<span class="nc" id="L51">	public JButton btnRemainder = new JButton(&quot;mod&quot;);</span>
-<span class="nc" id="L52">	public JButton btnPowerOfTen = new JButton(&quot;10^x&quot;);</span>
-<span class="nc" id="L53">	public JButton btnRandom = new JButton(&quot;Rand&quot;);</span>
-<span class="nc" id="L54">	public JButton btnClear = new JButton(&quot;C&quot;);</span>
-<span class="nc" id="L55">	public JButton btnSwitchOn = new JButton();</span>
-<span class="nc" id="L56">	public JButton btnSwitchOff = new JButton();</span>
-<span class="nc" id="L57">	public JLabel lblAdvancedMode = new JLabel(&quot;Advanced mode&quot;);</span>
-<span class="nc" id="L58">	public JTextField display = new JTextField(&quot;0&quot;);</span>
-<span class="nc" id="L59">	public JDialog dialog = new JDialog();</span>
-
-<span class="nc" id="L61">	private DecimalFormat df = new DecimalFormat(&quot;0.#################&quot;);</span>
+<span class="nc" id="L67">	private DecimalFormat df = new DecimalFormat(&quot;0.#################&quot;);</span>
+	
+	// ArrayLists for pinpadPositions, all buttons and hidden buttons.
+<span class="nc" id="L70">	public ArrayList&lt;String&gt; pinpadPositions = new ArrayList&lt;String&gt;();</span>
+<span class="nc" id="L71">	public ArrayList&lt;JButton&gt; listOfButtons = new ArrayList&lt;JButton&gt;();</span>
+<span class="nc" id="L72">	public ArrayList&lt;Integer&gt; hiddenButtons = new ArrayList&lt;Integer&gt;();</span>
 
 	// Used to decide if Advanced buttons should be visible or not.
-<span class="nc" id="L64">	public boolean isBasic = true;</span>
+<span class="nc" id="L75">	public boolean isBasic = true;</span>
+	// Used to decide if Super mode buttons should be visible or not.
+<span class="nc" id="L77">	public boolean isSuper = false;</span>
 
 	// Used to decide if a number should be printed when pressing the pinpad.
 	// If true = OK to write in display, if false = add to existing number or use in
 	// calculation
 	// !! Must be set to true after every finished calculation
 	// !! Must be set to false when pressing a button that writes in display
-<span class="nc" id="L71">	public boolean isFirstAction = true;</span>
+<span class="nc" id="L84">	public boolean isFirstAction = true;</span>
 
 	// Stores the pressed operator button's text
-<span class="nc" id="L74">	public char chosenOperator = ' ';</span>
+<span class="nc" id="L87">	public char chosenOperator = ' ';</span>
 
 	// To save value in the display to use for calculations
-<span class="nc" id="L77">	public double firstNumber = 0;</span>
-<span class="nc" id="L78">	public double secondNumber = 0;</span>
-<span class="nc" id="L79">	public double result = 0;</span>
+<span class="nc" id="L90">	public double firstNumber = 0;</span>
+<span class="nc" id="L91">	public double secondNumber = 0;</span>
+<span class="nc" id="L92">	public double result = 0;</span>
 	// Used in continueAddition(), continueSubtraction() etc. To know if result is
 	// cleared or not.
 	// If cleared, it should not be possible to press &quot;=&quot; repetitive and keep on
 	// adding/subtracting etc.
-<span class="nc" id="L84">	public boolean resultCleared = true;</span>
+<span class="nc" id="L97">	public boolean resultCleared = true;</span>
 
 	/**
 	 * Create the application.
 	 */
-<span class="nc" id="L89">	public CalculatorWindow() {</span>
-<span class="nc" id="L90">		frame.setVisible(true);</span>
-<span class="nc" id="L91">		initialize();</span>
-<span class="nc" id="L92">		addComponents();</span>
-<span class="nc" id="L93">		addActionListeners();</span>
+<span class="nc" id="L102">	public CalculatorWindow() {</span>
+<span class="nc" id="L103">		frame.setVisible(true);</span>
+<span class="nc" id="L104">		initialize();</span>
+<span class="nc" id="L105">		addComponents();</span>
+<span class="nc" id="L106">		addActionListeners();</span>
 
 		// Deactivate advanced buttons at start
-<span class="nc" id="L96">		deActivateAdvanceButtons();</span>
-<span class="nc" id="L97">	}</span>
+<span class="nc" id="L109">		deActivateAdvanceButtons();</span>
+<span class="nc" id="L110">		deActivateSuperButtons();</span>
+<span class="nc" id="L111">		hideSuperSwitch();</span>
+		
+<span class="nc" id="L113">		createArrayListOfButtons();</span>
+<span class="nc" id="L114">	}</span>
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	public void initialize() {
-<span class="nc" id="L103">		frame.getContentPane().setBackground(new Color(240, 248, 255));</span>
-<span class="nc" id="L104">		frame.setBounds(100, 100, 280, 358);</span>
-<span class="nc" id="L105">		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
-<span class="nc" id="L106">		frame.getContentPane().setLayout(null);</span>
-
-<span class="nc" id="L108">	}</span>
+<span class="nc" id="L120">		frame.getContentPane().setBackground(new Color(240, 248, 255));</span>
+<span class="nc" id="L121">		frame.setBounds(100, 100, 280, 358);</span>
+<span class="nc" id="L122">		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L123">		frame.getContentPane().setLayout(null);</span>
+<span class="nc" id="L124">	}</span>
 
 	/**
 	 * Adding the components to the frame and setting their properties.
 	 */
 	public void addComponents() {
 		// Setting component placing
-<span class="nc" id="L115">		btnPinpad0.setBounds(63, 243, 29, 29);</span>
-<span class="nc" id="L116">		btnPinpad1.setBounds(22, 202, 29, 29);</span>
-<span class="nc" id="L117">		btnPinpad2.setBounds(63, 202, 29, 29);</span>
-<span class="nc" id="L118">		btnPinpad3.setBounds(104, 202, 29, 29);</span>
-<span class="nc" id="L119">		btnPinpad4.setBounds(22, 161, 29, 29);</span>
-<span class="nc" id="L120">		btnPinpad5.setBounds(63, 161, 29, 29);</span>
-<span class="nc" id="L121">		btnPinpad6.setBounds(104, 161, 29, 29);</span>
-<span class="nc" id="L122">		btnPinpad7.setBounds(22, 120, 29, 29);</span>
-<span class="nc" id="L123">		btnPinpad8.setBounds(63, 120, 29, 29);</span>
-<span class="nc" id="L124">		btnPinpad9.setBounds(104, 120, 29, 29);</span>
-<span class="nc" id="L125">		btnComma.setBounds(22, 243, 29, 29);</span>
-<span class="nc" id="L126">		btnEquals.setBounds(104, 243, 29, 29);</span>
-<span class="nc" id="L127">		btnDivision.setBounds(145, 120, 29, 29);</span>
-<span class="nc" id="L128">		btnMultiplication.setBounds(145, 161, 29, 29);</span>
-<span class="nc" id="L129">		btnSubtraction.setBounds(145, 202, 29, 29);</span>
-<span class="nc" id="L130">		btnAddition.setBounds(145, 243, 29, 29);</span>
-<span class="nc" id="L131">		btnPowerOf.setBounds(186, 202, 29, 29);</span>
-<span class="nc" id="L132">		btnSquareOf.setBounds(186, 161, 29, 29);</span>
-<span class="nc" id="L133">		btnCubeOf.setBounds(186, 120, 29, 29);</span>
-<span class="nc" id="L134">		btnPowerOfTen.setBounds(227, 202, 29, 29);</span>
-<span class="nc" id="L135">		btnRemainder.setBounds(227, 161, 29, 29);</span>
-<span class="nc" id="L136">		btnRandom.setBounds(227, 120, 29, 29);</span>
-<span class="nc" id="L137">		btnClear.setBounds(22, 79, 29, 29);</span>
-<span class="nc" id="L138">		btnSwitchOn.setBounds(227, 286, 13, 20);</span>
-<span class="nc" id="L139">		btnSwitchOff.setBounds(239, 286, 13, 20);</span>
-<span class="nc" id="L140">		lblAdvancedMode.setBounds(143, 282, 87, 29);</span>
+<span class="nc" id="L131">		btnPinpad0.setBounds(63, 243, 29, 29);</span>
+<span class="nc" id="L132">		btnPinpad1.setBounds(22, 202, 29, 29);</span>
+<span class="nc" id="L133">		btnPinpad2.setBounds(63, 202, 29, 29);</span>
+<span class="nc" id="L134">		btnPinpad3.setBounds(104, 202, 29, 29);</span>
+<span class="nc" id="L135">		btnPinpad4.setBounds(22, 161, 29, 29);</span>
+<span class="nc" id="L136">		btnPinpad5.setBounds(63, 161, 29, 29);</span>
+<span class="nc" id="L137">		btnPinpad6.setBounds(104, 161, 29, 29);</span>
+<span class="nc" id="L138">		btnPinpad7.setBounds(22, 120, 29, 29);</span>
+<span class="nc" id="L139">		btnPinpad8.setBounds(63, 120, 29, 29);</span>
+<span class="nc" id="L140">		btnPinpad9.setBounds(104, 120, 29, 29);</span>
+<span class="nc" id="L141">		btnComma.setBounds(22, 243, 29, 29);</span>
+<span class="nc" id="L142">		btnEquals.setBounds(104, 243, 29, 29);</span>
+<span class="nc" id="L143">		btnDivision.setBounds(145, 120, 29, 29);</span>
+<span class="nc" id="L144">		btnMultiplication.setBounds(145, 161, 29, 29);</span>
+<span class="nc" id="L145">		btnSubtraction.setBounds(145, 202, 29, 29);</span>
+<span class="nc" id="L146">		btnAddition.setBounds(145, 243, 29, 29);</span>
+<span class="nc" id="L147">		btnPowerOf.setBounds(186, 202, 29, 29);</span>
+<span class="nc" id="L148">		btnSquareOf.setBounds(186, 161, 29, 29);</span>
+<span class="nc" id="L149">		btnCubeOf.setBounds(186, 120, 29, 29);</span>
+<span class="nc" id="L150">		btnPowerOfTen.setBounds(227, 202, 29, 29);</span>
+<span class="nc" id="L151">		btnRemainder.setBounds(227, 161, 29, 29);</span>
+<span class="nc" id="L152">		btnRandom.setBounds(227, 120, 29, 29);</span>
+<span class="nc" id="L153">		btnClear.setBounds(22, 79, 29, 29);</span>
+<span class="nc" id="L154">		btnSwitchOn.setBounds(227, 286, 13, 20);</span>
+<span class="nc" id="L155">		btnSwitchOff.setBounds(239, 286, 13, 20);</span>
+<span class="nc" id="L156">		lblAdvancedMode.setBounds(143, 282, 87, 29);</span>
+<span class="nc" id="L157">		btnSuperModeOn.setBounds(227, 319, 13, 20);</span>
+<span class="nc" id="L158">		btnSuperModeOff.setBounds(239, 319, 13, 20);</span>
+<span class="nc" id="L159">		lblSuperMode.setBounds(114, 316, 116, 29);</span>
+<span class="nc" id="L160">		btnChaos.setBounds(193, 345, 65, 29);</span>
+	
 
 		// Set font (for those with bigger text)
-<span class="nc" id="L143">		btnPowerOf.setFont(new Font(&quot;Lucida Grande&quot;, Font.PLAIN, 10));</span>
-<span class="nc" id="L144">		btnSquareOf.setFont(new Font(&quot;Lucida Grande&quot;, Font.PLAIN, 10));</span>
-<span class="nc" id="L145">		btnCubeOf.setFont(new Font(&quot;Lucida Grande&quot;, Font.PLAIN, 10));</span>
-<span class="nc" id="L146">		btnPowerOfTen.setFont(new Font(&quot;Lucida Grande&quot;, Font.PLAIN, 10));</span>
-<span class="nc" id="L147">		btnRemainder.setFont(new Font(&quot;Lucida Grande&quot;, Font.PLAIN, 10));</span>
-<span class="nc" id="L148">		btnRandom.setFont(new Font(&quot;Lucida Grande&quot;, Font.PLAIN, 10));</span>
-<span class="nc" id="L149">		lblAdvancedMode.setFont(new Font(&quot;Lucida Grande&quot;, Font.PLAIN, 10));</span>
+<span class="nc" id="L164">		btnPowerOf.setFont(new Font(&quot;Lucida Grande&quot;, Font.PLAIN, 10));</span>
+<span class="nc" id="L165">		btnSquareOf.setFont(new Font(&quot;Lucida Grande&quot;, Font.PLAIN, 10));</span>
+<span class="nc" id="L166">		btnCubeOf.setFont(new Font(&quot;Lucida Grande&quot;, Font.PLAIN, 10));</span>
+<span class="nc" id="L167">		btnPowerOfTen.setFont(new Font(&quot;Lucida Grande&quot;, Font.PLAIN, 10));</span>
+<span class="nc" id="L168">		btnRemainder.setFont(new Font(&quot;Lucida Grande&quot;, Font.PLAIN, 10));</span>
+<span class="nc" id="L169">		btnRandom.setFont(new Font(&quot;Lucida Grande&quot;, Font.PLAIN, 10));</span>
+<span class="nc" id="L170">		lblAdvancedMode.setFont(new Font(&quot;Lucida Grande&quot;, Font.PLAIN, 10));</span>
+<span class="nc" id="L171">		lblSuperMode.setFont(new Font(&quot;Lucida Grande&quot;, Font.PLAIN, 10));</span>
 
 		// Adding the components to frame
-<span class="nc" id="L152">		frame.getContentPane().add(btnPinpad0);</span>
-<span class="nc" id="L153">		frame.getContentPane().add(btnPinpad1);</span>
-<span class="nc" id="L154">		frame.getContentPane().add(btnPinpad2);</span>
-<span class="nc" id="L155">		frame.getContentPane().add(btnPinpad3);</span>
-<span class="nc" id="L156">		frame.getContentPane().add(btnPinpad4);</span>
-<span class="nc" id="L157">		frame.getContentPane().add(btnPinpad5);</span>
-<span class="nc" id="L158">		frame.getContentPane().add(btnPinpad6);</span>
-<span class="nc" id="L159">		frame.getContentPane().add(btnPinpad7);</span>
-<span class="nc" id="L160">		frame.getContentPane().add(btnPinpad8);</span>
-<span class="nc" id="L161">		frame.getContentPane().add(btnPinpad9);</span>
-<span class="nc" id="L162">		frame.getContentPane().add(btnComma);</span>
-<span class="nc" id="L163">		frame.getContentPane().add(btnEquals);</span>
-<span class="nc" id="L164">		frame.getContentPane().add(btnDivision);</span>
-<span class="nc" id="L165">		frame.getContentPane().add(btnMultiplication);</span>
-<span class="nc" id="L166">		frame.getContentPane().add(btnSubtraction);</span>
-<span class="nc" id="L167">		frame.getContentPane().add(btnAddition);</span>
-<span class="nc" id="L168">		frame.getContentPane().add(btnPowerOf);</span>
-<span class="nc" id="L169">		frame.getContentPane().add(btnSquareOf);</span>
-<span class="nc" id="L170">		frame.getContentPane().add(btnCubeOf);</span>
-<span class="nc" id="L171">		frame.getContentPane().add(btnPowerOfTen);</span>
-<span class="nc" id="L172">		frame.getContentPane().add(btnRemainder);</span>
-<span class="nc" id="L173">		frame.getContentPane().add(btnRandom);</span>
-<span class="nc" id="L174">		frame.getContentPane().add(btnClear);</span>
-<span class="nc" id="L175">		frame.getContentPane().add(btnSwitchOn);</span>
-<span class="nc" id="L176">		frame.getContentPane().add(btnSwitchOff);</span>
-<span class="nc" id="L177">		frame.getContentPane().add(lblAdvancedMode);</span>
-<span class="nc" id="L178">		frame.getContentPane().add(display);</span>
+<span class="nc" id="L174">		frame.getContentPane().add(btnPinpad0);</span>
+<span class="nc" id="L175">		frame.getContentPane().add(btnPinpad1);</span>
+<span class="nc" id="L176">		frame.getContentPane().add(btnPinpad2);</span>
+<span class="nc" id="L177">		frame.getContentPane().add(btnPinpad3);</span>
+<span class="nc" id="L178">		frame.getContentPane().add(btnPinpad4);</span>
+<span class="nc" id="L179">		frame.getContentPane().add(btnPinpad5);</span>
+<span class="nc" id="L180">		frame.getContentPane().add(btnPinpad6);</span>
+<span class="nc" id="L181">		frame.getContentPane().add(btnPinpad7);</span>
+<span class="nc" id="L182">		frame.getContentPane().add(btnPinpad8);</span>
+<span class="nc" id="L183">		frame.getContentPane().add(btnPinpad9);</span>
+<span class="nc" id="L184">		frame.getContentPane().add(btnComma);</span>
+<span class="nc" id="L185">		frame.getContentPane().add(btnEquals);</span>
+<span class="nc" id="L186">		frame.getContentPane().add(btnDivision);</span>
+<span class="nc" id="L187">		frame.getContentPane().add(btnMultiplication);</span>
+<span class="nc" id="L188">		frame.getContentPane().add(btnSubtraction);</span>
+<span class="nc" id="L189">		frame.getContentPane().add(btnAddition);</span>
+<span class="nc" id="L190">		frame.getContentPane().add(btnPowerOf);</span>
+<span class="nc" id="L191">		frame.getContentPane().add(btnSquareOf);</span>
+<span class="nc" id="L192">		frame.getContentPane().add(btnCubeOf);</span>
+<span class="nc" id="L193">		frame.getContentPane().add(btnPowerOfTen);</span>
+<span class="nc" id="L194">		frame.getContentPane().add(btnRemainder);</span>
+<span class="nc" id="L195">		frame.getContentPane().add(btnRandom);</span>
+<span class="nc" id="L196">		frame.getContentPane().add(btnClear);</span>
+<span class="nc" id="L197">		frame.getContentPane().add(btnSwitchOn);</span>
+<span class="nc" id="L198">		frame.getContentPane().add(btnSwitchOff);</span>
+<span class="nc" id="L199">		frame.getContentPane().add(lblAdvancedMode);</span>
+<span class="nc" id="L200">		frame.getContentPane().add(display);</span>
+<span class="nc" id="L201">		frame.getContentPane().add(btnSuperModeOn);</span>
+<span class="nc" id="L202">		frame.getContentPane().add(btnSuperModeOff);</span>
+<span class="nc" id="L203">		frame.getContentPane().add(lblSuperMode);</span>
+<span class="nc" id="L204">		frame.getContentPane().add(btnChaos);</span>
 
 		// Settings for display field
-<span class="nc" id="L181">		display.setColumns(10);</span>
-<span class="nc" id="L182">		display.setBounds(60, 76, 200, 35);</span>
-<span class="nc" id="L183">		display.setBackground(new Color(245, 255, 250));</span>
-<span class="nc" id="L184">		display.setHorizontalAlignment(SwingConstants.RIGHT);</span>
-<span class="nc" id="L185">		display.setEditable(false);</span>
+<span class="nc" id="L207">		display.setColumns(10);</span>
+<span class="nc" id="L208">		display.setBounds(60, 76, 200, 35);</span>
+<span class="nc" id="L209">		display.setBackground(new Color(245, 255, 250));</span>
+<span class="nc" id="L210">		display.setHorizontalAlignment(SwingConstants.RIGHT);</span>
+<span class="nc" id="L211">		display.setEditable(false);</span>
 
 		// Basic mode at start, advanced buttons deactivated
-<span class="nc" id="L188">		btnSwitchOn.setBackground(Color.RED);</span>
-<span class="nc" id="L189">		btnSwitchOn.setOpaque(true);</span>
-<span class="nc" id="L190">		btnSwitchOn.setBorderPainted(false);</span>
-<span class="nc" id="L191">		btnSwitchOn.setFocusPainted(false);</span>
-<span class="nc" id="L192">		btnSwitchOff.setOpaque(true);</span>
-<span class="nc" id="L193">		btnSwitchOff.setBorderPainted(true);</span>
-<span class="nc" id="L194">		btnSwitchOff.setFocusPainted(false);</span>
-<span class="nc" id="L195">	}</span>
+<span class="nc" id="L214">		btnSwitchOn.setBackground(Color.RED);</span>
+<span class="nc" id="L215">		btnSwitchOn.setOpaque(true);</span>
+<span class="nc" id="L216">		btnSwitchOn.setBorderPainted(false);</span>
+<span class="nc" id="L217">		btnSwitchOn.setFocusPainted(false);</span>
+<span class="nc" id="L218">		btnSwitchOff.setOpaque(true);</span>
+<span class="nc" id="L219">		btnSwitchOff.setBorderPainted(true);</span>
+<span class="nc" id="L220">		btnSwitchOff.setFocusPainted(false);</span>
+		
+		// Super Advanced mode deactivated at start
+<span class="nc" id="L223">		btnSuperModeOn.setBackground(Color.RED);</span>
+<span class="nc" id="L224">		btnSuperModeOn.setOpaque(true);</span>
+<span class="nc" id="L225">		btnSuperModeOn.setBorderPainted(false);</span>
+<span class="nc" id="L226">		btnSuperModeOn.setFocusPainted(false);</span>
+<span class="nc" id="L227">		btnSuperModeOff.setOpaque(true);</span>
+<span class="nc" id="L228">		btnSuperModeOff.setBorderPainted(true);</span>
+<span class="nc" id="L229">		btnSuperModeOff.setFocusPainted(false);</span>
+<span class="nc" id="L230">	}</span>
+	
+	/**
+	 * Sets the values of the ArrayList containing all buttons.
+	 */
+	public void createArrayListOfButtons() {
+<span class="nc" id="L236">		listOfButtons.add(btnPinpad0);</span>
+<span class="nc" id="L237">		listOfButtons.add(btnPinpad1);</span>
+<span class="nc" id="L238">		listOfButtons.add(btnPinpad2);</span>
+<span class="nc" id="L239">		listOfButtons.add(btnPinpad3);</span>
+<span class="nc" id="L240">		listOfButtons.add(btnPinpad4);</span>
+<span class="nc" id="L241">		listOfButtons.add(btnPinpad5);</span>
+<span class="nc" id="L242">		listOfButtons.add(btnPinpad6);</span>
+<span class="nc" id="L243">		listOfButtons.add(btnPinpad7);</span>
+<span class="nc" id="L244">		listOfButtons.add(btnPinpad8);</span>
+<span class="nc" id="L245">		listOfButtons.add(btnPinpad9);</span>
+<span class="nc" id="L246">		listOfButtons.add(btnComma);</span>
+<span class="nc" id="L247">		listOfButtons.add(btnEquals);</span>
+<span class="nc" id="L248">		listOfButtons.add(btnDivision);</span>
+<span class="nc" id="L249">		listOfButtons.add(btnMultiplication);</span>
+<span class="nc" id="L250">		listOfButtons.add(btnSubtraction);</span>
+<span class="nc" id="L251">		listOfButtons.add(btnAddition);</span>
+<span class="nc" id="L252">		listOfButtons.add(btnPowerOf);</span>
+<span class="nc" id="L253">		listOfButtons.add(btnSquareOf);</span>
+<span class="nc" id="L254">		listOfButtons.add(btnCubeOf);</span>
+<span class="nc" id="L255">		listOfButtons.add(btnPowerOfTen);</span>
+<span class="nc" id="L256">		listOfButtons.add(btnRemainder);</span>
+<span class="nc" id="L257">		listOfButtons.add(btnRandom);</span>
+<span class="nc" id="L258">		listOfButtons.add(btnClear);</span>
+<span class="nc" id="L259">	}</span>
+	
+	/**
+	 * Sets the values in the ArrayList containing the positions (bounds) of all pinpad number buttons
+	 */
+	public void createArrayListOfPinpadPositions() {
+<span class="nc" id="L265">		pinpadPositions.add(&quot;63, 243, 29, 29&quot;);</span>
+<span class="nc" id="L266">		pinpadPositions.add(&quot;22, 202, 29, 29&quot;);</span>
+<span class="nc" id="L267">		pinpadPositions.add(&quot;63, 202, 29, 29&quot;);</span>
+<span class="nc" id="L268">		pinpadPositions.add(&quot;104, 202, 29, 29&quot;);</span>
+<span class="nc" id="L269">		pinpadPositions.add(&quot;22, 161, 29, 29&quot;);</span>
+<span class="nc" id="L270">		pinpadPositions.add(&quot;63, 161, 29, 29&quot;);</span>
+<span class="nc" id="L271">		pinpadPositions.add(&quot;104, 161, 29, 29&quot;);</span>
+<span class="nc" id="L272">		pinpadPositions.add(&quot;22, 120, 29, 29&quot;);</span>
+<span class="nc" id="L273">		pinpadPositions.add(&quot;63, 120, 29, 29&quot;);</span>
+<span class="nc" id="L274">		pinpadPositions.add(&quot;104, 120, 29, 29&quot;);</span>
+<span class="nc" id="L275">	}</span>
 
 	/**
-	 * Activates the Advances buttons
+	 * Activates the Advanced buttons
 	 */
 	public void activateAdvanceButtons() {
-<span class="nc" id="L201">		btnPowerOf.setEnabled(true);</span>
-<span class="nc" id="L202">		btnSquareOf.setEnabled(true);</span>
-<span class="nc" id="L203">		btnCubeOf.setEnabled(true);</span>
-<span class="nc" id="L204">		btnPowerOfTen.setEnabled(true);</span>
-<span class="nc" id="L205">		btnRemainder.setEnabled(true);</span>
-<span class="nc" id="L206">		btnRandom.setEnabled(true);</span>
-<span class="nc" id="L207">	}</span>
+<span class="nc" id="L281">		btnPowerOf.setEnabled(true);</span>
+<span class="nc" id="L282">		btnSquareOf.setEnabled(true);</span>
+<span class="nc" id="L283">		btnCubeOf.setEnabled(true);</span>
+<span class="nc" id="L284">		btnPowerOfTen.setEnabled(true);</span>
+<span class="nc" id="L285">		btnRemainder.setEnabled(true);</span>
+<span class="nc" id="L286">		btnRandom.setEnabled(true);</span>
+<span class="nc" id="L287">		frame.setBounds(100, 100, 280, 408);</span>
+<span class="nc" id="L288">		showSuperSwitch();</span>
+<span class="nc" id="L289">	}</span>
 
 	/**
-	 * Deactivates the Advances buttons
+	 * Deactivates the Advanced buttons
 	 */
 	public void deActivateAdvanceButtons() {
-<span class="nc" id="L213">		btnPowerOf.setEnabled(false);</span>
-<span class="nc" id="L214">		btnSquareOf.setEnabled(false);</span>
-<span class="nc" id="L215">		btnCubeOf.setEnabled(false);</span>
-<span class="nc" id="L216">		btnPowerOfTen.setEnabled(false);</span>
-<span class="nc" id="L217">		btnRemainder.setEnabled(false);</span>
-<span class="nc" id="L218">		btnRandom.setEnabled(false);</span>
-<span class="nc" id="L219">	}</span>
+<span class="nc" id="L295">		btnPowerOf.setEnabled(false);</span>
+<span class="nc" id="L296">		btnSquareOf.setEnabled(false);</span>
+<span class="nc" id="L297">		btnCubeOf.setEnabled(false);</span>
+<span class="nc" id="L298">		btnPowerOfTen.setEnabled(false);</span>
+<span class="nc" id="L299">		btnRemainder.setEnabled(false);</span>
+<span class="nc" id="L300">		btnRandom.setEnabled(false);</span>
+<span class="nc" id="L301">		frame.setBounds(100, 100, 280, 358);</span>
+<span class="nc" id="L302">		hideSuperSwitch();</span>
+<span class="nc" id="L303">	}</span>
+	
+	/**
+	 * Show the Super switch
+	 */
+	public void showSuperSwitch() {
+<span class="nc" id="L309">		btnSuperModeOn.setVisible(true);</span>
+<span class="nc" id="L310">		btnSuperModeOff.setVisible(true);</span>
+<span class="nc" id="L311">		lblSuperMode.setVisible(true);</span>
+<span class="nc" id="L312">		btnChaos.setVisible(true);</span>
+<span class="nc" id="L313">	}</span>
+	
+	/**
+	 * Hide the Super switch
+	 */
+	public void hideSuperSwitch() {
+<span class="nc" id="L319">		btnSuperModeOn.setVisible(false);</span>
+<span class="nc" id="L320">		btnSuperModeOff.setVisible(false);</span>
+<span class="nc" id="L321">		lblSuperMode.setVisible(false);</span>
+<span class="nc" id="L322">		btnChaos.setVisible(false);</span>
+<span class="nc" id="L323">	}</span>
+	
+	/**
+	 * Activates the Super advanced buttons
+	 */
+	public void activateSuperButtons() {
+<span class="nc" id="L329">		btnChaos.setEnabled(true);</span>
+<span class="nc" id="L330">	}</span>
+
+	/**
+	 * Deactivates the Super Advanced buttons
+	 */
+	public void deActivateSuperButtons() {
+<span class="nc" id="L336">		btnChaos.setEnabled(false);</span>
+<span class="nc" id="L337">	}</span>
 
 	/**
 	 * The switch between Basic and Advanced mode.
 	 */
 	public void switchMode() {
-<span class="nc bnc" id="L225" title="All 2 branches missed.">		if (isBasic) {</span>
+<span class="nc bnc" id="L343" title="All 2 branches missed.">		if (isBasic) {</span>
 			// Activate advanced buttons
-<span class="nc" id="L227">			activateAdvanceButtons();</span>
-<span class="nc" id="L228">			btnSwitchOn.setBackground(new Color(238, 238, 238));</span>
-<span class="nc" id="L229">			btnSwitchOn.setBorderPainted(true);</span>
-<span class="nc" id="L230">			btnSwitchOff.setBackground(Color.GREEN);</span>
-<span class="nc" id="L231">			btnSwitchOff.setBorderPainted(false);</span>
-<span class="nc" id="L232">			isBasic = false;</span>
+<span class="nc" id="L345">			activateAdvanceButtons();</span>
+<span class="nc" id="L346">			btnSwitchOn.setBackground(new Color(238, 238, 238));</span>
+<span class="nc" id="L347">			btnSwitchOn.setBorderPainted(true);</span>
+<span class="nc" id="L348">			btnSwitchOff.setBackground(Color.GREEN);</span>
+<span class="nc" id="L349">			btnSwitchOff.setBorderPainted(false);</span>
+<span class="nc" id="L350">			isBasic = false;</span>
 		} else {
 			// Deactivate advanced buttons
-<span class="nc" id="L235">			deActivateAdvanceButtons();</span>
-<span class="nc" id="L236">			btnSwitchOn.setBackground(Color.RED);</span>
-<span class="nc" id="L237">			btnSwitchOn.setBorderPainted(false);</span>
-<span class="nc" id="L238">			btnSwitchOff.setBackground(new Color(238, 238, 238));</span>
-<span class="nc" id="L239">			btnSwitchOff.setBorderPainted(true);</span>
-<span class="nc" id="L240">			isBasic = true;</span>
+<span class="nc" id="L353">			deActivateAdvanceButtons();</span>
+<span class="nc" id="L354">			btnSwitchOn.setBackground(Color.RED);</span>
+<span class="nc" id="L355">			btnSwitchOn.setBorderPainted(false);</span>
+<span class="nc" id="L356">			btnSwitchOff.setBackground(new Color(238, 238, 238));</span>
+<span class="nc" id="L357">			btnSwitchOff.setBorderPainted(true);</span>
+<span class="nc" id="L358">			isBasic = true;</span>
 		}
-<span class="nc" id="L242">	}</span>
+<span class="nc" id="L360">	}</span>
+	
+	/**
+	 * The switch for activating Super Advanced mode.
+	 */
+	public void switchSuperMode() {
+<span class="nc bnc" id="L366" title="All 2 branches missed.">		if (!(isSuper)) {</span>
+			// Activate Super mode
+<span class="nc" id="L368">			activateSuperButtons();</span>
+<span class="nc" id="L369">			btnSuperModeOn.setBackground(new Color(238, 238, 238));</span>
+<span class="nc" id="L370">			btnSuperModeOn.setBorderPainted(true);</span>
+<span class="nc" id="L371">			btnSuperModeOff.setBackground(Color.GREEN);</span>
+<span class="nc" id="L372">			btnSuperModeOff.setBorderPainted(false);</span>
+<span class="nc" id="L373">			isSuper = true;</span>
+		} else {
+			// Deactivate advanced buttons
+<span class="nc" id="L376">			deActivateSuperButtons();</span>
+<span class="nc" id="L377">			btnSuperModeOn.setBackground(Color.RED);</span>
+<span class="nc" id="L378">			btnSuperModeOn.setBorderPainted(false);</span>
+<span class="nc" id="L379">			btnSuperModeOff.setBackground(new Color(238, 238, 238));</span>
+<span class="nc" id="L380">			btnSuperModeOff.setBorderPainted(true);</span>
+<span class="nc" id="L381">			isSuper = false;</span>
+		}
+<span class="nc" id="L383">	}</span>
 
 	/**
 	 * First action of the addition calculation, invoked by pressing btnAddition.
@@ -247,10 +388,10 @@ public class CalculatorWindow {
 	 * operator sign as chosenOperator.
 	 */
 	public void startAddition() {
-<span class="nc" id="L250">		firstNumber = getDisplayValue();</span>
-<span class="nc" id="L251">		isFirstAction = true;</span>
-<span class="nc" id="L252">		chosenOperator = btnAddition.getText().charAt(0);</span>
-<span class="nc" id="L253">	}</span>
+<span class="nc" id="L391">		firstNumber = getDisplayValue();</span>
+<span class="nc" id="L392">		isFirstAction = true;</span>
+<span class="nc" id="L393">		chosenOperator = btnAddition.getText().charAt(0);</span>
+<span class="nc" id="L394">	}</span>
 
 	/**
 	 * Last action of the addition calculation, invoked when running
@@ -261,17 +402,17 @@ public class CalculatorWindow {
 	 * result from the first calculation one more time.
 	 */
 	public void continueAddition() {
-<span class="nc bnc" id="L264" title="All 4 branches missed.">		if (chosenOperator == '+' &amp;&amp; !(resultCleared)) {</span>
-<span class="nc" id="L265">			result = ac.addition(result, secondNumber);</span>
+<span class="nc bnc" id="L405" title="All 4 branches missed.">		if (chosenOperator == '+' &amp;&amp; !(resultCleared)) {</span>
+<span class="nc" id="L406">			result = ac.addition(result, secondNumber);</span>
 		} else {
-<span class="nc" id="L267">			secondNumber = getDisplayValue();</span>
-<span class="nc" id="L268">			result = ac.addition(firstNumber, secondNumber);</span>
+<span class="nc" id="L408">			secondNumber = getDisplayValue();</span>
+<span class="nc" id="L409">			result = ac.addition(firstNumber, secondNumber);</span>
 		}
-<span class="nc" id="L270">		setDisplayValue(result);</span>
-<span class="nc" id="L271">		resultCleared = false;</span>
-<span class="nc" id="L272">		isFirstAction = true;</span>
+<span class="nc" id="L411">		setDisplayValue(result);</span>
+<span class="nc" id="L412">		resultCleared = false;</span>
+<span class="nc" id="L413">		isFirstAction = true;</span>
 
-<span class="nc" id="L274">	}</span>
+<span class="nc" id="L415">	}</span>
 
 	/**
 	 * First action of the subtraction calculation, invoked by pressing
@@ -279,10 +420,10 @@ public class CalculatorWindow {
 	 * corresponding operator sign as chosenOperator.
 	 */
 	public void startSubtraction() {
-<span class="nc" id="L282">		firstNumber = getDisplayValue();</span>
-<span class="nc" id="L283">		isFirstAction = true;</span>
-<span class="nc" id="L284">		chosenOperator = btnSubtraction.getText().charAt(0);</span>
-<span class="nc" id="L285">	}</span>
+<span class="nc" id="L423">		firstNumber = getDisplayValue();</span>
+<span class="nc" id="L424">		isFirstAction = true;</span>
+<span class="nc" id="L425">		chosenOperator = btnSubtraction.getText().charAt(0);</span>
+<span class="nc" id="L426">	}</span>
 
 	/**
 	 * Last action of the subtraction calculation, invoked when running
@@ -293,16 +434,16 @@ public class CalculatorWindow {
 	 * result from the first calculation one more time.
 	 */
 	public void continueSubtraction() {
-<span class="nc bnc" id="L296" title="All 4 branches missed.">		if (chosenOperator == '-' &amp;&amp; !(resultCleared)) {</span>
-<span class="nc" id="L297">			result = ac.subtraction(result, secondNumber);</span>
+<span class="nc bnc" id="L437" title="All 4 branches missed.">		if (chosenOperator == '-' &amp;&amp; !(resultCleared)) {</span>
+<span class="nc" id="L438">			result = ac.subtraction(result, secondNumber);</span>
 		} else {
-<span class="nc" id="L299">			secondNumber = getDisplayValue();</span>
-<span class="nc" id="L300">			result = ac.subtraction(firstNumber, secondNumber);</span>
+<span class="nc" id="L440">			secondNumber = getDisplayValue();</span>
+<span class="nc" id="L441">			result = ac.subtraction(firstNumber, secondNumber);</span>
 		}
-<span class="nc" id="L302">		setDisplayValue(result);</span>
-<span class="nc" id="L303">		resultCleared = false;</span>
-<span class="nc" id="L304">		isFirstAction = true;</span>
-<span class="nc" id="L305">	}</span>
+<span class="nc" id="L443">		setDisplayValue(result);</span>
+<span class="nc" id="L444">		resultCleared = false;</span>
+<span class="nc" id="L445">		isFirstAction = true;</span>
+<span class="nc" id="L446">	}</span>
 
 	/**
 	 * First action of the multiplication calculation, invoked by pressing
@@ -310,10 +451,10 @@ public class CalculatorWindow {
 	 * corresponding operator sign as chosenOperator.
 	 */
 	public void startMultiplication() {
-<span class="nc" id="L313">		firstNumber = getDisplayValue();</span>
-<span class="nc" id="L314">		isFirstAction = true;</span>
-<span class="nc" id="L315">		chosenOperator = btnMultiplication.getText().charAt(0);</span>
-<span class="nc" id="L316">	}</span>
+<span class="nc" id="L454">		firstNumber = getDisplayValue();</span>
+<span class="nc" id="L455">		isFirstAction = true;</span>
+<span class="nc" id="L456">		chosenOperator = btnMultiplication.getText().charAt(0);</span>
+<span class="nc" id="L457">	}</span>
 
 	/**
 	 * Last action of the multiplication calculation, invoked when running
@@ -324,16 +465,16 @@ public class CalculatorWindow {
 	 * the result from the first calculation one more time.
 	 */
 	public void continueMultiplication() {
-<span class="nc bnc" id="L327" title="All 4 branches missed.">		if (chosenOperator == '*' &amp;&amp; !(resultCleared)) {</span>
-<span class="nc" id="L328">			result = ac.multiplication(result, secondNumber);</span>
+<span class="nc bnc" id="L468" title="All 4 branches missed.">		if (chosenOperator == '*' &amp;&amp; !(resultCleared)) {</span>
+<span class="nc" id="L469">			result = ac.multiplication(result, secondNumber);</span>
 		} else {
-<span class="nc" id="L330">			secondNumber = getDisplayValue();</span>
-<span class="nc" id="L331">			result = ac.multiplication(firstNumber, secondNumber);</span>
+<span class="nc" id="L471">			secondNumber = getDisplayValue();</span>
+<span class="nc" id="L472">			result = ac.multiplication(firstNumber, secondNumber);</span>
 		}
-<span class="nc" id="L333">		setDisplayValue(result);</span>
-<span class="nc" id="L334">		resultCleared = false;</span>
-<span class="nc" id="L335">		isFirstAction = true;</span>
-<span class="nc" id="L336">	}</span>
+<span class="nc" id="L474">		setDisplayValue(result);</span>
+<span class="nc" id="L475">		resultCleared = false;</span>
+<span class="nc" id="L476">		isFirstAction = true;</span>
+<span class="nc" id="L477">	}</span>
 
 	/**
 	 * First action of the division calculation, invoked by pressing btnDivision.
@@ -341,10 +482,10 @@ public class CalculatorWindow {
 	 * operator sign as chosenOperator.
 	 */
 	public void startDivision() {
-<span class="nc" id="L344">		firstNumber = getDisplayValue();</span>
-<span class="nc" id="L345">		isFirstAction = true;</span>
-<span class="nc" id="L346">		chosenOperator = btnDivision.getText().charAt(0);</span>
-<span class="nc" id="L347">	}</span>
+<span class="nc" id="L485">		firstNumber = getDisplayValue();</span>
+<span class="nc" id="L486">		isFirstAction = true;</span>
+<span class="nc" id="L487">		chosenOperator = btnDivision.getText().charAt(0);</span>
+<span class="nc" id="L488">	}</span>
 
 	/**
 	 * Last action of the division calculation, invoked when running
@@ -355,16 +496,16 @@ public class CalculatorWindow {
 	 * will be divided with secondNumber one more time.
 	 */
 	public void continueDivision() {
-<span class="nc bnc" id="L358" title="All 4 branches missed.">		if (chosenOperator == '/' &amp;&amp; !(resultCleared)) {</span>
-<span class="nc" id="L359">			result = ac.division(result, secondNumber);</span>
+<span class="nc bnc" id="L499" title="All 4 branches missed.">		if (chosenOperator == '/' &amp;&amp; !(resultCleared)) {</span>
+<span class="nc" id="L500">			result = ac.division(result, secondNumber);</span>
 		} else {
-<span class="nc" id="L361">			secondNumber = getDisplayValue();</span>
-<span class="nc" id="L362">			result = ac.division(firstNumber, secondNumber);</span>
+<span class="nc" id="L502">			secondNumber = getDisplayValue();</span>
+<span class="nc" id="L503">			result = ac.division(firstNumber, secondNumber);</span>
 		}
-<span class="nc" id="L364">		setDisplayValue(result);</span>
-<span class="nc" id="L365">		resultCleared = false;</span>
-<span class="nc" id="L366">		isFirstAction = true;</span>
-<span class="nc" id="L367">	}</span>
+<span class="nc" id="L505">		setDisplayValue(result);</span>
+<span class="nc" id="L506">		resultCleared = false;</span>
+<span class="nc" id="L507">		isFirstAction = true;</span>
+<span class="nc" id="L508">	}</span>
 
 	/**
 	 * First action of the power of calculation, invoked by pressing btnPowerOf.
@@ -372,11 +513,11 @@ public class CalculatorWindow {
 	 * operator sign as chosenOperator.
 	 */
 	public void startPowerOf() {
-<span class="nc" id="L375">		firstNumber = getDisplayValue();</span>
-<span class="nc" id="L376">		isFirstAction = true;</span>
+<span class="nc" id="L516">		firstNumber = getDisplayValue();</span>
+<span class="nc" id="L517">		isFirstAction = true;</span>
 		// Button text = &quot;x^y&quot;, hence charAt(1);
-<span class="nc" id="L378">		chosenOperator = btnPowerOf.getText().charAt(1);</span>
-<span class="nc" id="L379">	}</span>
+<span class="nc" id="L519">		chosenOperator = btnPowerOf.getText().charAt(1);</span>
+<span class="nc" id="L520">	}</span>
 
 	/**
 	 * Last action of the power of calculation, invoked when running
@@ -387,16 +528,16 @@ public class CalculatorWindow {
 	 * will be raised to secondNumber.
 	 */
 	public void continuePowerOf() {
-<span class="nc bnc" id="L390" title="All 4 branches missed.">		if (chosenOperator == '^' &amp;&amp; !(resultCleared)) {</span>
-<span class="nc" id="L391">			result = ac.powerOf(result, secondNumber);</span>
+<span class="nc bnc" id="L531" title="All 4 branches missed.">		if (chosenOperator == '^' &amp;&amp; !(resultCleared)) {</span>
+<span class="nc" id="L532">			result = ac.powerOf(result, secondNumber);</span>
 		} else {
-<span class="nc" id="L393">			secondNumber = getDisplayValue();</span>
-<span class="nc" id="L394">			result = ac.powerOf(firstNumber, secondNumber);</span>
+<span class="nc" id="L534">			secondNumber = getDisplayValue();</span>
+<span class="nc" id="L535">			result = ac.powerOf(firstNumber, secondNumber);</span>
 		}
-<span class="nc" id="L396">		setDisplayValue(result);</span>
-<span class="nc" id="L397">		resultCleared = false;</span>
-<span class="nc" id="L398">		isFirstAction = true;</span>
-<span class="nc" id="L399">	}</span>
+<span class="nc" id="L537">		setDisplayValue(result);</span>
+<span class="nc" id="L538">		resultCleared = false;</span>
+<span class="nc" id="L539">		isFirstAction = true;</span>
+<span class="nc" id="L540">	}</span>
 
 	/**
 	 * Performs the power of ten calculation, invoked when pressing btnPowerOfTen.
@@ -404,11 +545,11 @@ public class CalculatorWindow {
 	 * result is written in the display.
 	 */
 	public void performPowerOfTen() {
-<span class="nc" id="L407">		firstNumber = getDisplayValue();</span>
-<span class="nc" id="L408">		double result = ac.powerOfTen(firstNumber);</span>
-<span class="nc" id="L409">		setDisplayValue(result);</span>
-<span class="nc" id="L410">		isFirstAction = true;</span>
-<span class="nc" id="L411">	}</span>
+<span class="nc" id="L548">		firstNumber = getDisplayValue();</span>
+<span class="nc" id="L549">		double result = ac.powerOfTen(firstNumber);</span>
+<span class="nc" id="L550">		setDisplayValue(result);</span>
+<span class="nc" id="L551">		isFirstAction = true;</span>
+<span class="nc" id="L552">	}</span>
 
 	/**
 	 * Performs the square of calculation, invoked when pressing btnSquareOf. Uses
@@ -416,11 +557,11 @@ public class CalculatorWindow {
 	 * written in the display.
 	 */
 	public void performSquareOf() {
-<span class="nc" id="L419">		firstNumber = getDisplayValue();</span>
-<span class="nc" id="L420">		double result = ac.squareOf(firstNumber);</span>
-<span class="nc" id="L421">		setDisplayValue(result);</span>
-<span class="nc" id="L422">		isFirstAction = true;</span>
-<span class="nc" id="L423">	}</span>
+<span class="nc" id="L560">		firstNumber = getDisplayValue();</span>
+<span class="nc" id="L561">		double result = ac.squareOf(firstNumber);</span>
+<span class="nc" id="L562">		setDisplayValue(result);</span>
+<span class="nc" id="L563">		isFirstAction = true;</span>
+<span class="nc" id="L564">	}</span>
 
 	/**
 	 * Performs the cube of calculation, invoked when pressing btnCubeOf. Uses the
@@ -428,11 +569,11 @@ public class CalculatorWindow {
 	 * written in the display.
 	 */
 	public void performCubeOf() {
-<span class="nc" id="L431">		firstNumber = getDisplayValue();</span>
-<span class="nc" id="L432">		double result = ac.cubeOf(firstNumber);</span>
-<span class="nc" id="L433">		setDisplayValue(result);</span>
-<span class="nc" id="L434">		isFirstAction = true;</span>
-<span class="nc" id="L435">	}</span>
+<span class="nc" id="L572">		firstNumber = getDisplayValue();</span>
+<span class="nc" id="L573">		double result = ac.cubeOf(firstNumber);</span>
+<span class="nc" id="L574">		setDisplayValue(result);</span>
+<span class="nc" id="L575">		isFirstAction = true;</span>
+<span class="nc" id="L576">	}</span>
 
 	/**
 	 * First action of the remainder calculation, invoked by pressing btnRemainder.
@@ -440,10 +581,10 @@ public class CalculatorWindow {
 	 * operator sign as chosenOperator.
 	 */
 	public void startRemainder() {
-<span class="nc" id="L443">		firstNumber = getDisplayValue();</span>
-<span class="nc" id="L444">		isFirstAction = true;</span>
-<span class="nc" id="L445">		chosenOperator = '%';</span>
-<span class="nc" id="L446">	}</span>
+<span class="nc" id="L584">		firstNumber = getDisplayValue();</span>
+<span class="nc" id="L585">		isFirstAction = true;</span>
+<span class="nc" id="L586">		chosenOperator = '%';</span>
+<span class="nc" id="L587">	}</span>
 
 	/**
 	 * Last action of the remainder calculation, invoked when running
@@ -457,42 +598,42 @@ public class CalculatorWindow {
 	 * the display.
 	 */
 	public void continueRemainder() {
-<span class="nc" id="L460">		System.out.println(firstNumber + &quot; &quot; + secondNumber);</span>
-<span class="nc bnc" id="L461" title="All 4 branches missed.">		if (((firstNumber % 1) &gt; 0) || ((secondNumber % 1) &gt; 0)) {</span>
-<span class="nc" id="L462">			display.setText(&quot;Modulus only take integers!&quot;);</span>
+<span class="nc" id="L601">		System.out.println(firstNumber + &quot; &quot; + secondNumber);</span>
+<span class="nc bnc" id="L602" title="All 4 branches missed.">		if (((firstNumber % 1) &gt; 0) || ((secondNumber % 1) &gt; 0)) {</span>
+<span class="nc" id="L603">			display.setText(&quot;Modulus only take integers!&quot;);</span>
 		} else {
-<span class="nc" id="L464">			Integer firstNumberAsInt = (int) firstNumber;</span>
-<span class="nc" id="L465">			Integer secondNumberAsInt = (int) secondNumber;</span>
-<span class="nc" id="L466">			System.out.println(firstNumberAsInt + &quot; &quot; + secondNumberAsInt);</span>
-<span class="nc" id="L467">			double result = ac.remainder(firstNumberAsInt, secondNumberAsInt);</span>
-<span class="nc" id="L468">			setDisplayValue(result);</span>
-<span class="nc" id="L469">			resultCleared = false;</span>
-<span class="nc" id="L470">			isFirstAction = true;</span>
-<span class="nc" id="L471">			chosenOperator = ' ';</span>
+<span class="nc" id="L605">			Integer firstNumberAsInt = (int) firstNumber;</span>
+<span class="nc" id="L606">			Integer secondNumberAsInt = (int) secondNumber;</span>
+<span class="nc" id="L607">			System.out.println(firstNumberAsInt + &quot; &quot; + secondNumberAsInt);</span>
+<span class="nc" id="L608">			double result = ac.remainder(firstNumberAsInt, secondNumberAsInt);</span>
+<span class="nc" id="L609">			setDisplayValue(result);</span>
+<span class="nc" id="L610">			resultCleared = false;</span>
+<span class="nc" id="L611">			isFirstAction = true;</span>
+<span class="nc" id="L612">			chosenOperator = ' ';</span>
 		}
-<span class="nc" id="L473">	}</span>
+<span class="nc" id="L614">	}</span>
 
 	/**
 	 * Setting a random value between 0 and 1 on to the display.
 	 */
 	public void createRandomValue() {
-<span class="nc" id="L479">		double randomValue = ac.random0to1();</span>
-<span class="nc" id="L480">		setDisplayValue(randomValue);</span>
+<span class="nc" id="L620">		double randomValue = ac.random0to1();</span>
+<span class="nc" id="L621">		setDisplayValue(randomValue);</span>
 		// Set to make sure no number is added to this number
-<span class="nc" id="L482">		isFirstAction = true;</span>
-<span class="nc" id="L483">	}</span>
+<span class="nc" id="L623">		isFirstAction = true;</span>
+<span class="nc" id="L624">	}</span>
 
 	/**
 	 * Resets the calculator so no data from old calculations is saved.
 	 */
 	public void getCleanState() {
-<span class="nc" id="L489">		firstNumber = 0;</span>
-<span class="nc" id="L490">		secondNumber = 0;</span>
-<span class="nc" id="L491">		result = 0;</span>
-<span class="nc" id="L492">		resultCleared = true;</span>
-<span class="nc" id="L493">		isFirstAction = true;</span>
-<span class="nc" id="L494">		chosenOperator = ' ';</span>
-<span class="nc" id="L495">	}</span>
+<span class="nc" id="L630">		firstNumber = 0;</span>
+<span class="nc" id="L631">		secondNumber = 0;</span>
+<span class="nc" id="L632">		result = 0;</span>
+<span class="nc" id="L633">		resultCleared = true;</span>
+<span class="nc" id="L634">		isFirstAction = true;</span>
+<span class="nc" id="L635">		chosenOperator = ' ';</span>
+<span class="nc" id="L636">	}</span>
 
 	/**
 	 * The value in the display is saved as String. This method converts the string
@@ -504,14 +645,14 @@ public class CalculatorWindow {
 	 */
 	public double getDisplayValue() {
 		try {
-<span class="nc" id="L507">			String displayValueAsString = display.getText();</span>
-<span class="nc" id="L508">			System.out.println(displayValueAsString);</span>
-<span class="nc" id="L509">			displayValueAsString = displayValueAsString.replaceAll(&quot;,&quot;, &quot;.&quot;);</span>
-<span class="nc" id="L510">			double displayValue = Double.parseDouble(displayValueAsString);</span>
-<span class="nc" id="L511">			return displayValue;</span>
-<span class="nc" id="L512">		} catch (NumberFormatException e) {</span>
-<span class="nc" id="L513">			getCleanState();</span>
-<span class="nc" id="L514">			return 0;</span>
+<span class="nc" id="L648">			String displayValueAsString = display.getText();</span>
+<span class="nc" id="L649">			System.out.println(displayValueAsString);</span>
+<span class="nc" id="L650">			displayValueAsString = displayValueAsString.replaceAll(&quot;,&quot;, &quot;.&quot;);</span>
+<span class="nc" id="L651">			double displayValue = Double.parseDouble(displayValueAsString);</span>
+<span class="nc" id="L652">			return displayValue;</span>
+<span class="nc" id="L653">		} catch (NumberFormatException e) {</span>
+<span class="nc" id="L654">			getCleanState();</span>
+<span class="nc" id="L655">			return 0;</span>
 		}
 	}
 
@@ -524,11 +665,11 @@ public class CalculatorWindow {
 	 */
 	public void setDisplayValue(double toBeDisplayed) {
 		try {
-<span class="nc" id="L527">			display.setText(df.format(toBeDisplayed));</span>
-<span class="nc" id="L528">		} catch (NumberFormatException e) {</span>
-<span class="nc" id="L529">			System.err.println(&quot;Not able to show value in display&quot;);</span>
-<span class="nc" id="L530">		}</span>
-<span class="nc" id="L531">	}</span>
+<span class="nc" id="L668">			display.setText(df.format(toBeDisplayed));</span>
+<span class="nc" id="L669">		} catch (NumberFormatException e) {</span>
+<span class="nc" id="L670">			System.err.println(&quot;Not able to show value in display&quot;);</span>
+<span class="nc" id="L671">		}</span>
+<span class="nc" id="L672">	}</span>
 
 	/**
 	 * Checks if this is the first action, i.e. if a pressed button should result in
@@ -538,12 +679,12 @@ public class CalculatorWindow {
 	 *         to existing.
 	 */
 	public boolean checkIfFirstAction() {
-<span class="nc bnc" id="L541" title="All 2 branches missed.">		if (getDisplayValue() == 0) {</span>
-<span class="nc" id="L542">			isFirstAction = true;</span>
-<span class="nc" id="L543">			return isFirstAction;</span>
+<span class="nc bnc" id="L682" title="All 2 branches missed.">		if (getDisplayValue() == 0) {</span>
+<span class="nc" id="L683">			isFirstAction = true;</span>
+<span class="nc" id="L684">			return isFirstAction;</span>
 		} else {
-<span class="nc" id="L545">			isFirstAction = false;</span>
-<span class="nc" id="L546">			return isFirstAction;</span>
+<span class="nc" id="L686">			isFirstAction = false;</span>
+<span class="nc" id="L687">			return isFirstAction;</span>
 		}
 	}
 
@@ -556,15 +697,15 @@ public class CalculatorWindow {
 	 *            The number of the pressed button
 	 */
 	public void pinpadNumberPressed(String pressedNumber) {
-<span class="nc bnc" id="L559" title="All 2 branches missed.">		if (isFirstAction) {</span>
-<span class="nc" id="L560">			setDisplayValue(Double.parseDouble(pressedNumber));</span>
-<span class="nc" id="L561">			isFirstAction = false;</span>
-<span class="nc bnc" id="L562" title="All 2 branches missed.">		} else if (display.getText().length() &gt;= 20) {</span>
+<span class="nc bnc" id="L700" title="All 2 branches missed.">		if (isFirstAction) {</span>
+<span class="nc" id="L701">			setDisplayValue(Double.parseDouble(pressedNumber));</span>
+<span class="nc" id="L702">			isFirstAction = false;</span>
+<span class="nc bnc" id="L703" title="All 2 branches missed.">		} else if (display.getText().length() &gt;= 20) {</span>
 			// Do nothing, does not fit screen
 		} else {
-<span class="nc" id="L565">			display.setText(display.getText() + pressedNumber);</span>
+<span class="nc" id="L706">			display.setText(display.getText() + pressedNumber);</span>
 		}
-<span class="nc" id="L567">	}</span>
+<span class="nc" id="L708">	}</span>
 
 	/**
 	 * Adds a comma to the number in the display, invoked by pressing btnComma. If
@@ -572,16 +713,16 @@ public class CalculatorWindow {
 	 * will be added.
 	 */
 	public void addComma() {
-<span class="nc bnc" id="L575" title="All 2 branches missed.">		if (isFirstAction) {</span>
-<span class="nc" id="L576">			display.setText(0 + btnComma.getText());</span>
-<span class="nc" id="L577">			isFirstAction = false;</span>
-<span class="nc bnc" id="L578" title="All 2 branches missed.">		} else if (display.getText().length() &gt;= 19) {</span>
+<span class="nc bnc" id="L716" title="All 2 branches missed.">		if (isFirstAction) {</span>
+<span class="nc" id="L717">			display.setText(0 + btnComma.getText());</span>
+<span class="nc" id="L718">			isFirstAction = false;</span>
+<span class="nc bnc" id="L719" title="All 2 branches missed.">		} else if (display.getText().length() &gt;= 19) {</span>
 			// length &gt;= 19 (instead of 20) because there will be a number added after &quot;,&quot;
 			// Do nothing, does not fit screen
-<span class="nc bnc" id="L581" title="All 2 branches missed.">		} else if (!(display.getText().contains(&quot;,&quot;))) {</span>
-<span class="nc" id="L582">			display.setText(display.getText() + btnComma.getText());</span>
+<span class="nc bnc" id="L722" title="All 2 branches missed.">		} else if (!(display.getText().contains(&quot;,&quot;))) {</span>
+<span class="nc" id="L723">			display.setText(display.getText() + btnComma.getText());</span>
 		}
-<span class="nc" id="L584">	}</span>
+<span class="nc" id="L725">	}</span>
 
 	/**
 	 * Invoked by pressing btnEquals. Checks which operator was chosen and run
@@ -589,209 +730,252 @@ public class CalculatorWindow {
 	 * in their ActionListener
 	 */
 	public void doCalculation() {
-<span class="nc bnc" id="L592" title="All 7 branches missed.">		switch (chosenOperator) {</span>
+<span class="nc bnc" id="L733" title="All 7 branches missed.">		switch (chosenOperator) {</span>
 		case '+':
-<span class="nc" id="L594">			continueAddition();</span>
-<span class="nc" id="L595">			break;</span>
+<span class="nc" id="L735">			continueAddition();</span>
+<span class="nc" id="L736">			break;</span>
 		case '-':
-<span class="nc" id="L597">			continueSubtraction();</span>
-<span class="nc" id="L598">			break;</span>
+<span class="nc" id="L738">			continueSubtraction();</span>
+<span class="nc" id="L739">			break;</span>
 		case '*':
-<span class="nc" id="L600">			continueMultiplication();</span>
-<span class="nc" id="L601">			break;</span>
+<span class="nc" id="L741">			continueMultiplication();</span>
+<span class="nc" id="L742">			break;</span>
 		case '/':
-<span class="nc bnc" id="L603" title="All 2 branches missed.">			if (getDisplayValue() == 0) {</span>
-<span class="nc" id="L604">				display.setText(&quot;No division by zero!&quot;);</span>
-<span class="nc" id="L605">				isFirstAction = false;</span>
+<span class="nc bnc" id="L744" title="All 2 branches missed.">			if (getDisplayValue() == 0) {</span>
+<span class="nc" id="L745">				display.setText(&quot;No division by zero!&quot;);</span>
+<span class="nc" id="L746">				isFirstAction = false;</span>
 			} else {
-<span class="nc" id="L607">				continueDivision();</span>
+<span class="nc" id="L748">				continueDivision();</span>
 			}
-<span class="nc" id="L609">			break;</span>
+<span class="nc" id="L750">			break;</span>
 		case '%':
-<span class="nc" id="L611">			secondNumber = getDisplayValue();</span>
-<span class="nc bnc" id="L612" title="All 4 branches missed.">			if (((firstNumber % 1) &gt; 0) || ((getDisplayValue() % 1) &gt; 0)) {</span>
-<span class="nc" id="L613">				display.setText(&quot;Modulus only take integers!&quot;);</span>
-<span class="nc" id="L614">				isFirstAction = false;</span>
+<span class="nc" id="L752">			secondNumber = getDisplayValue();</span>
+<span class="nc bnc" id="L753" title="All 4 branches missed.">			if (((firstNumber % 1) &gt; 0) || ((getDisplayValue() % 1) &gt; 0)) {</span>
+<span class="nc" id="L754">				display.setText(&quot;Modulus only take integers!&quot;);</span>
+<span class="nc" id="L755">				isFirstAction = false;</span>
 			} else {
-<span class="nc" id="L616">				continueRemainder();</span>
+<span class="nc" id="L757">				continueRemainder();</span>
 			}
-<span class="nc" id="L618">			break;</span>
+<span class="nc" id="L759">			break;</span>
 		case '^':
-<span class="nc" id="L620">			continuePowerOf();</span>
-<span class="nc" id="L621">			break;</span>
+<span class="nc" id="L761">			continuePowerOf();</span>
+<span class="nc" id="L762">			break;</span>
 		default:
 			// Do nothing
 			break;
 		}
-<span class="nc" id="L626">	}</span>
+<span class="nc" id="L767">	}</span>
+	
+	/**
+	 * Hides a randomly picked button from the calculator.
+	 */
+	public void releaseChaosMonkey() {
+		// If all buttons are hidden, change text on button. Else, release the chaos monkey!
+<span class="nc bnc" id="L774" title="All 2 branches missed.">		if (hiddenButtons.size() == 23) {</span>
+<span class="nc" id="L775">			btnChaos.setText(&quot;Sorry!&quot;);</span>
+		} else {
+<span class="nc" id="L777">			int buttonToHide = 100;</span>
+			
+			// If not all buttons are added to the  list of hidden buttons
+<span class="nc bnc" id="L780" title="All 2 branches missed.">			if (hiddenButtons.size() &lt; 23) {</span>
+				// If the button already is hidden, get a new random number
+				do {
+<span class="nc" id="L783">					buttonToHide = random.nextInt(23);</span>
+<span class="nc bnc" id="L784" title="All 2 branches missed.">				} while (hiddenButtons.contains(buttonToHide));</span>
+				// When found a button to hide that's yet visible,
+				// add it to list of hidden buttons and hide it
+<span class="nc" id="L787">				hiddenButtons.add(buttonToHide);</span>
+<span class="nc" id="L788">				listOfButtons.get(buttonToHide).setVisible(false);</span>
+			}
+		}
+<span class="nc" id="L791">	}</span>
+		
 
 	/**
 	 * ActionListeners for all buttons.
 	 */
 	public void addActionListeners() {
 
-<span class="nc" id="L633">		btnSwitchOn.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L799">		btnSwitchOn.addActionListener(new ActionListener() {</span>
 			public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L635">				switchMode();</span>
-<span class="nc" id="L636">			}</span>
+<span class="nc" id="L801">				switchMode();</span>
+<span class="nc" id="L802">			}</span>
 		});
 
-<span class="nc" id="L639">		btnSwitchOff.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L805">		btnSwitchOff.addActionListener(new ActionListener() {</span>
 			public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L641">				switchMode();</span>
-<span class="nc" id="L642">			}</span>
+<span class="nc" id="L807">				switchMode();</span>
+<span class="nc" id="L808">			}</span>
+		});
+		
+<span class="nc" id="L811">		btnSuperModeOn.addActionListener(new ActionListener() {</span>
+			public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L813">				switchSuperMode();</span>
+<span class="nc" id="L814">			}</span>
+		});
+		
+<span class="nc" id="L817">		btnSuperModeOff.addActionListener(new ActionListener() {</span>
+			public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L819">				switchSuperMode();</span>
+<span class="nc" id="L820">			}</span>
 		});
 
-<span class="nc" id="L645">		btnRandom.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L823">		btnRandom.addActionListener(new ActionListener() {</span>
 			public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L647">				createRandomValue();</span>
-<span class="nc" id="L648">			}</span>
+<span class="nc" id="L825">				createRandomValue();</span>
+<span class="nc" id="L826">			}</span>
 		});
 
-<span class="nc" id="L651">		btnClear.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L829">		btnClear.addActionListener(new ActionListener() {</span>
 			public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L653">				setDisplayValue(0);</span>
-<span class="nc" id="L654">				getCleanState();</span>
-<span class="nc" id="L655">			}</span>
+<span class="nc" id="L831">				setDisplayValue(0);</span>
+<span class="nc" id="L832">				getCleanState();</span>
+<span class="nc" id="L833">			}</span>
 		});
 
-<span class="nc" id="L658">		btnEquals.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L836">		btnEquals.addActionListener(new ActionListener() {</span>
 			public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L660">				doCalculation();</span>
-<span class="nc" id="L661">			}</span>
+<span class="nc" id="L838">				doCalculation();</span>
+<span class="nc" id="L839">			}</span>
 		});
 
-<span class="nc" id="L664">		btnAddition.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L842">		btnAddition.addActionListener(new ActionListener() {</span>
 			public void actionPerformed(ActionEvent e) {
-<span class="nc bnc" id="L666" title="All 2 branches missed.">				if (!(checkIfFirstAction())) {</span>
-<span class="nc" id="L667">					startAddition();</span>
+<span class="nc bnc" id="L844" title="All 2 branches missed.">				if (!(checkIfFirstAction())) {</span>
+<span class="nc" id="L845">					startAddition();</span>
 				}
-<span class="nc" id="L669">			}</span>
+<span class="nc" id="L847">			}</span>
 		});
 
-<span class="nc" id="L672">		btnSubtraction.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L850">		btnSubtraction.addActionListener(new ActionListener() {</span>
 			public void actionPerformed(ActionEvent e) {
-<span class="nc bnc" id="L674" title="All 2 branches missed.">				if (!(checkIfFirstAction())) {</span>
-<span class="nc" id="L675">					startSubtraction();</span>
+<span class="nc bnc" id="L852" title="All 2 branches missed.">				if (!(checkIfFirstAction())) {</span>
+<span class="nc" id="L853">					startSubtraction();</span>
 				}
-<span class="nc" id="L677">			}</span>
+<span class="nc" id="L855">			}</span>
 		});
 
-<span class="nc" id="L680">		btnMultiplication.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L858">		btnMultiplication.addActionListener(new ActionListener() {</span>
 			public void actionPerformed(ActionEvent e) {
-<span class="nc bnc" id="L682" title="All 2 branches missed.">				if (!(checkIfFirstAction())) {</span>
-<span class="nc" id="L683">					startMultiplication();</span>
+<span class="nc bnc" id="L860" title="All 2 branches missed.">				if (!(checkIfFirstAction())) {</span>
+<span class="nc" id="L861">					startMultiplication();</span>
 				}
-<span class="nc" id="L685">			}</span>
+<span class="nc" id="L863">			}</span>
 		});
 
-<span class="nc" id="L688">		btnDivision.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L866">		btnDivision.addActionListener(new ActionListener() {</span>
 			public void actionPerformed(ActionEvent e) {
-<span class="nc bnc" id="L690" title="All 2 branches missed.">				if (!(checkIfFirstAction())) {</span>
-<span class="nc" id="L691">					startDivision();</span>
+<span class="nc bnc" id="L868" title="All 2 branches missed.">				if (!(checkIfFirstAction())) {</span>
+<span class="nc" id="L869">					startDivision();</span>
 				}
-<span class="nc" id="L693">			}</span>
+<span class="nc" id="L871">			}</span>
 		});
 
-<span class="nc" id="L696">		btnPinpad0.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L874">		btnPinpad0.addActionListener(new ActionListener() {</span>
 			public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L698">				pinpadNumberPressed(btnPinpad0.getText());</span>
-<span class="nc" id="L699">			}</span>
+<span class="nc" id="L876">				pinpadNumberPressed(btnPinpad0.getText());</span>
+<span class="nc" id="L877">			}</span>
 		});
 
-<span class="nc" id="L702">		btnPinpad1.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L880">		btnPinpad1.addActionListener(new ActionListener() {</span>
 			public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L704">				pinpadNumberPressed(btnPinpad1.getText());</span>
-<span class="nc" id="L705">			}</span>
+<span class="nc" id="L882">				pinpadNumberPressed(btnPinpad1.getText());</span>
+<span class="nc" id="L883">			}</span>
 		});
 
-<span class="nc" id="L708">		btnPinpad2.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L886">		btnPinpad2.addActionListener(new ActionListener() {</span>
 			public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L710">				pinpadNumberPressed(btnPinpad2.getText());</span>
-<span class="nc" id="L711">			}</span>
+<span class="nc" id="L888">				pinpadNumberPressed(btnPinpad2.getText());</span>
+<span class="nc" id="L889">			}</span>
 		});
 
-<span class="nc" id="L714">		btnPinpad3.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L892">		btnPinpad3.addActionListener(new ActionListener() {</span>
 			public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L716">				pinpadNumberPressed(btnPinpad3.getText());</span>
-<span class="nc" id="L717">			}</span>
+<span class="nc" id="L894">				pinpadNumberPressed(btnPinpad3.getText());</span>
+<span class="nc" id="L895">			}</span>
 		});
 
-<span class="nc" id="L720">		btnPinpad4.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L898">		btnPinpad4.addActionListener(new ActionListener() {</span>
 			public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L722">				pinpadNumberPressed(btnPinpad4.getText());</span>
-<span class="nc" id="L723">			}</span>
+<span class="nc" id="L900">				pinpadNumberPressed(btnPinpad4.getText());</span>
+<span class="nc" id="L901">			}</span>
 		});
 
-<span class="nc" id="L726">		btnPinpad5.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L904">		btnPinpad5.addActionListener(new ActionListener() {</span>
 			public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L728">				pinpadNumberPressed(btnPinpad5.getText());</span>
-<span class="nc" id="L729">			}</span>
+<span class="nc" id="L906">				pinpadNumberPressed(btnPinpad5.getText());</span>
+<span class="nc" id="L907">			}</span>
 		});
 
-<span class="nc" id="L732">		btnPinpad6.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L910">		btnPinpad6.addActionListener(new ActionListener() {</span>
 			public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L734">				pinpadNumberPressed(btnPinpad6.getText());</span>
-<span class="nc" id="L735">			}</span>
+<span class="nc" id="L912">				pinpadNumberPressed(btnPinpad6.getText());</span>
+<span class="nc" id="L913">			}</span>
 		});
 
-<span class="nc" id="L738">		btnPinpad7.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L916">		btnPinpad7.addActionListener(new ActionListener() {</span>
 			public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L740">				pinpadNumberPressed(btnPinpad7.getText());</span>
-<span class="nc" id="L741">			}</span>
+<span class="nc" id="L918">				pinpadNumberPressed(btnPinpad7.getText());</span>
+<span class="nc" id="L919">			}</span>
 		});
 
-<span class="nc" id="L744">		btnPinpad8.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L922">		btnPinpad8.addActionListener(new ActionListener() {</span>
 			public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L746">				pinpadNumberPressed(btnPinpad8.getText());</span>
-<span class="nc" id="L747">			}</span>
+<span class="nc" id="L924">				pinpadNumberPressed(btnPinpad8.getText());</span>
+<span class="nc" id="L925">			}</span>
 		});
 
-<span class="nc" id="L750">		btnPinpad9.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L928">		btnPinpad9.addActionListener(new ActionListener() {</span>
 			public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L752">				pinpadNumberPressed(btnPinpad9.getText());</span>
-<span class="nc" id="L753">			}</span>
+<span class="nc" id="L930">				pinpadNumberPressed(btnPinpad9.getText());</span>
+<span class="nc" id="L931">			}</span>
 		});
 
-<span class="nc" id="L756">		btnComma.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L934">		btnComma.addActionListener(new ActionListener() {</span>
 			public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L758">				addComma();</span>
-<span class="nc" id="L759">			}</span>
+<span class="nc" id="L936">				addComma();</span>
+<span class="nc" id="L937">			}</span>
 		});
 
-<span class="nc" id="L762">		btnPowerOfTen.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L940">		btnPowerOfTen.addActionListener(new ActionListener() {</span>
 			public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L764">				performPowerOfTen();</span>
-<span class="nc" id="L765">			}</span>
+<span class="nc" id="L942">				performPowerOfTen();</span>
+<span class="nc" id="L943">			}</span>
 		});
 
-<span class="nc" id="L768">		btnPowerOf.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L946">		btnPowerOf.addActionListener(new ActionListener() {</span>
 			public void actionPerformed(ActionEvent e) {
-<span class="nc bnc" id="L770" title="All 2 branches missed.">				if (!(checkIfFirstAction())) {</span>
-<span class="nc" id="L771">					startPowerOf();</span>
+<span class="nc bnc" id="L948" title="All 2 branches missed.">				if (!(checkIfFirstAction())) {</span>
+<span class="nc" id="L949">					startPowerOf();</span>
 				}
-<span class="nc" id="L773">			}</span>
+<span class="nc" id="L951">			}</span>
 		});
 
-<span class="nc" id="L776">		btnSquareOf.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L954">		btnSquareOf.addActionListener(new ActionListener() {</span>
 			public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L778">				performSquareOf();</span>
-<span class="nc" id="L779">			}</span>
+<span class="nc" id="L956">				performSquareOf();</span>
+<span class="nc" id="L957">			}</span>
 		});
 
-<span class="nc" id="L782">		btnCubeOf.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L960">		btnCubeOf.addActionListener(new ActionListener() {</span>
 			public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L784">				performCubeOf();</span>
-<span class="nc" id="L785">			}</span>
+<span class="nc" id="L962">				performCubeOf();</span>
+<span class="nc" id="L963">			}</span>
 		});
 
-<span class="nc" id="L788">		btnRemainder.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L966">		btnRemainder.addActionListener(new ActionListener() {</span>
 			public void actionPerformed(ActionEvent e) {
-<span class="nc bnc" id="L790" title="All 2 branches missed.">				if (!(checkIfFirstAction())) {</span>
-<span class="nc" id="L791">					startRemainder();</span>
+<span class="nc bnc" id="L968" title="All 2 branches missed.">				if (!(checkIfFirstAction())) {</span>
+<span class="nc" id="L969">					startRemainder();</span>
 				}
-<span class="nc" id="L793">			}</span>
+<span class="nc" id="L971">			}</span>
 		});
-<span class="nc" id="L795">	}</span>
+		
+<span class="nc" id="L974">		btnChaos.addActionListener(new ActionListener() {</span>
+			public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L976">				releaseChaosMonkey();</span>
+<span class="nc" id="L977">			}</span>
+		});
+<span class="nc" id="L979">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

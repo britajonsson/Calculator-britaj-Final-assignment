@@ -2,162 +2,162 @@
 <testng-results skipped="0" failed="0" total="34" passed="34">
   <reporter-output>
   </reporter-output>
-  <suite name="Surefire suite" duration-ms="783" started-at="2017-12-14T20:21:48Z" finished-at="2017-12-14T20:21:49Z">
+  <suite name="Surefire suite" duration-ms="745" started-at="2017-12-15T08:16:27Z" finished-at="2017-12-15T08:16:28Z">
     <groups>
     </groups>
-    <test name="Surefire test" duration-ms="783" started-at="2017-12-14T20:21:48Z" finished-at="2017-12-14T20:21:49Z">
+    <test name="Surefire test" duration-ms="745" started-at="2017-12-15T08:16:27Z" finished-at="2017-12-15T08:16:28Z">
       <class name="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTest">
-        <test-method status="PASS" signature="testPositivePowerOf()[pri:0, instance:testPositivePowerOf(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTest)]" name="testPositivePowerOf" duration-ms="9" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testPositivePowerOf()[pri:0, instance:testPositivePowerOf(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTest)]" name="testPositivePowerOf" duration-ms="9" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPositivePowerOf -->
-        <test-method status="PASS" signature="testNegativePowerOf()[pri:0, instance:testNegativePowerOf(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTest)]" name="testNegativePowerOf" duration-ms="8" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testNegativePowerOf()[pri:0, instance:testNegativePowerOf(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTest)]" name="testNegativePowerOf" duration-ms="7" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testNegativePowerOf -->
-        <test-method status="PASS" signature="testPowerOfWithBase0()[pri:0, instance:testPowerOfWithBase0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTest)]" name="testPowerOfWithBase0" duration-ms="12" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testPowerOfWithBase0()[pri:0, instance:testPowerOfWithBase0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTest)]" name="testPowerOfWithBase0" duration-ms="6" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPowerOfWithBase0 -->
-        <test-method status="PASS" signature="testPowerOfWithExponent0()[pri:0, instance:testPowerOfWithExponent0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTest)]" name="testPowerOfWithExponent0" duration-ms="19" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testPowerOfWithExponent0()[pri:0, instance:testPowerOfWithExponent0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTest)]" name="testPowerOfWithExponent0" duration-ms="11" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPowerOfWithExponent0 -->
       </class> <!-- com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTest -->
       <class name="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsSquareOfTest">
-        <test-method status="PASS" signature="testNegativeSquareOf()[pri:0, instance:testNegativeSquareOf(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsSquareOfTest)]" name="testNegativeSquareOf" duration-ms="27" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testNegativeSquareOf()[pri:0, instance:testNegativeSquareOf(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsSquareOfTest)]" name="testNegativeSquareOf" duration-ms="44" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testNegativeSquareOf -->
-        <test-method status="PASS" signature="testSquareOfWithBase0()[pri:0, instance:testSquareOfWithBase0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsSquareOfTest)]" name="testSquareOfWithBase0" duration-ms="0" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testSquareOfWithBase0()[pri:0, instance:testSquareOfWithBase0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsSquareOfTest)]" name="testSquareOfWithBase0" duration-ms="1" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSquareOfWithBase0 -->
-        <test-method status="PASS" signature="testPositiveSquareOf()[pri:0, instance:testPositiveSquareOf(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsSquareOfTest)]" name="testPositiveSquareOf" duration-ms="39" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testPositiveSquareOf()[pri:0, instance:testPositiveSquareOf(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsSquareOfTest)]" name="testPositiveSquareOf" duration-ms="45" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPositiveSquareOf -->
       </class> <!-- com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsSquareOfTest -->
       <class name="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsMultiplicationTest">
-        <test-method status="PASS" signature="testMultiplicationWithFirstFactor0()[pri:0, instance:testMultiplicationWithFirstFactor0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsMultiplicationTest)]" name="testMultiplicationWithFirstFactor0" duration-ms="22" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testMultiplicationWithFirstFactor0()[pri:0, instance:testMultiplicationWithFirstFactor0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsMultiplicationTest)]" name="testMultiplicationWithFirstFactor0" duration-ms="12" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testMultiplicationWithFirstFactor0 -->
-        <test-method status="PASS" signature="testPositiveMultiplication()[pri:0, instance:testPositiveMultiplication(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsMultiplicationTest)]" name="testPositiveMultiplication" duration-ms="15" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testPositiveMultiplication()[pri:0, instance:testPositiveMultiplication(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsMultiplicationTest)]" name="testPositiveMultiplication" duration-ms="15" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPositiveMultiplication -->
-        <test-method status="PASS" signature="testMultiplicationWithSecondFactor0()[pri:0, instance:testMultiplicationWithSecondFactor0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsMultiplicationTest)]" name="testMultiplicationWithSecondFactor0" duration-ms="10" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testMultiplicationWithSecondFactor0()[pri:0, instance:testMultiplicationWithSecondFactor0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsMultiplicationTest)]" name="testMultiplicationWithSecondFactor0" duration-ms="16" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testMultiplicationWithSecondFactor0 -->
-        <test-method status="PASS" signature="testNegativeMultiplication()[pri:0, instance:testNegativeMultiplication(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsMultiplicationTest)]" name="testNegativeMultiplication" duration-ms="8" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testNegativeMultiplication()[pri:0, instance:testNegativeMultiplication(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsMultiplicationTest)]" name="testNegativeMultiplication" duration-ms="17" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testNegativeMultiplication -->
       </class> <!-- com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsMultiplicationTest -->
       <class name="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsSubtractionTest">
-        <test-method status="PASS" signature="testSubtractionWithMinuend0()[pri:0, instance:testSubtractionWithMinuend0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsSubtractionTest)]" name="testSubtractionWithMinuend0" duration-ms="9" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testSubtractionWithMinuend0()[pri:0, instance:testSubtractionWithMinuend0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsSubtractionTest)]" name="testSubtractionWithMinuend0" duration-ms="7" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSubtractionWithMinuend0 -->
-        <test-method status="PASS" signature="testNegativeSubtraction()[pri:0, instance:testNegativeSubtraction(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsSubtractionTest)]" name="testNegativeSubtraction" duration-ms="6" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testNegativeSubtraction()[pri:0, instance:testNegativeSubtraction(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsSubtractionTest)]" name="testNegativeSubtraction" duration-ms="8" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testNegativeSubtraction -->
-        <test-method status="PASS" signature="testPositiveSubtraction()[pri:0, instance:testPositiveSubtraction(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsSubtractionTest)]" name="testPositiveSubtraction" duration-ms="7" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testPositiveSubtraction()[pri:0, instance:testPositiveSubtraction(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsSubtractionTest)]" name="testPositiveSubtraction" duration-ms="8" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPositiveSubtraction -->
-        <test-method status="PASS" signature="testSubtractionWithSubtrahend0()[pri:0, instance:testSubtractionWithSubtrahend0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsSubtractionTest)]" name="testSubtractionWithSubtrahend0" duration-ms="11" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testSubtractionWithSubtrahend0()[pri:0, instance:testSubtractionWithSubtrahend0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsSubtractionTest)]" name="testSubtractionWithSubtrahend0" duration-ms="6" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSubtractionWithSubtrahend0 -->
       </class> <!-- com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsSubtractionTest -->
       <class name="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTenTest">
-        <test-method status="PASS" signature="testNegativePowerOfTen()[pri:0, instance:testNegativePowerOfTen(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTenTest)]" name="testNegativePowerOfTen" duration-ms="21" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testNegativePowerOfTen()[pri:0, instance:testNegativePowerOfTen(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTenTest)]" name="testNegativePowerOfTen" duration-ms="32" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testNegativePowerOfTen -->
-        <test-method status="PASS" signature="testPositivePowerOfTen()[pri:0, instance:testPositivePowerOfTen(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTenTest)]" name="testPositivePowerOfTen" duration-ms="9" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testPositivePowerOfTen()[pri:0, instance:testPositivePowerOfTen(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTenTest)]" name="testPositivePowerOfTen" duration-ms="11" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPositivePowerOfTen -->
-        <test-method status="PASS" signature="testPowerOfTenWithExponent0()[pri:0, instance:testPowerOfTenWithExponent0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTenTest)]" name="testPowerOfTenWithExponent0" duration-ms="0" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testPowerOfTenWithExponent0()[pri:0, instance:testPowerOfTenWithExponent0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTenTest)]" name="testPowerOfTenWithExponent0" duration-ms="0" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPowerOfTenWithExponent0 -->
       </class> <!-- com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsPowerOfTenTest -->
       <class name="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsAdditionTest">
-        <test-method status="PASS" signature="testAdditionWithSecondSummand0()[pri:0, instance:testAdditionWithSecondSummand0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsAdditionTest)]" name="testAdditionWithSecondSummand0" duration-ms="18" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testAdditionWithSecondSummand0()[pri:0, instance:testAdditionWithSecondSummand0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsAdditionTest)]" name="testAdditionWithSecondSummand0" duration-ms="13" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testAdditionWithSecondSummand0 -->
-        <test-method status="PASS" signature="testNegativeAddition()[pri:0, instance:testNegativeAddition(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsAdditionTest)]" name="testNegativeAddition" duration-ms="10" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testNegativeAddition()[pri:0, instance:testNegativeAddition(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsAdditionTest)]" name="testNegativeAddition" duration-ms="7" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testNegativeAddition -->
-        <test-method status="PASS" signature="testPositiveAddition()[pri:0, instance:testPositiveAddition(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsAdditionTest)]" name="testPositiveAddition" duration-ms="10" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testPositiveAddition()[pri:0, instance:testPositiveAddition(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsAdditionTest)]" name="testPositiveAddition" duration-ms="9" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPositiveAddition -->
-        <test-method status="PASS" signature="testAdditionWithFirstSummand0()[pri:0, instance:testAdditionWithFirstSummand0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsAdditionTest)]" name="testAdditionWithFirstSummand0" duration-ms="20" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testAdditionWithFirstSummand0()[pri:0, instance:testAdditionWithFirstSummand0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsAdditionTest)]" name="testAdditionWithFirstSummand0" duration-ms="9" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testAdditionWithFirstSummand0 -->
       </class> <!-- com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsAdditionTest -->
       <class name="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsRemainderTest">
-        <test-method status="PASS" signature="testNegativeRemainder()[pri:0, instance:testNegativeRemainder(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsRemainderTest)]" name="testNegativeRemainder" duration-ms="11" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testNegativeRemainder()[pri:0, instance:testNegativeRemainder(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsRemainderTest)]" name="testNegativeRemainder" duration-ms="18" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testNegativeRemainder -->
-        <test-method status="PASS" signature="testRemainderWithDividend0()[pri:0, instance:testRemainderWithDividend0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsRemainderTest)]" name="testRemainderWithDividend0" duration-ms="9" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testRemainderWithDividend0()[pri:0, instance:testRemainderWithDividend0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsRemainderTest)]" name="testRemainderWithDividend0" duration-ms="20" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testRemainderWithDividend0 -->
-        <test-method status="PASS" signature="testRemainderWithDivisor0()[pri:0, instance:testRemainderWithDivisor0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsRemainderTest)]" name="testRemainderWithDivisor0" duration-ms="0" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testRemainderWithDivisor0()[pri:0, instance:testRemainderWithDivisor0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsRemainderTest)]" name="testRemainderWithDivisor0" duration-ms="0" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testRemainderWithDivisor0 -->
-        <test-method status="PASS" signature="testPositiveRemainder()[pri:0, instance:testPositiveRemainder(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsRemainderTest)]" name="testPositiveRemainder" duration-ms="30" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testPositiveRemainder()[pri:0, instance:testPositiveRemainder(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsRemainderTest)]" name="testPositiveRemainder" duration-ms="13" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPositiveRemainder -->
       </class> <!-- com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsRemainderTest -->
       <class name="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsRandomTest">
-        <test-method status="PASS" signature="testRandom0to1()[pri:0, instance:testRandom0to1(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsRandomTest)]" name="testRandom0to1" duration-ms="27" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testRandom0to1()[pri:0, instance:testRandom0to1(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsRandomTest)]" name="testRandom0to1" duration-ms="29" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testRandom0to1 -->
       </class> <!-- com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsRandomTest -->
       <class name="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsDivisionTest">
-        <test-method status="PASS" signature="testNegativeDivision()[pri:0, instance:testNegativeDivision(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsDivisionTest)]" name="testNegativeDivision" duration-ms="61" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testNegativeDivision()[pri:0, instance:testNegativeDivision(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsDivisionTest)]" name="testNegativeDivision" duration-ms="56" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testNegativeDivision -->
-        <test-method status="PASS" signature="testDivisionWithDividend0()[pri:0, instance:testDivisionWithDividend0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsDivisionTest)]" name="testDivisionWithDividend0" duration-ms="43" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testDivisionWithDividend0()[pri:0, instance:testDivisionWithDividend0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsDivisionTest)]" name="testDivisionWithDividend0" duration-ms="28" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testDivisionWithDividend0 -->
-        <test-method status="PASS" signature="testPositiveDivision()[pri:0, instance:testPositiveDivision(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsDivisionTest)]" name="testPositiveDivision" duration-ms="36" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testPositiveDivision()[pri:0, instance:testPositiveDivision(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsDivisionTest)]" name="testPositiveDivision" duration-ms="23" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPositiveDivision -->
-        <test-method status="PASS" signature="testDivisionWithDivisor0()[pri:0, instance:testDivisionWithDivisor0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsDivisionTest)]" name="testDivisionWithDivisor0" duration-ms="7" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testDivisionWithDivisor0()[pri:0, instance:testDivisionWithDivisor0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsDivisionTest)]" name="testDivisionWithDivisor0" duration-ms="1" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testDivisionWithDivisor0 -->
       </class> <!-- com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.BasicOperationsDivisionTest -->
       <class name="com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsCubeOfTest">
-        <test-method status="PASS" signature="testNegativeCubeOf()[pri:0, instance:testNegativeCubeOf(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsCubeOfTest)]" name="testNegativeCubeOf" duration-ms="20" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testNegativeCubeOf()[pri:0, instance:testNegativeCubeOf(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsCubeOfTest)]" name="testNegativeCubeOf" duration-ms="31" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testNegativeCubeOf -->
-        <test-method status="PASS" signature="testPositiveCubeOf()[pri:0, instance:testPositiveCubeOf(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsCubeOfTest)]" name="testPositiveCubeOf" duration-ms="34" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testPositiveCubeOf()[pri:0, instance:testPositiveCubeOf(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsCubeOfTest)]" name="testPositiveCubeOf" duration-ms="43" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPositiveCubeOf -->
-        <test-method status="PASS" signature="testCubeOfWithBase0()[pri:0, instance:testCubeOfWithBase0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsCubeOfTest)]" name="testCubeOfWithBase0" duration-ms="0" started-at="2017-12-14T21:21:49Z" finished-at="2017-12-14T21:21:49Z">
+        <test-method status="PASS" signature="testCubeOfWithBase0()[pri:0, instance:testCubeOfWithBase0(com.exercise.maven.project_final_assignment_OOP.CalculatorTestClasses.AdvancedOperationsCubeOfTest)]" name="testCubeOfWithBase0" duration-ms="1" started-at="2017-12-15T09:16:28Z" finished-at="2017-12-15T09:16:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCubeOfWithBase0 -->
