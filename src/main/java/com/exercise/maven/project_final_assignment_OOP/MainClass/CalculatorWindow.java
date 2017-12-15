@@ -681,6 +681,31 @@ public class CalculatorWindow {
 			break;
 		}
 	}
+	
+	/**
+	 * Hides a randomly picked button from the calculator.
+	 */
+	public void releaseChaosMonkey() {
+		// If all buttons are hidden, change text on button. Else, release the chaos monkey!
+		if (hiddenButtons.size() == 23) {
+			btnChaos.setText("Sorry!");
+		} else {
+			int buttonToHide = 100;
+			
+			// If not all buttons are added to the  list of hidden buttons
+			if (hiddenButtons.size() < 23) {
+				// If the button already is hidden, get a new random number
+				do {
+					buttonToHide = random.nextInt(23);
+				} while (hiddenButtons.contains(buttonToHide));
+				// When found a button to hide that's yet visible,
+				// add it to list of hidden buttons and hide it
+				hiddenButtons.add(buttonToHide);
+				listOfButtons.get(buttonToHide).setVisible(false);
+			}
+		}
+	}
+		
 
 	/**
 	 * ActionListeners for all buttons.
@@ -852,24 +877,7 @@ public class CalculatorWindow {
 		
 		btnChaos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// If all buttons are hidden, change text on button. Else, release the chaos monkey!
-				if (hiddenButtons.size() == 23) {
-					btnChaos.setText("Sorry!");
-				} else {
-					int buttonToHide = 100;
-					
-					// If not all buttons are added to the  list of hidden buttons
-					if (hiddenButtons.size() < 23) {
-						// If the button already is hidden, get a new random number
-						do {
-							buttonToHide = random.nextInt(23);
-						} while (hiddenButtons.contains(buttonToHide));
-						// When found a button to hide that's yet visible,
-						// add it to list of hidden buttons and hide it
-						hiddenButtons.add(buttonToHide);
-						listOfButtons.get(buttonToHide).setVisible(false);
-					}
-				}	
+				releaseChaosMonkey();
 			}
 		});
 	}
