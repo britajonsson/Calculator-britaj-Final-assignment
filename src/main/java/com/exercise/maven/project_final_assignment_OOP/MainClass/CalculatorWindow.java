@@ -59,6 +59,9 @@ public class CalculatorWindow {
 	public JLabel lblAdvancedMode = new JLabel("Advanced mode");
 	public JTextField display = new JTextField("0");
 	public JDialog dialog = new JDialog();
+	public JButton btnSuperModeOn = new JButton();
+	public JButton btnSuperModeOff = new JButton();
+	public JLabel lblSuperMode = new JLabel("Super advanced mode");
 	public JButton btnChaos = new JButton("Chaos");
 
 	private DecimalFormat df = new DecimalFormat("0.#################");
@@ -70,6 +73,8 @@ public class CalculatorWindow {
 
 	// Used to decide if Advanced buttons should be visible or not.
 	public boolean isBasic = true;
+	// Used to decide if Super mode buttons should be visible or not.
+	public boolean isSuper = false;
 
 	// Used to decide if a number should be printed when pressing the pinpad.
 	// If true = OK to write in display, if false = add to existing number or use in
@@ -102,6 +107,8 @@ public class CalculatorWindow {
 
 		// Deactivate advanced buttons at start
 		deActivateAdvanceButtons();
+		deActivateSuperButtons();
+		hideSuperSwitch();
 		
 		createArrayListOfButtons();
 	}
@@ -147,7 +154,11 @@ public class CalculatorWindow {
 		btnSwitchOn.setBounds(227, 286, 13, 20);
 		btnSwitchOff.setBounds(239, 286, 13, 20);
 		lblAdvancedMode.setBounds(143, 282, 87, 29);
-		btnChaos.setBounds(6, 301, 117, 29);
+		btnSuperModeOn.setBounds(227, 319, 13, 20);
+		btnSuperModeOff.setBounds(239, 319, 13, 20);
+		lblSuperMode.setBounds(114, 316, 116, 29);
+		btnChaos.setBounds(193, 345, 65, 29);
+	
 
 		// Set font (for those with bigger text)
 		btnPowerOf.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
@@ -157,6 +168,7 @@ public class CalculatorWindow {
 		btnRemainder.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
 		btnRandom.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
 		lblAdvancedMode.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
+		lblSuperMode.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
 
 		// Adding the components to frame
 		frame.getContentPane().add(btnPinpad0);
@@ -186,6 +198,9 @@ public class CalculatorWindow {
 		frame.getContentPane().add(btnSwitchOff);
 		frame.getContentPane().add(lblAdvancedMode);
 		frame.getContentPane().add(display);
+		frame.getContentPane().add(btnSuperModeOn);
+		frame.getContentPane().add(btnSuperModeOff);
+		frame.getContentPane().add(lblSuperMode);
 		frame.getContentPane().add(btnChaos);
 
 		// Settings for display field
@@ -203,7 +218,15 @@ public class CalculatorWindow {
 		btnSwitchOff.setOpaque(true);
 		btnSwitchOff.setBorderPainted(true);
 		btnSwitchOff.setFocusPainted(false);
-	
+		
+		// Super Advanced mode deactivated at start
+		btnSuperModeOn.setBackground(Color.RED);
+		btnSuperModeOn.setOpaque(true);
+		btnSuperModeOn.setBorderPainted(false);
+		btnSuperModeOn.setFocusPainted(false);
+		btnSuperModeOff.setOpaque(true);
+		btnSuperModeOff.setBorderPainted(true);
+		btnSuperModeOff.setFocusPainted(false);
 	}
 	
 	/**
@@ -252,7 +275,7 @@ public class CalculatorWindow {
 	}
 
 	/**
-	 * Activates the Advances buttons
+	 * Activates the Advanced buttons
 	 */
 	public void activateAdvanceButtons() {
 		btnPowerOf.setEnabled(true);
@@ -261,10 +284,12 @@ public class CalculatorWindow {
 		btnPowerOfTen.setEnabled(true);
 		btnRemainder.setEnabled(true);
 		btnRandom.setEnabled(true);
+		frame.setBounds(100, 100, 280, 408);
+		showSuperSwitch();
 	}
 
 	/**
-	 * Deactivates the Advances buttons
+	 * Deactivates the Advanced buttons
 	 */
 	public void deActivateAdvanceButtons() {
 		btnPowerOf.setEnabled(false);
@@ -273,6 +298,42 @@ public class CalculatorWindow {
 		btnPowerOfTen.setEnabled(false);
 		btnRemainder.setEnabled(false);
 		btnRandom.setEnabled(false);
+		frame.setBounds(100, 100, 280, 358);
+		hideSuperSwitch();
+	}
+	
+	/**
+	 * Show the Super switch
+	 */
+	public void showSuperSwitch() {
+		btnSuperModeOn.setVisible(true);
+		btnSuperModeOff.setVisible(true);
+		lblSuperMode.setVisible(true);
+		btnChaos.setVisible(true);
+	}
+	
+	/**
+	 * Hide the Super switch
+	 */
+	public void hideSuperSwitch() {
+		btnSuperModeOn.setVisible(false);
+		btnSuperModeOff.setVisible(false);
+		lblSuperMode.setVisible(false);
+		btnChaos.setVisible(false);
+	}
+	
+	/**
+	 * Activates the Super advanced buttons
+	 */
+	public void activateSuperButtons() {
+		btnChaos.setEnabled(true);
+	}
+
+	/**
+	 * Deactivates the Super Advanced buttons
+	 */
+	public void deActivateSuperButtons() {
+		btnChaos.setEnabled(false);
 	}
 
 	/**
@@ -295,6 +356,29 @@ public class CalculatorWindow {
 			btnSwitchOff.setBackground(new Color(238, 238, 238));
 			btnSwitchOff.setBorderPainted(true);
 			isBasic = true;
+		}
+	}
+	
+	/**
+	 * The switch for activating Super Advanced mode.
+	 */
+	public void switchSuperMode() {
+		if (!(isSuper)) {
+			// Activate Super mode
+			activateSuperButtons();
+			btnSuperModeOn.setBackground(new Color(238, 238, 238));
+			btnSuperModeOn.setBorderPainted(true);
+			btnSuperModeOff.setBackground(Color.GREEN);
+			btnSuperModeOff.setBorderPainted(false);
+			isSuper = true;
+		} else {
+			// Deactivate advanced buttons
+			deActivateSuperButtons();
+			btnSuperModeOn.setBackground(Color.RED);
+			btnSuperModeOn.setBorderPainted(false);
+			btnSuperModeOff.setBackground(new Color(238, 238, 238));
+			btnSuperModeOff.setBorderPainted(true);
+			isSuper = false;
 		}
 	}
 
@@ -721,6 +805,18 @@ public class CalculatorWindow {
 		btnSwitchOff.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				switchMode();
+			}
+		});
+		
+		btnSuperModeOn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				switchSuperMode();
+			}
+		});
+		
+		btnSuperModeOff.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				switchSuperMode();
 			}
 		});
 
