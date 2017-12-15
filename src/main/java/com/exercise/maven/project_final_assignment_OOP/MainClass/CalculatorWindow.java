@@ -6,6 +6,8 @@ import javax.swing.JDialog;
 
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Random;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JLabel;
@@ -26,7 +28,7 @@ import com.exercise.maven.project_final_assignment_OOP.CalculatorClasses.Advance
  * This will be fixed in a later version, promise!
  */
 public class CalculatorWindow {
-
+	Random random = new Random();
 	public AdvancedCalculator ac = new AdvancedCalculator();
 	public JFrame frame = new JFrame();
 	public JButton btnPinpad0 = new JButton("0");
@@ -57,8 +59,14 @@ public class CalculatorWindow {
 	public JLabel lblAdvancedMode = new JLabel("Advanced mode");
 	public JTextField display = new JTextField("0");
 	public JDialog dialog = new JDialog();
+	public JButton btnChaos = new JButton("Chaos");
 
 	private DecimalFormat df = new DecimalFormat("0.#################");
+	
+	// ArrayLists for pinpadPositions, all buttons and hidden buttons.
+	public ArrayList<String> pinpadPositions = new ArrayList<String>();
+	public ArrayList<JButton> listOfButtons = new ArrayList<JButton>();
+	public ArrayList<Integer> hiddenButtons = new ArrayList<Integer>();
 
 	// Used to decide if Advanced buttons should be visible or not.
 	public boolean isBasic = true;
@@ -94,6 +102,8 @@ public class CalculatorWindow {
 
 		// Deactivate advanced buttons at start
 		deActivateAdvanceButtons();
+		
+		createArrayListOfButtons();
 	}
 
 	/**
@@ -104,7 +114,6 @@ public class CalculatorWindow {
 		frame.setBounds(100, 100, 280, 358);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-
 	}
 
 	/**
@@ -138,6 +147,7 @@ public class CalculatorWindow {
 		btnSwitchOn.setBounds(227, 286, 13, 20);
 		btnSwitchOff.setBounds(239, 286, 13, 20);
 		lblAdvancedMode.setBounds(143, 282, 87, 29);
+		btnChaos.setBounds(6, 301, 117, 29);
 
 		// Set font (for those with bigger text)
 		btnPowerOf.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
@@ -176,6 +186,7 @@ public class CalculatorWindow {
 		frame.getContentPane().add(btnSwitchOff);
 		frame.getContentPane().add(lblAdvancedMode);
 		frame.getContentPane().add(display);
+		frame.getContentPane().add(btnChaos);
 
 		// Settings for display field
 		display.setColumns(10);
@@ -192,6 +203,52 @@ public class CalculatorWindow {
 		btnSwitchOff.setOpaque(true);
 		btnSwitchOff.setBorderPainted(true);
 		btnSwitchOff.setFocusPainted(false);
+	
+	}
+	
+	/**
+	 * Sets the values of the ArrayList containing all buttons.
+	 */
+	public void createArrayListOfButtons() {
+		listOfButtons.add(btnPinpad0);
+		listOfButtons.add(btnPinpad1);
+		listOfButtons.add(btnPinpad2);
+		listOfButtons.add(btnPinpad3);
+		listOfButtons.add(btnPinpad4);
+		listOfButtons.add(btnPinpad5);
+		listOfButtons.add(btnPinpad6);
+		listOfButtons.add(btnPinpad7);
+		listOfButtons.add(btnPinpad8);
+		listOfButtons.add(btnPinpad9);
+		listOfButtons.add(btnComma);
+		listOfButtons.add(btnEquals);
+		listOfButtons.add(btnDivision);
+		listOfButtons.add(btnMultiplication);
+		listOfButtons.add(btnSubtraction);
+		listOfButtons.add(btnAddition);
+		listOfButtons.add(btnPowerOf);
+		listOfButtons.add(btnSquareOf);
+		listOfButtons.add(btnCubeOf);
+		listOfButtons.add(btnPowerOfTen);
+		listOfButtons.add(btnRemainder);
+		listOfButtons.add(btnRandom);
+		listOfButtons.add(btnClear);
+	}
+	
+	/**
+	 * Sets the values in the ArrayList containing the positions (bounds) of all pinpad number buttons
+	 */
+	public void createArrayListOfPinpadPositions() {
+		pinpadPositions.add("63, 243, 29, 29");
+		pinpadPositions.add("22, 202, 29, 29");
+		pinpadPositions.add("63, 202, 29, 29");
+		pinpadPositions.add("104, 202, 29, 29");
+		pinpadPositions.add("22, 161, 29, 29");
+		pinpadPositions.add("63, 161, 29, 29");
+		pinpadPositions.add("104, 161, 29, 29");
+		pinpadPositions.add("22, 120, 29, 29");
+		pinpadPositions.add("63, 120, 29, 29");
+		pinpadPositions.add("104, 120, 29, 29");
 	}
 
 	/**
@@ -790,6 +847,29 @@ public class CalculatorWindow {
 				if (!(checkIfFirstAction())) {
 					startRemainder();
 				}
+			}
+		});
+		
+		btnChaos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// If all buttons are hidden, change text on button. Else, release the chaos monkey!
+				if (hiddenButtons.size() == 23) {
+					btnChaos.setText("Sorry!");
+				} else {
+					int buttonToHide = 100;
+					
+					// If not all buttons are added to the  list of hidden buttons
+					if (hiddenButtons.size() < 23) {
+						// If the button already is hidden, get a new random number
+						do {
+							buttonToHide = random.nextInt(23);
+						} while (hiddenButtons.contains(buttonToHide));
+						// When found a button to hide that's yet visible,
+						// add it to list of hidden buttons and hide it
+						hiddenButtons.add(buttonToHide);
+						listOfButtons.get(buttonToHide).setVisible(false);
+					}
+				}	
 			}
 		});
 	}
