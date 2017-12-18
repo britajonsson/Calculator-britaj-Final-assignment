@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.Insets;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -159,8 +161,39 @@ public class CalculatorWindow {
 		lblSuperMode.setBounds(114, 316, 116, 29);
 		btnChaos.setBounds(193, 345, 65, 29);
 	
+		// Removes the margin of the buttons (so the text will fit and not be replaced by "..."
+		btnPinpad0.setMargin(new Insets(1, 1, 1, 1));
+		btnPinpad1.setMargin(new Insets(1, 1, 1, 1));
+		btnPinpad2.setMargin(new Insets(1, 1, 1, 1));
+		btnPinpad3.setMargin(new Insets(1, 1, 1, 1));
+		btnPinpad4.setMargin(new Insets(1, 1, 1, 1));
+		btnPinpad5.setMargin(new Insets(1, 1, 1, 1));
+		btnPinpad6.setMargin(new Insets(1, 1, 1, 1));
+		btnPinpad7.setMargin(new Insets(1, 1, 1, 1));
+		btnPinpad8.setMargin(new Insets(1, 1, 1, 1));
+		btnPinpad9.setMargin(new Insets(1, 1, 1, 1));
+		btnComma.setMargin(new Insets(1, 1, 1, 1));
+		btnEquals.setMargin(new Insets(1, 1, 1, 1));
+		btnDivision.setMargin(new Insets(1, 1, 1, 1));
+		btnMultiplication.setMargin(new Insets(1, 1, 1, 1));
+		btnSubtraction.setMargin(new Insets(1, 1, 1, 1));
+		btnAddition.setMargin(new Insets(1, 1, 1, 1));
+		btnPowerOf.setMargin(new Insets(1, 1, 1, 1));
+		btnSquareOf.setMargin(new Insets(1, 1, 1, 1));
+		btnCubeOf.setMargin(new Insets(1, 1, 1, 1));
+		btnPowerOfTen.setMargin(new Insets(1, 1, 1, 1));
+		btnRemainder.setMargin(new Insets(1, 1, 1, 1));
+		btnRandom.setMargin(new Insets(1, 1, 1, 1));
+		btnClear.setMargin(new Insets(1, 1, 1, 1));
+		btnSwitchOn.setMargin(new Insets(1, 1, 1, 1));
+		btnSwitchOff.setMargin(new Insets(1, 1, 1, 1));
+		btnSuperModeOn.setMargin(new Insets(1, 1, 1, 1));
+		btnSuperModeOff.setMargin(new Insets(1, 1, 1, 1));
+		btnChaos.setMargin(new Insets(1, 1, 1, 1));
+		
 
 		// Set font (for those with bigger text)
+		//btnPinpad0.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
 		btnPowerOf.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
 		btnSquareOf.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
 		btnCubeOf.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
