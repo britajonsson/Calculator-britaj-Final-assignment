@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.StringTokenizer;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Insets;
@@ -71,8 +72,16 @@ public class CalculatorWindow {
 	
 	// ArrayLists for pinpadPositions, all buttons and hidden buttons.
 	public ArrayList<String> pinpadPositions = new ArrayList<String>();
+	public ArrayList<Integer> shuffledButtonNumbers = new ArrayList<Integer>();
 	public ArrayList<JButton> listOfButtons = new ArrayList<JButton>();
 	public ArrayList<Integer> hiddenButtons = new ArrayList<Integer>();
+	ArrayList<Integer> positionsAsInt = new ArrayList<Integer>();
+	
+	// Used in shufflePinpad()
+	int positionX = 0;
+	int positionY = 0;
+	int positionWidth = 0;
+	int positionHeight = 0;
 
 	// Used to decide if Advanced buttons should be visible or not.
 	public boolean isBasic = true;
@@ -98,6 +107,8 @@ public class CalculatorWindow {
 	// If cleared, it should not be possible to press "=" repetitive and keep on
 	// adding/subtracting etc.
 	public boolean resultCleared = true;
+	
+	
 
 	/**
 	 * Create the application.
@@ -114,6 +125,7 @@ public class CalculatorWindow {
 		hideSuperSwitch();
 		
 		createArrayListOfButtons();
+		createArrayListOfPinpadPositions();
 	}
 
 	/**
@@ -124,6 +136,7 @@ public class CalculatorWindow {
 		frame.setBounds(100, 100, 280, 358);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+
 	}
 
 	/**
@@ -812,16 +825,16 @@ public class CalculatorWindow {
 	 */
 	public void releaseChaosMonkey() {
 		// If all buttons are hidden, change text on button. Else, release the chaos monkey!
-		if (hiddenButtons.size() == 23) {
+		if (hiddenButtons.size() == listOfButtons.size()) {
 			btnChaos.setText("Sorry!");
 		} else {
 			int buttonToHide = 100;
 			
 			// If not all buttons are added to the  list of hidden buttons
-			if (hiddenButtons.size() < 23) {
+			if (hiddenButtons.size() < listOfButtons.size()) {
 				// If the button already is hidden, get a new random number
 				do {
-					buttonToHide = random.nextInt(23);
+					buttonToHide = random.nextInt(listOfButtons.size());
 				} while (hiddenButtons.contains(buttonToHide));
 				// When found a button to hide that's yet visible,
 				// add it to list of hidden buttons and hide it
@@ -830,7 +843,49 @@ public class CalculatorWindow {
 			}
 		}
 	}
+
+	/**
+	 * Shuffles the position of the number buttons on the pinpad.
+	 */
+	public void shufflePinpad() {
+		int buttonToShuffle = 100;
+
+		// Loop through the pinpad buttons in listOfButtons from 0 to 9
+		for (int i = 0; i < 10; i++) {
+			do {
+				buttonToShuffle = random.nextInt(10);
+			} while (shuffledButtonNumbers.contains(buttonToShuffle));
+			// When found a free position to use for this button,
+			// add it to list of shuffled buttons
+			shuffledButtonNumbers.add(buttonToShuffle);
+			
+			// convert the bounds-string to integers and set them as unique variables
+			convertBoundsToIntArray(buttonToShuffle);
+			
+			positionX = positionsAsInt.get(0);
+			positionY = positionsAsInt.get(1);
+			positionWidth = positionsAsInt.get(2);
+			positionHeight = positionsAsInt.get(3);
+			
+			// Clear the array of bound-values before next round in the loop
+			positionsAsInt.clear();
+			
+			listOfButtons.get(i).setBounds(positionX, positionY, positionWidth, positionHeight);
+		}
+		// When all buttons are moved, clear list of shuffled buttons if the method will be run again
+		shuffledButtonNumbers.clear();
+	}
+	
+	public void convertBoundsToIntArray(int buttonToShuffle) {
+		String positionAsString = pinpadPositions.get(buttonToShuffle);
 		
+		StringTokenizer st = new StringTokenizer(positionAsString);
+		while (st.hasMoreTokens()) {
+			positionsAsInt.add(Integer.parseInt(st.nextToken(", ")));
+		}
+	}
+	
+
 
 	/**
 	 * ActionListeners for all buttons.
@@ -1020,7 +1075,7 @@ public class CalculatorWindow {
 		
 		btnShuffle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				releaseChaosMonkey();
+				shufflePinpad();
 			}
 		});
 	}
