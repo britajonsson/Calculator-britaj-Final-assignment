@@ -65,6 +65,7 @@ public class CalculatorWindow {
 	public JButton btnSuperModeOff = new JButton();
 	public JLabel lblSuperMode = new JLabel("Super advanced mode");
 	public JButton btnChaos = new JButton("Chaos");
+	public JButton btnShuffle = new JButton("Shuffle");
 
 	private DecimalFormat df = new DecimalFormat("0.#################");
 	
@@ -160,6 +161,7 @@ public class CalculatorWindow {
 		btnSuperModeOff.setBounds(239, 319, 13, 20);
 		lblSuperMode.setBounds(114, 316, 116, 29);
 		btnChaos.setBounds(193, 345, 65, 29);
+		btnShuffle.setBounds(123, 345, 75, 29);
 	
 		// Removes the margin of the buttons (so the text will fit and not be replaced by "..."
 		btnPinpad0.setMargin(new Insets(1, 1, 1, 1));
@@ -190,10 +192,10 @@ public class CalculatorWindow {
 		btnSuperModeOn.setMargin(new Insets(1, 1, 1, 1));
 		btnSuperModeOff.setMargin(new Insets(1, 1, 1, 1));
 		btnChaos.setMargin(new Insets(1, 1, 1, 1));
+		btnShuffle.setMargin(new Insets(1, 1, 1, 1));
 		
 
 		// Set font (for those with bigger text)
-		//btnPinpad0.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
 		btnPowerOf.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
 		btnSquareOf.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
 		btnCubeOf.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
@@ -235,6 +237,7 @@ public class CalculatorWindow {
 		frame.getContentPane().add(btnSuperModeOff);
 		frame.getContentPane().add(lblSuperMode);
 		frame.getContentPane().add(btnChaos);
+		frame.getContentPane().add(btnShuffle);
 
 		// Settings for display field
 		display.setColumns(10);
@@ -289,6 +292,7 @@ public class CalculatorWindow {
 		listOfButtons.add(btnRemainder);
 		listOfButtons.add(btnRandom);
 		listOfButtons.add(btnClear);
+		listOfButtons.add(btnShuffle);
 	}
 	
 	/**
@@ -343,6 +347,7 @@ public class CalculatorWindow {
 		btnSuperModeOff.setVisible(true);
 		lblSuperMode.setVisible(true);
 		btnChaos.setVisible(true);
+		btnShuffle.setVisible(true);
 	}
 	
 	/**
@@ -353,6 +358,7 @@ public class CalculatorWindow {
 		btnSuperModeOff.setVisible(false);
 		lblSuperMode.setVisible(false);
 		btnChaos.setVisible(false);
+		btnShuffle.setVisible(false);
 	}
 	
 	/**
@@ -360,6 +366,7 @@ public class CalculatorWindow {
 	 */
 	public void activateSuperButtons() {
 		btnChaos.setEnabled(true);
+		btnShuffle.setEnabled(true);
 	}
 
 	/**
@@ -367,6 +374,7 @@ public class CalculatorWindow {
 	 */
 	public void deActivateSuperButtons() {
 		btnChaos.setEnabled(false);
+		btnShuffle.setEnabled(false);
 	}
 
 	/**
@@ -1005,6 +1013,12 @@ public class CalculatorWindow {
 		});
 		
 		btnChaos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				releaseChaosMonkey();
+			}
+		});
+		
+		btnShuffle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				releaseChaosMonkey();
 			}
