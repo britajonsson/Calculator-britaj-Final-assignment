@@ -197,9 +197,9 @@ public class CalculatorWindow {
 		btnPowerOf.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
 		btnSquareOf.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
 		btnCubeOf.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
-		btnPowerOfTen.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
-		btnRemainder.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
-		btnRandom.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
+		btnPowerOfTen.setFont(new Font("Lucida Grande", Font.PLAIN, 7));
+		btnRemainder.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
+		btnRandom.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
 		lblAdvancedMode.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
 		lblSuperMode.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
 
